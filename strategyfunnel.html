@@ -1,0 +1,2086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ignite Spot Accounting Services - Meta Ads Strategy, CRO Audit & 90-Day Growth Roadmap</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #162642 0%, #1a2d4f 100%);
+      color: white;
+      line-height: 1.5;
+    }
+    
+    .slide {
+      min-height: 100vh;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    
+    .logo {
+      height: 60px;
+    }
+    
+    .slide-number {
+      background: #cc5b27;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    
+    .main-title {
+      font-size: 3.2em;
+      margin-bottom: 20px;
+      background: linear-gradient(45deg, #cc5b27, #ff7c4c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-align: center;
+      line-height: 1.2;
+    }
+    
+    .subtitle {
+      font-size: 1.4em;
+      text-align: center;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+    
+    .section-title {
+      font-size: 1.8em;
+      color: #cc5b27;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    
+    .stat-card {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid #cc5b27;
+      border-radius: 15px;
+      padding: 25px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+    
+    .stat-number {
+      font-size: 2.2em;
+      font-weight: bold;
+      color: #cc5b27;
+      display: block;
+      margin-bottom: 8px;
+    }
+    
+    .stat-label {
+      font-size: 14px;
+      opacity: 0.9;
+      font-weight: 500;
+    }
+    
+    .highlight-box {
+      background: linear-gradient(135deg, #cc5b27, #ff7c4c);
+      padding: 25px;
+      border-radius: 15px;
+      margin: 25px 0;
+      text-align: center;
+    }
+    
+    .highlight-box h3 {
+      color: white;
+      margin-bottom: 15px;
+    }
+    
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: start;
+    }
+    
+    .three-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+    
+    .four-column {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+    
+    .five-column {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 15px;
+    }
+    
+    .data-table {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+    
+    .data-table table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    .data-table th {
+      background: #cc5b27;
+      padding: 12px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    
+    .data-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 13px;
+    }
+    
+    .data-table tr:nth-child(even) {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    
+    .bullet-points {
+      list-style: none;
+      margin: 15px 0;
+    }
+    
+    .bullet-points li {
+      margin: 12px 0;
+      padding-left: 25px;
+      position: relative;
+      font-size: 14px;
+    }
+    
+    .bullet-points li:before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: #cc5b27;
+      border-radius: 50%;
+      position: absolute;
+      left: 0;
+      top: 8px;
+    }
+    
+    .content-section {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(204, 91, 39, 0.3);
+      border-radius: 10px;
+      padding: 20px;
+      margin: 15px 0;
+    }
+    
+    .content-section h4 {
+      color: #cc5b27;
+      margin-bottom: 15px;
+      font-size: 1.1em;
+    }
+    
+    .issue-box {
+      background: rgba(244, 67, 54, 0.2);
+      border: 2px solid #F44336;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 10px 0;
+    }
+    
+    .issue-box h4 {
+      color: #F44336;
+      margin-bottom: 10px;
+    }
+    
+    .opportunity-box {
+      background: rgba(76, 175, 80, 0.2);
+      border: 2px solid #4CAF50;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 10px 0;
+    }
+    
+    .opportunity-box h4 {
+      color: #4CAF50;
+      margin-bottom: 10px;
+    }
+    
+    .warning-box {
+      background: rgba(255, 152, 0, 0.2);
+      border: 2px solid #FF9800;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 10px 0;
+    }
+    
+    .warning-box h4 {
+      color: #FF9800;
+      margin-bottom: 10px;
+    }
+    
+    .insight-box {
+      background: rgba(33, 150, 243, 0.2);
+      border: 2px solid #2196F3;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 10px 0;
+    }
+    
+    .insight-box h4 {
+      color: #2196F3;
+      margin-bottom: 10px;
+    }
+    
+    .tier-title {
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    
+    .cta-section {
+      text-align: center;
+      margin-top: 30px;
+    }
+    
+    .funnel-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin: 30px 0;
+    }
+    
+    .funnel-stage {
+      text-align: center;
+      flex: 1;
+    }
+    
+    .funnel-box {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid #cc5b27;
+      border-radius: 12px;
+      padding: 20px 15px;
+      margin-bottom: 10px;
+      position: relative;
+    }
+    
+    .funnel-box::after {
+      content: '';
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      color: #cc5b27;
+    }
+    
+    .funnel-stage:last-child .funnel-box::after {
+      display: none;
+    }
+    
+    .funnel-number {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: #cc5b27;
+    }
+    
+    .funnel-label {
+      font-size: 12px;
+      opacity: 0.9;
+      margin-top: 5px;
+    }
+    
+    .funnel-rate {
+      font-size: 11px;
+      opacity: 0.7;
+    }
+    
+    .timeline-container {
+      display: flex;
+      justify-content: space-between;
+      margin: 30px 0;
+      position: relative;
+    }
+    
+    .timeline-container::before {
+      content: '';
+      position: absolute;
+      top: 25px;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: rgba(204, 91, 39, 0.3);
+      border-radius: 2px;
+    }
+    
+    .timeline-item {
+      text-align: center;
+      position: relative;
+      flex: 1;
+    }
+    
+    .timeline-marker {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #cc5b27, #ff7c4c);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 10px;
+      font-weight: bold;
+      font-size: 14px;
+      position: relative;
+      z-index: 5;
+    }
+    
+    .timeline-content h5 {
+      font-size: 0.95em;
+      margin-bottom: 5px;
+      color: #cc5b27;
+    }
+    
+    .timeline-content p {
+      font-size: 11px;
+      opacity: 0.8;
+    }
+    
+    .metric-bar {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      height: 12px;
+      overflow: hidden;
+      margin: 8px 0;
+    }
+    
+    .metric-fill {
+      height: 100%;
+      border-radius: 8px;
+    }
+    
+    .metric-fill.good {
+      background: linear-gradient(90deg, #4CAF50, #8BC34A);
+    }
+    
+    .metric-fill.warning {
+      background: linear-gradient(90deg, #FF9800, #FFC107);
+    }
+    
+    .metric-fill.critical {
+      background: linear-gradient(90deg, #F44336, #E91E63);
+    }
+    
+    .score-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 10px;
+      border: 4px solid;
+    }
+    
+    .score-circle.good {
+      border-color: #4CAF50;
+    }
+    
+    .score-circle.warning {
+      border-color: #FF9800;
+    }
+    
+    .score-circle.critical {
+      border-color: #F44336;
+    }
+    
+    .score-value {
+      font-size: 1.6em;
+      font-weight: bold;
+    }
+    
+    .score-circle.good .score-value { color: #4CAF50; }
+    .score-circle.warning .score-value { color: #FF9800; }
+    .score-circle.critical .score-value { color: #F44336; }
+    
+    .score-label {
+      font-size: 10px;
+      opacity: 0.8;
+      text-transform: uppercase;
+    }
+    
+    .campaign-tier {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(204, 91, 39, 0.3);
+      border-radius: 10px;
+      padding: 15px;
+    }
+    
+    .campaign-tier h5 {
+      font-size: 0.9em;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .tier-tof h5 { color: #9C27B0; }
+    .tier-mof h5 { color: #2196F3; }
+    .tier-bof h5 { color: #4CAF50; }
+    
+    .campaign-item {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin: 8px 0;
+      font-size: 12px;
+    }
+    
+    .campaign-item strong {
+      display: block;
+      margin-bottom: 3px;
+      color: white;
+    }
+    
+    .campaign-item span {
+      opacity: 0.8;
+      font-size: 11px;
+    }
+    
+    .creative-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(204, 91, 39, 0.3);
+      border-radius: 10px;
+      padding: 20px 15px;
+      text-align: center;
+    }
+    
+    .creative-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #cc5b27, #ff7c4c);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+      font-size: 20px;
+    }
+    
+    .creative-card h5 {
+      color: #cc5b27;
+      margin-bottom: 8px;
+      font-size: 0.95em;
+    }
+    
+    .creative-card p {
+      font-size: 12px;
+      opacity: 0.85;
+    }
+    
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+    
+    .tag {
+      background: rgba(204, 91, 39, 0.2);
+      border: 1px solid rgba(204, 91, 39, 0.5);
+      padding: 4px 10px;
+      border-radius: 15px;
+      font-size: 11px;
+      color: #ff7c4c;
+    }
+    
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin: 20px 0;
+    }
+    
+    .kpi-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 15px 10px;
+      text-align: center;
+    }
+    
+    .kpi-value {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #cc5b27;
+    }
+    
+    .kpi-label {
+      font-size: 10px;
+      opacity: 0.8;
+      text-transform: uppercase;
+      margin-top: 5px;
+    }
+    
+    .day-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(204, 91, 39, 0.3);
+      border-radius: 10px;
+      padding: 15px;
+      position: relative;
+    }
+    
+    .day-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      border-radius: 10px 0 0 10px;
+    }
+    
+    .day-card.day-1::before { background: #F44336; }
+    .day-card.day-2::before { background: #FF9800; }
+    .day-card.day-3::before { background: #4CAF50; }
+    
+    .day-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    
+    .day-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    
+    .day-1 .day-number { background: rgba(244, 67, 54, 0.2); color: #F44336; }
+    .day-2 .day-number { background: rgba(255, 152, 0, 0.2); color: #FF9800; }
+    .day-3 .day-number { background: rgba(76, 175, 80, 0.2); color: #4CAF50; }
+    
+    .status-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    
+    .status-critical { background: rgba(244, 67, 54, 0.2); color: #F44336; }
+    .status-warning { background: rgba(255, 152, 0, 0.2); color: #FF9800; }
+    .status-success { background: rgba(76, 175, 80, 0.2); color: #4CAF50; }
+    .status-info { background: rgba(33, 150, 243, 0.2); color: #2196F3; }
+    
+    .projection-bar {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-around;
+      height: 200px;
+      margin: 25px 0;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+    }
+    
+    .bar-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+    }
+    
+    .bar {
+      width: 50px;
+      background: linear-gradient(135deg, #cc5b27, #ff7c4c);
+      border-radius: 6px 6px 0 0;
+      position: relative;
+    }
+    
+    .bar-value {
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-weight: bold;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    
+    .bar-label {
+      margin-top: 10px;
+      font-size: 11px;
+      opacity: 0.8;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Slide 1: Title -->
+  <div class="slide">
+    <div class="slide-header">
+      <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+      <div class="slide-number">01</div>
+    </div>
+    
+    <div class="main-title">Ignite Spot Accounting Services</div>
+    <div class="subtitle">Meta Ads Strategy • CRO Audit • 90-Day Growth Roadmap</div>
+    
+    <div class="highlight-box">
+      <h3>Strategic Blueprint for $70,000 MRR Growth</h3>
+      <p>Data-Driven Lead Generation | Conversion Rate Optimization | Full-Funnel Advertising</p>
+    </div>
+    
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-number">$270</span>
+        <div class="stat-label">Daily Ad Budget</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">37</span>
+        <div class="stat-label">Target Clients / Year</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">$70.3K</span>
+        <div class="stat-label">Customer LTV</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">26:1</span>
+        <div class="stat-label">Target LTV:CAC</div>
+      </div>
+    </div>
+    
+    <div class="cta-section">
+      <div style="background: rgba(255, 255, 255, 0.1); border-radius: 15px; padding: 30px; margin-top: 20px;">
+        <p style="opacity: 0.8; font-size: 14px; margin-bottom: 10px;">Prepared for</p>
+        <h3 style="font-size: 1.8em; color: #cc5b27; margin-bottom: 10px;">Eddy Hood, Founder</h3>
+        <p style="opacity: 0.8;">December 2025 | Lead Guru Partnership</p>
+        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+          <strong style="color: #4CAF50;">LAUNCH DATE: FRIDAY, DECEMBER 20TH</strong> 
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 2: Executive Summary -->
+  <div class="slide">
+    <div class="slide-header">
+      <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+      <div class="slide-number">02</div>
+    </div>
+    
+    <div class="section-title">Executive Summary</div>
+    
+    <div class="two-column">
+      <div class="issue-box">
+        <h4>CRITICAL ISSUES IDENTIFIED</h4>
+        <ul class="bullet-points">
+          <li><strong>Mobile Page Speed Crisis:</strong> 7.7s LCP destroying 40-50% of mobile conversions</li>
+          <li><strong>Limited A/B Test Data:</strong> Smart Traffic still in learning phase (16.7%), insufficient statistical significance</li>
+          <li><strong>No Meta Pixel History:</strong> Fresh ad account means no warm audiences or conversion data</li>
+          <li><strong>Single Landing Page Dependency:</strong> All traffic funneling to one page creates optimization ceiling</li>
+          <li><strong>High-Intent Form Friction:</strong> Multi-field form without micro-conversions for intent capture</li>
+        </ul>
+      </div>
+      
+      <div class="opportunity-box">
+        <h4>Strategic Opportunities</h4>
+        <ul class="bullet-points">
+          <li><strong>Exceptional LTV:CAC Potential:</strong> At $70,300 LTV, even $2,700 CAC yields 26:1 return</li>
+          <li><strong>4,000+ Lead Database:</strong> Existing prospect list ready for Custom Audience activation</li>
+          <li><strong>Clear ICP Definition:</strong> $1M-$10M revenue service businesses, 35-54 age, USA-based</li>
+          <li><strong>Strong Differentiators:</strong> 100% USA-based team, budget-focused methodology, since 2008</li>
+          <li><strong>Desktop Performance Solid:</strong> 97 Performance score enables desktop-first strategy</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="highlight-box" style="margin-top: 20px;">
+      <h3>Primary Recommendation: Mobile-First CRO + Full-Funnel Meta Strategy</h3>
+      <p>Fix critical mobile speed issues in parallel with campaign launch. Build pixel data through strategic campaign layering.</p>
+    </div>
+    
+    <div class="stats-grid" style="margin-top: 20px;">
+      <div class="stat-card">
+        <span class="stat-number">3.92%</span>
+        <div class="stat-label">Current Landing Page CR</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">65</span>
+        <div class="stat-label">Mobile PageSpeed Score</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">7.7s</span>
+        <div class="stat-label">Mobile LCP (Critical)</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">$8,100</span>
+        <div class="stat-label">Monthly Ad Budget</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 3: Current Funnel Analysis -->
+  <div class="slide">
+    <div class="slide-header">
+      <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+      <div class="slide-number">03</div>
+    </div>
+    
+    <div class="section-title">Current Funnel Analysis</div>
+    <p style="opacity: 0.8; margin-bottom: 20px;">Unbounce Data: November 4 - December 16, 2025 (42 Days)</p>
+    
+    <div class="funnel-visual">
+      <div class="funnel-stage">
+        <div class="funnel-box">
+          <div class="funnel-number">658</div>
+          <div class="funnel-label">Unique Visitors</div>
+        </div>
+        <div class="funnel-rate">100% of traffic</div>
+      </div>
+      <div class="funnel-stage">
+        <div class="funnel-box">
+          <div class="funnel-number">924</div>
+          <div class="funnel-label">Page Views</div>
+        </div>
+        <div class="funnel-rate">1.4 views/visitor</div>
+      </div>
+      <div class="funnel-stage">
+        <div class="funnel-box">
+          <div class="funnel-number">19</div>
+          <div class="funnel-label">Form Submissions</div>
+        </div>
+        <div class="funnel-rate">2.89% conversion rate</div>
+      </div>
+      <div class="funnel-stage">
+        <div class="funnel-box">
+          <div class="funnel-number">6</div>
+          <div class="funnel-label">MQLs (30%)</div>
+        </div>
+        <div class="funnel-rate">30% qualification rate</div>
+      </div>
+      <div class="funnel-stage">
+        <div class="funnel-box">
+          <div class="funnel-number">1</div>
+          <div class="funnel-label">New Clients</div>
+        </div>
+        <div class="funnel-rate">15% close rate</div>
+      </div>
+    </div>
+    
+    <div class="two-column" style="margin-top: 20px;">
+      <div>
+        <div class="data-table">
+          <table>
+            <tr>
+              <th>A/B Test Variant</th>
+              <th>Visitors</th>
+              <th>Conv.</th>
+              <th>Rate</th>
+              <th>Status</th>
+            </tr>
+            <tr>
+              <td><strong>A:</strong> "Better Business Financials Without the Overwhelm"</td>
+              <td>332</td>
+              <td>13</td>
+              <td style="color: #4CAF50;">3.92%</td>
+              <td><span class="status-badge status-success">Active</span></td>
+            </tr>
+            <tr>
+              <td><strong>C:</strong> "Hero has people, not graphs"</td>
+              <td>12</td>
+              <td>1</td>
+              <td style="color: #FF9800;">8.33%</td>
+              <td><span class="status-badge status-info">Testing</span></td>
+            </tr>
+            <tr>
+              <td><strong>B:</strong> "Bad Accounting Ruins a Business"</td>
+              <td>314</td>
+              <td>5</td>
+              <td style="color: #F44336;">1.59%</td>
+              <td><span class="status-badge status-critical">Paused</span></td>
+            </tr>
+          </table>
+        </div>
+        
+        <div class="insight-box">
+          <h4>Key Insights</h4>
+          <ul class="bullet-points">
+            <li>Variant A outperforms B by 147% - positive framing resonates</li>
+            <li>Variant C shows promise (8.33%) but needs 200+ visitors for significance</li>
+            <li>Smart Traffic at 16.7% learning - insufficient data for AI optimization</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div>
+        <div class="content-section">
+          <h4>Target Funnel Mathematics</h4>
+          <div class="data-table" style="margin: 15px 0;">
+            <table>
+              <tr>
+                <th>Metric</th>
+                <th>Current</th>
+                <th>Target</th>
+              </tr>
+              <tr>
+                <td>Monthly Clients Goal</td>
+                <td>1</td>
+                <td><strong>3</strong> </td>
+              </tr>
+              <tr>
+                <td>MQLs Needed (15% close)</td>
+                <td>6</td>
+                <td><strong>20</strong> </td>
+              </tr>
+              <tr>
+                <td>Leads Needed (30% MQL)</td>
+                <td>19</td>
+                <td><strong>75</strong> </td>
+              </tr>
+              <tr>
+                <td>Visitors Needed (3.92% CR)</td>
+                <td>658</td>
+                <td><strong>1,913</strong> </td>
+              </tr>
+              <tr>
+                <td>Target Cost Per Lead</td>
+                <td>-</td>
+                <td><strong>$106</strong> </td>
+              </tr>
+              <tr>
+                <td>Target Cost Per Client</td>
+                <td>-</td>
+                <td><strong>$2,700</strong> </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 4: CRO Audit - Page Speed -->
+  <div class="slide">
+    <div class="slide-header">
+      <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+      <div class="slide-number">04</div>
+    </div>
+    
+    <div class="section-title">CRO Audit: Page Speed Analysis</div>
+    <p style="opacity: 0.8; margin-bottom: 25px;">PageSpeed Insights for get.ignitespot.com/quote/</p>
+    
+    <div class="two-column">
+      <div>
+        <h4 style="color: #F44336; margin-bottom: 15px;">Mobile Performance (Critical)</h4>
+        <div class="four-column" style="gap: 10px; margin-bottom: 15px;">
+          <div class="content-section" style="text-align: center; padding: 15px;">
+            <div class="score-circle warning">
+              <span class="score-value">65</span>
+            </div>
+            <div class="score-label">Performance</div>
+          </div>
+          <div class="content-section" style="text-align: center; padding: 15px;">
+            <div class="score-circle good">
+              <span class="score-value">88</span>
+            </div>
+            <div class="score-label">Accessibility</div>
+          </div>
+          <div class="content-section" style="text-align: center; padding: 15px;">
+            <div class="score-circle warning">
+              <span class="score-value">58</span>
+            </div>
+            <div class="score-label">Best Practices</div>
+          </div>
+          <div class="content-section" style="text-align: center; padding: 15px;">
+            <div class="score-circle warning">
+              <span class="score-value">69</span>
+            </div>
+            <div class="score-label">SEO</div>
+          </div>
+        </div>
+        
+        <div class="issue-box">
+          <h4>Critical Mobile Metrics</h4>
+          <div style="margin: 12px 0;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+              <span style="font-size: 13px;">First Contentful Paint</span>
+              <span style="color: #F44336; font-weight: 600; font-size: 13px;">3.6s (Poor)</span>
+            </div>
+            <div class="metric-bar"><div class="metric-fill warning" style="width: 45%;"></div></div>
+          </div>
+          <div style="margin: 12px 0;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+              <span style="font-size: 13px;">Largest Contentful Paint</span>
+              <span style="color: #F44336; font-weight: 600; font-size: 13px;">7.7s (Critical)</span>
+            </div>
+            <div class="metric-bar"><div class="metric-fill critical" style="width: 85%;"></div></div>
+          </div>
+          <div style="margin: 12px 0;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+              <span style="font-size: 13px;">Speed Index</span>
+              <span style="color: #F44336; font-weight: 600; font-size: 13px;">6.2s (Poor)</span>
+            </div>
+            <div class="metric-bar"><div class="metric-fill warning" style="width: 65%;"></div></div>
+          </div>
+          <div style="margin: 12px 0;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+              <span style="font-size: 13px;">Cumulative Layout Shift</span>
+              <span style="color: #4CAF50; font-weight: 600; font-size: 13px;">0 (Good)</span>
+            </div>
+            <div class="metric-bar"><div class="metric-fill good" style="width: 5%;"></div></div>
+          </div>
+        </div>
+      </div>
+      
+      <div>
+        <h4 style="color: #4CAF50; margin-bottom: 15px;">Desktop Performance (Excellent)</h4>
+        <div class="four-column" style="gap: 10px; margin-bottom: 15px;">
+          <div class="content-section" style="text-align: center; padding: 15px;">
+            <div class="score-circle good">
+              <span class="score-value">97</span>
+            </div>
+            <div class="score-label">Performance</div>
+          </div>
+          <div class="content-section" style="text-align: center; padding: 15px;">
+            <div class="score-circle good">
+              <span class="score-value">88</span>
+            </div>
+            <div class="score-label">Accessibility</div>
+          </div>
+          <div class="content-section" style="text-align: center; padding: 15px;">
+            <div class="score-circle warning">
+              <span class="score-value">54</span>
+            </div>
+            <div class="score-label">Best Practices</div>
+          </div>
+          <div class="content-section" style="text-align: center; padding: 15px;">
+            <div class="score-circle warning">
+              <span class="score-value">69</span>
+            </div>
+            <div class="score-label">SEO</div>
+          </div>
+        </div>
+        
+        <div class="opportunity-box">
+          <h4>Desktop Metrics (Strong)</h4>
+          <div style="margin: 12px 0;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+              <span style="font-size: 13px;">First Contentful Paint</span>
+              <span style="color: #4CAF50; font-weight: 600; font-size: 13px;">0.6s (Good)</span>
+            </div>
+            <div class="metric-bar"><div class="metric-fill good" style="width: 15%;"></div></div>
+          </div>
+          <div style="margin: 12px 0;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+              <span style="font-size: 13px;">Largest Contentful Paint</span>
+              <span style="color: #4CAF50; font-weight: 600; font-size: 13px;">1.2s (Good)</span>
+            </div>
+            <div class="metric-bar"><div class="metric-fill good" style="width: 25%;"></div></div>
+          </div>
+          <div style="margin: 12px 0;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+              <span style="font-size: 13px;">Speed Index</span>
+              <span style="color: #4CAF50; font-weight: 600; font-size: 13px;">0.6s (Good)</span>
+            </div>
+            <div class="metric-bar"><div class="metric-fill good" style="width: 15%;"></div></div>
+          </div>
+          <div style="margin: 12px 0;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+              <span style="font-size: 13px;">Total Blocking Time</span>
+              <span style="color: #4CAF50; font-weight: 600; font-size: 13px;">10ms (Good)</span>
+            </div>
+            <div class="metric-bar"><div class="metric-fill good" style="width: 5%;"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="highlight-box" style="margin-top: 20px; background: linear-gradient(135deg, #F44336, #FF9800);">
+      <h3>Critical Impact: 7.7s Mobile LCP = 40-53% Bounce Rate Increase</h3>
+      <p>Google research shows each second of load time increases bounce rate by 7%. Fixing mobile speed is highest-ROI optimization.</p>
+    </div>
+  </div>
+
+  <!-- Slide 5: CRO Recommendations -->
+  <div class="slide">
+    <div class="slide-header">
+      <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+      <div class="slide-number">05</div>
+    </div>
+    
+    <div class="section-title">CRO Recommendations</div>
+    <p style="opacity: 0.8; margin-bottom: 25px;">Priority Fixes for Maximum Conversion Impact</p>
+    
+    <div class="three-column">
+      <div class="day-card day-1">
+        <div class="day-header">
+          <div class="day-number">P1</div>
+          <div>
+            <h4 style="margin: 0; font-size: 1em;">Critical Speed Fixes</h4>
+            <span style="font-size: 11px; opacity: 0.8;">This Week | Impact: High</span>
+          </div>
+        </div>
+        <ul class="bullet-points">
+          <li><strong>Optimize Hero Image:</strong> Compress and serve WebP format, implement lazy loading</li>
+          <li><strong>Reduce JavaScript Blocking:</strong> Defer non-critical scripts, remove unused code</li>
+          <li><strong>Enable Browser Caching:</strong> Set proper cache headers for static assets</li>
+          <li><strong>Preload Critical Assets:</strong> Fonts, above-fold images, critical CSS</li>
+          <li><strong>Minimize Third-Party Scripts:</strong> Audit and remove unnecessary tracking pixels</li>
+        </ul>
+        <div style="margin-top: 12px; padding: 10px; background: rgba(244, 67, 54, 0.1); border-radius: 6px; font-size: 12px;">
+          <strong style="color: #F44336;">Target:</strong> LCP under 2.5s mobile
+        </div>
+      </div>
+      
+      <div class="day-card day-2">
+        <div class="day-header">
+          <div class="day-number">P2</div>
+          <div>
+            <h4 style="margin: 0; font-size: 1em;">Form Optimization</h4>
+            <span style="font-size: 11px; opacity: 0.8;">Week 2 | Impact: Medium-High</span>
+          </div>
+        </div>
+        <ul class="bullet-points">
+          <li><strong>Add Progress Indicator:</strong> Show form completion progress to reduce abandonment</li>
+          <li><strong>Implement Email-First Capture:</strong> Get email before full form for follow-up</li>
+          <li><strong>Add Social Proof Near Form:</strong> Testimonial snippet beside submission button</li>
+          <li><strong>Mobile Form Optimization:</strong> Larger touch targets, proper input types</li>
+          <li><strong>Add Trust Badges:</strong> "100% USA Based" and "Since 2008" near CTA</li>
+        </ul>
+        <div style="margin-top: 12px; padding: 10px; background: rgba(255, 152, 0, 0.1); border-radius: 6px; font-size: 12px;">
+          <strong style="color: #FF9800;">Target:</strong> +0.5-1% form conversion rate
+        </div>
+      </div>
+      
+      <div class="day-card day-3">
+        <div class="day-header">
+          <div class="day-number">P3</div>
+          <div>
+            <h4 style="margin: 0; font-size: 1em;">Content & UX Enhancements</h4>
+            <span style="font-size: 11px; opacity: 0.8;">Week 3-4 | Impact: Medium</span>
+          </div>
+        </div>
+        <ul class="bullet-points">
+          <li><strong>Add Pricing Transparency:</strong> "Starting at $X/month" to pre-qualify leads</li>
+          <li><strong>Video Testimonials:</strong> Embed short (30-60s) client success stories</li>
+          <li><strong>Interactive ROI Calculator:</strong> Show potential time/money savings</li>
+          <li><strong>Exit-Intent Popup:</strong> Offer free consultation or guide download</li>
+          <li><strong>Add Live Chat Widget:</strong> Capture visitors with questions not ready to submit</li>
+        </ul>
+        <div style="margin-top: 12px; padding: 10px; background: rgba(76, 175, 80, 0.1); border-radius: 6px; font-size: 12px;">
+          <strong style="color: #4CAF50;">Target:</strong> Improve lead quality score
+        </div>
+      </div>
+    </div>
+    
+    <div class="two-column" style="margin-top: 20px;">
+      <div class="insight-box">
+        <h4>Landing Page Strengths to Preserve</h4>
+        <ul class="bullet-points">
+          <li>Clear value proposition headline resonates (3.92% CR)</li>
+          <li>Strong social proof with named testimonials and photos</li>
+          <li>"Let's See If We're a Fit" section pre-qualifies effectively</li>
+          <li>FAQ section addresses common objections</li>
+          <li>Clean, professional design builds trust</li>
+        </ul>
+      </div>
+      
+      <div class="content-section">
+        <h4>A/B Tests to Run</h4>
+        <ul class="bullet-points">
+          <li><strong>Headline Test:</strong> Continue Variant C test to 200+ visitors</li>
+          <li><strong>CTA Button Test:</strong> "Get Your Quote" vs "See Pricing" vs "Talk to an Expert"</li>
+          <li><strong>Form Length Test:</strong> 5-field vs 3-field (email, name, revenue only)</li>
+          <li><strong>Hero Image Test:</strong> People vs. graphs/charts vs. lifestyle imagery</li>
+          <li><strong>Testimonial Placement:</strong> Above fold vs. below fold</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 6: Meta Ads Strategy Overview -->
+  <div class="slide">
+    <div class="slide-header">
+      <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+      <div class="slide-number">06</div>
+    </div>
+    
+    <div class="section-title">Meta Ads Strategy Overview</div>
+    <p style="opacity: 0.8; margin-bottom: 25px;">Full-Funnel Architecture for Maximum Lead Generation</p>
+    
+    <div class="three-column">
+      <div class="campaign-tier tier-tof">
+        <h5>Top of Funnel (TOF)</h5>
+        <p style="font-size: 11px; opacity: 0.8; margin-bottom: 12px;">Awareness & Interest | 40% of Budget</p>
+        
+        <div class="campaign-item">
+          <strong>Campaign 1: Broad Prospecting</strong> 
+          <span>Interest-based: Small business, Entrepreneurship, QuickBooks, Xero</span>
+        </div>
+        <div class="campaign-item">
+          <strong>Campaign 2: Lookalike Audiences</strong> 
+          <span>1-3% LAL from customer list (4,000+ emails)</span>
+        </div>
+        <div class="campaign-item">
+          <strong>Campaign 3: Video Views</strong> 
+          <span>Educational content to build warm audiences</span>
+        </div>
+        
+        <div style="margin-top: 12px; padding: 10px; background: rgba(156, 39, 176, 0.1); border-radius: 6px; font-size: 11px;">
+          <strong>Objective:</strong> Traffic / Video Views<br>
+          <strong>Budget:</strong> $3,240/month
+        </div>
+      </div>
+      
+      <div class="campaign-tier tier-mof">
+        <h5>Middle of Funnel (MOF)</h5>
+        <p style="font-size: 11px; opacity: 0.8; margin-bottom: 12px;">Consideration & Engagement | 35% of Budget</p>
+        
+        <div class="campaign-item">
+          <strong>Campaign 4: Website Retargeting</strong> 
+          <span>Visitors who didn't convert (7-30 day window)</span>
+        </div>
+        <div class="campaign-item">
+          <strong>Campaign 5: Video Engagers</strong> 
+          <span>75%+ video viewers, page engagers</span>
+        </div>
+        <div class="campaign-item">
+          <strong>Campaign 6: Lead Magnet</strong> 
+          <span>Free guide/checklist for email capture</span>
+        </div>
+        
+        <div style="margin-top: 12px; padding: 10px; background: rgba(33, 150, 243, 0.1); border-radius: 6px; font-size: 11px;">
+          <strong>Objective:</strong> Leads / Engagement<br>
+          <strong>Budget:</strong> $2,835/month
+        </div>
+      </div>
+      
+      <div class="campaign-tier tier-bof">
+        <h5>Bottom of Funnel (BOF)</h5>
+        <p style="font-size: 11px; opacity: 0.8; margin-bottom: 12px;">Conversion & Action | 25% of Budget</p>
+        
+        <div class="campaign-item">
+          <strong>Campaign 7: Hot Retargeting</strong> 
+          <span>Quote page visitors, form abandoners (1-7 days)</span>
+        </div>
+        <div class="campaign-item">
+          <strong>Campaign 8: Customer List Upload</strong> 
+          <span>Past inquiries from 4,000+ prospect database</span>
+        </div>
+        <div class="campaign-item">
+          <strong>Campaign 9: High-Intent Conversion</strong> 
+          <span>Warm audiences + urgency messaging</span>
+        </div>
+        
+        <div style="margin-top: 12px; padding: 10px; background: rgba(76, 175, 80, 0.1); border-radius: 6px; font-size: 11px;">
+          <strong>Objective:</strong> Conversions (Leads)<br>
+          <strong>Budget:</strong> $2,025/month
+        </div>
+      </div>
+    </div>
+    
+    <div class="highlight-box">
+      <h3>Strategy Philosophy: Build the Machine While Running</h3>
+      <p>Launch all campaigns by Friday. Optimize in real-time as pixel data accumulates. Target consistent $100-110 CPL within 30 days.</p>
+    </div>
+    
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-value">$8,100</div>
+        <div class="kpi-label">Monthly Budget</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">$106</div>
+        <div class="kpi-label">Target CPL</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">75</div>
+        <div class="kpi-label">Monthly Leads</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">3</div>
+        <div class="kpi-label">Monthly Clients</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">26:1</div>
+        <div class="kpi-label">Target LTV:CAC</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 7: Audience Strategy -->
+  <div class="slide">
+    <div class="slide-header">
+      <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+      <div class="slide-number">07</div>
+    </div>
+    
+    <div class="section-title">Audience Strategy & Targeting</div>
+    <p style="opacity: 0.8; margin-bottom: 25px;">Precision Targeting for $1M-$10M Service Business Owners</p>
+    
+    <div class="two-column">
+      <div>
+        <div class="content-section">
+          <h4>Primary Audience: Cold Prospecting</h4>
+          <p style="font-size: 12px; opacity: 0.8; margin-bottom: 10px;">Interest-based targeting for awareness campaigns</p>
+          <div class="tag-list">
+            <span class="tag">Small Business Owners</span>
+            <span class="tag">Entrepreneurship</span>
+            <span class="tag">QuickBooks</span>
+            <span class="tag">Xero Accounting</span>
+            <span class="tag">Business Finance</span>
+            <span class="tag">CFO Services</span>
+            <span class="tag">Bookkeeping</span>
+            <span class="tag">Business Growth</span>
+            <span class="tag">Forbes</span>
+            <span class="tag">Inc Magazine</span>
+            <span class="tag">Entrepreneur Magazine</span>
+          </div>
+        </div>
+        
+        <div class="content-section">
+          <h4>Lookalike Audiences</h4>
+          <p style="font-size: 12px; opacity: 0.8; margin-bottom: 10px;">Seed audiences from existing data assets</p>
+          <ul class="bullet-points">
+            <li><strong>1% LAL - Customer List:</strong> 4,000+ past inquiries since 2014</li>
+            <li><strong>1% LAL - Website Visitors:</strong> All site visitors (once pixel matures)</li>
+            <li><strong>2% LAL - Video Engagers:</strong> 75%+ video completers</li>
+            <li><strong>3% LAL - Lead Form Submitters:</strong> Highest intent signals</li>
+          </ul>
+        </div>
+        
+        <div class="content-section">
+          <h4>Retargeting Audiences</h4>
+          <ul class="bullet-points">
+            <li><strong>Hot (1-7 days):</strong> Quote page visitors, form abandoners</li>
+            <li><strong>Warm (8-30 days):</strong> All website visitors, video viewers</li>
+            <li><strong>Cool (31-90 days):</strong> Past visitors for re-engagement</li>
+            <li><strong>Engaged:</strong> Facebook/Instagram page engagers</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div>
+        <div class="content-section">
+          <h4>Demographic Parameters</h4>
+          <div class="data-table" style="margin: 10px 0;">
+            <table>
+              <tr>
+                <th>Parameter</th>
+                <th>Setting</th>
+              </tr>
+              <tr>
+                <td>Location</td>
+                <td><strong>United States Only</strong> </td>
+              </tr>
+              <tr>
+                <td>Age Range</td>
+                <td><strong>35-54</strong> (Primary) | 30-64 (Secondary)</td>
+              </tr>
+              <tr>
+                <td>Gender</td>
+                <td><strong>All</strong> (50/50 split per ICP)</td>
+              </tr>
+              <tr>
+                <td>Language</td>
+                <td><strong>English (US)</strong> </td>
+              </tr>
+              <tr>
+                <td>Placements</td>
+                <td><strong>Automatic</strong> (optimize over time)</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        
+        <div class="issue-box">
+          <h4>Exclusions (Critical)</h4>
+          <ul class="bullet-points">
+            <li><strong>Industry:</strong> Construction, Non-profit organizations</li>
+            <li><strong>Job Titles:</strong> Accountants, Bookkeepers, CPAs (competitors)</li>
+            <li><strong>Company Size:</strong> Enterprise (1000+ employees)</li>
+            <li><strong>Existing Customers:</strong> Upload exclusion list</li>
+            <li><strong>Recent Converters:</strong> Past 30-day form submitters</li>
+          </ul>
+        </div>
+        
+        <div class="insight-box" style="margin-top: 10px;">
+          <h4>Advantage+ Audience Strategy</h4>
+          <p style="font-size: 12px; opacity: 0.9;">Start with detailed targeting, then test Advantage+ Audience once pixel has 50+ conversion events. Meta's AI performs better with data.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 8: Creative Strategy -->
+  <div class="slide">
+    <div class="slide-header">
+      <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+      <div class="slide-number">08</div>
+    </div>
+    
+    <div class="section-title">Creative Strategy & Messaging</div>
+    <p style="opacity: 0.8; margin-bottom: 25px;">Pain-Point Driven Content for Maximum Resonance</p>
+    
+    <div class="four-column">
+      <div class="creative-card">
+        <div class="creative-icon">01</div>
+        <h5>Financial Disorganization</h5>
+        <p>"Stop gambling with your business decisions. Get books you can actually trust."</p>
+        <div style="margin-top: 12px; padding: 8px; background: rgba(204, 91, 39, 0.1); border-radius: 6px; font-size: 11px;">
+          <strong>Hook:</strong> "Your bank account isn't a business strategy."
+        </div>
+      </div>
+      
+      <div class="creative-card">
+        <div class="creative-icon">02</div>
+        <h5>Financial Mistrust</h5>
+        <p>"Burned by bad bookkeepers? We're 100% USA-based and accountable."</p>
+        <div style="margin-top: 12px; padding: 8px; background: rgba(204, 91, 39, 0.1); border-radius: 6px; font-size: 11px;">
+          <strong>Hook:</strong> "Your last accountant ghosted you. We won't."
+        </div>
+      </div>
+      
+      <div class="creative-card">
+        <div class="creative-icon">03</div>
+        <h5>Financial Shame</h5>
+        <p>"Messy books? No judgment. We've cleaned up hundreds since 2008."</p>
+        <div style="margin-top: 12px; padding: 8px; background: rgba(204, 91, 39, 0.1); border-radius: 6px; font-size: 11px;">
+          <strong>Hook:</strong> "You're not bad at business. You need the right team."
+        </div>
+      </div>
+      
+      <div class="creative-card">
+        <div class="creative-icon">04</div>
+        <h5>Financial Strategy</h5>
+        <p>"Stop flying blind. Monthly reports + coaching calls to grow with confidence."</p>
+        <div style="margin-top: 12px; padding: 8px; background: rgba(204, 91, 39, 0.1); border-radius: 6px; font-size: 11px;">
+          <strong>Hook:</strong> "What if you actually knew your numbers?"
+        </div>
+      </div>
+    </div>
+    
+    <div class="two-column" style="margin-top: 25px;">
+      <div>
+        <div class="content-section">
+          <h4>Video Content Strategy</h4>
+          <ul class="bullet-points">
+            <li><strong>Founder Story (60-90s):</strong> Eddy explaining why he started Ignite Spot - builds trust</li>
+            <li><strong>Pain Point Series (15-30s):</strong> Quick hits addressing each pain point - high volume testing</li>
+            <li><strong>Client Testimonials (30-60s):</strong> Real results from real business owners</li>
+            <li><strong>Day in the Life (45-60s):</strong> Show the team at work - humanize the service</li>
+            <li><strong>Before/After (30s):</strong> Messy books to organized reports visual transformation</li>
+          </ul>
+        </div>
+        
+        <div class="insight-box" style="margin-top: 10px;">
+          <h4>Creative Formats to Test</h4>
+          <div class="tag-list" style="margin-top: 8px;">
+            <span class="tag">1:1 Square Video</span>
+            <span class="tag">4:5 Portrait Video</span>
+            <span class="tag">9:16 Reels/Stories</span>
+            <span class="tag">Static Image Carousel</span>
+            <span class="tag">UGC-Style Talking Head</span>
+          </div>
+        </div>
+      </div>
+      
+      <div>
+        <div class="content-section">
+          <h4>Ad Copy Framework</h4>
+          <div style="background: rgba(255, 255, 255, 0.05); padding: 12px; border-radius: 8px; margin: 10px 0; font-size: 12px;">
+            <strong style="color: #cc5b27;">HOOK:</strong> Pattern interrupt or pain point call-out<br><br>
+            <strong style="color: #cc5b27;">PROBLEM:</strong> Agitate the specific pain (1-2 sentences)<br><br>
+            <strong style="color: #cc5b27;">SOLUTION:</strong> How Ignite Spot solves it uniquely<br><br>
+            <strong style="color: #cc5b27;">PROOF:</strong> Social proof element (years, clients, reviews)<br><br>
+            <strong style="color: #cc5b27;">CTA:</strong> Clear next step with low commitment
+          </div>
+          
+          <div style="background: rgba(204, 91, 39, 0.1); border: 1px solid rgba(204, 91, 39, 0.5); padding: 12px; border-radius: 8px; font-size: 11px;">
+            <strong>Example Ad Copy:</strong> <br><br>
+            "Running a $2M business on QuickBooks vibes and gut feelings? <br><br>
+            You're not alone. Most business owners don't trust their numbers because their 'accountant' just does a bank reconciliation once a month.<br><br>
+            At Ignite Spot, you get a dedicated USA-based team managing your books weekly, creating real financial reports, and meeting with you monthly to actually use them.<br><br>
+            We've helped hundreds of businesses since 2008. 4.7 stars on Google.<br><br>
+            See if we're a fit (takes 2 mins)"
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 9: Campaign Structure & Budget -->
+  <div class="slide">
+    <div class="slide-header">
+      <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+      <div class="slide-number">09</div>
+    </div>
+    
+    <div class="section-title">Campaign Structure & Budget Allocation</div>
+    <p style="opacity: 0.8; margin-bottom: 20px;">Detailed Campaign Setup for $270/Day Budget</p>
+    
+    <div class="data-table">
+      <table>
+        <tr>
+          <th>Campaign</th>
+          <th>Funnel</th>
+          <th>Objective</th>
+          <th>Audience</th>
+          <th>Daily</th>
+          <th>Monthly</th>
+        </tr>
+        <tr>
+          <td><strong>C1: Broad Prospecting</strong> </td>
+          <td><span class="status-badge status-info">TOF</span></td>
+          <td>Traffic / Leads</td>
+          <td>Interest-based targeting</td>
+          <td>$50</td>
+          <td>$1,500</td>
+        </tr>
+        <tr>
+          <td><strong>C2: Lookalike 1-3%</strong> </td>
+          <td><span class="status-badge status-info">TOF</span></td>
+          <td>Traffic / Leads</td>
+          <td>LAL from customer list</td>
+          <td>$40</td>
+          <td>$1,200</td>
+        </tr>
+        <tr>
+          <td><strong>C3: Video Views</strong> </td>
+          <td><span class="status-badge status-info">TOF</span></td>
+          <td>Video Views (ThruPlay)</td>
+          <td>Cold audiences</td>
+          <td>$18</td>
+          <td>$540</td>
+        </tr>
+        <tr>
+          <td><strong>C4: Website Retargeting</strong> </td>
+          <td><span class="status-badge" style="background: rgba(33, 150, 243, 0.2); color: #2196F3;">MOF</span></td>
+          <td>Leads</td>
+          <td>7-30 day visitors</td>
+          <td>$45</td>
+          <td>$1,350</td>
+        </tr>
+        <tr>
+          <td><strong>C5: Video Engagers</strong> </td>
+          <td><span class="status-badge" style="background: rgba(33, 150, 243, 0.2); color: #2196F3;">MOF</span></td>
+          <td>Leads</td>
+          <td>75%+ video viewers</td>
+          <td>$30</td>
+          <td>$900</td>
+        </tr>
+        <tr>
+          <td><strong>C6: Lead Magnet</strong> </td>
+          <td><span class="status-badge" style="background: rgba(33, 150, 243, 0.2); color: #2196F3;">MOF</span></td>
+          <td>Lead Gen (On-Platform)</td>
+          <td>Cold + Warm mix</td>
+          <td>$20</td>
+          <td>$600</td>
+        </tr>
+        <tr>
+          <td><strong>C7: Hot Retargeting</strong> </td>
+          <td><span class="status-badge status-success">BOF</span></td>
+          <td>Conversions</td>
+          <td>1-7 day visitors, abandoners</td>
+          <td>$35</td>
+          <td>$1,050</td>
+        </tr>
+        <tr>
+          <td><strong>C8: Customer List</strong> </td>
+          <td><span class="status-badge status-success">BOF</span></td>
+          <td>Conversions</td>
+          <td>4,000+ past inquiries</td>
+          <td>$20</td>
+          <td>$600</td>
+        </tr>
+        <tr>
+          <td><strong>C9: High-Intent Conv.</strong> </td>
+          <td><span class="status-badge status-success">BOF</span></td>
+          <td>Conversions</td>
+          <td>Stacked warm audiences</td>
+          <td>$12</td>
+          <td>$360</td>
+        </tr>
+        <tr style="background: rgba(204, 91, 39, 0.2);">
+          <td><strong>TOTAL</strong> </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><strong>$270</strong> </td>
+          <td><strong>$8,100</strong> </td>
+        </tr>
+      </table>
+    </div>
+    
+    <div class="three-column" style="margin-top: 20px;">
+      <div class="content-section">
+        <h4>Campaign Settings</h4>
+        <ul class="bullet-points">
+          <li><strong>Bid Strategy:</strong> Lowest Cost (initially), then Cost Cap once data</li>
+          <li><strong>Attribution:</strong> 7-day click, 1-day view</li>
+          <li><strong>Optimization:</strong> Leads (website conversions)</li>
+          <li><strong>Placement:</strong> Advantage+ (auto)</li>
+        </ul>
+      </div>
+      
+      <div class="content-section">
+        <h4>Ad Set Structure</h4>
+        <ul class="bullet-points">
+          <li><strong>Per Campaign:</strong> 2-3 ad sets maximum</li>
+          <li><strong>Per Ad Set:</strong> 3-5 ads to start</li>
+          <li><strong>Testing:</strong> CBO with ad set minimums</li>
+          <li><strong>Creative Mix:</strong> 2 videos + 2 images + 1 carousel</li>
+        </ul>
+      </div>
+      
+      <div class="content-section">
+        <h4>Learning Phase Strategy</h4>
+        <ul class="bullet-points">
+          <li><strong>Target:</strong> 50 conversions per ad set per week</li>
+          <li><strong>Reality:</strong> Will take 2-4 weeks to exit</li>
+          <li><strong>Patience:</strong> Don't edit during learning</li>
+          <li><strong>Scaling:</strong> Only after stable CPL</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 10: Accelerated Launch Timeline -->
+  <div class="slide">
+    <div class="slide-header">
+      <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+      <div class="slide-number">10</div>
+    </div>
+    
+    <div class="section-title">Accelerated Launch Timeline: Live by Friday</div>
+    <p style="opacity: 0.8; margin-bottom: 20px;">3-Day Sprint to Campaign Launch (Dec 17-20, 2025)</p>
+    
+    <div class="timeline-container">
+      <div class="timeline-item">
+        <div class="timeline-marker">TUE</div>
+        <div class="timeline-content">
+          <h5>Day 1: Foundation</h5>
+          <p>Technical Setup & Assets</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-marker">WED</div>
+        <div class="timeline-content">
+          <h5>Day 2: Build</h5>
+          <p>Campaign Construction</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-marker">THU</div>
+        <div class="timeline-content">
+          <h5>Day 3: Review</h5>
+          <p>QA & Final Prep</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-marker">FRI</div>
+        <div class="timeline-content">
+          <h5>Day 4: LAUNCH </h5>
+          <p>Go Live</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="three-column" style="margin-top: 20px;">
+      <div class="day-card day-1">
+        <div class="day-header">
+          <div class="day-number">D1</div>
+          <div>
+            <h4 style="margin: 0; font-size: 1em;">Tuesday: Technical Foundation</h4>
+            <span style="font-size: 11px; opacity: 0.8;">December 17th</span>
+          </div>
+        </div>
+        <ul class="bullet-points">
+          <li><strong>Morning:</strong> Verify Meta Pixel installation on Unbounce</li>
+          <li><strong>Morning:</strong> Configure Conversion API (server-side tracking)</li>
+          <li><strong>Midday:</strong> Upload 4,000+ customer list to Custom Audiences</li>
+          <li><strong>Midday:</strong> Create 1%, 2%, 3% Lookalike Audiences</li>
+          <li><strong>Afternoon:</strong> Set up UTM tracking parameters</li>
+          <li><strong>Afternoon:</strong> Verify domain and payment method</li>
+          <li><strong>EOD:</strong> Finalize all ad copy variations (15+)</li>
+        </ul>
+        <div style="margin-top: 10px; padding: 8px; background: rgba(244, 67, 54, 0.1); border-radius: 6px; font-size: 11px;">
+          <strong>Eddy Action:</strong> Export customer CSV, confirm pixel firing
+        </div>
+      </div>
+      
+      <div class="day-card day-2">
+        <div class="day-header">
+          <div class="day-number">D2</div>
+          <div>
+            <h4 style="margin: 0; font-size: 1em;">Wednesday: Campaign Build</h4>
+            <span style="font-size: 11px; opacity: 0.8;">December 18th</span>
+          </div>
+        </div>
+        <ul class="bullet-points">
+          <li><strong>Morning:</strong> Build TOF campaigns (C1, C2, C3)</li>
+          <li><strong>Morning:</strong> Configure interest targeting & LALs</li>
+          <li><strong>Midday:</strong> Build MOF campaigns (C4, C5, C6)</li>
+          <li><strong>Midday:</strong> Set up retargeting audiences</li>
+          <li><strong>Afternoon:</strong> Build BOF campaigns (C7, C8, C9)</li>
+          <li><strong>Afternoon:</strong> Upload all creative assets</li>
+          <li><strong>EOD:</strong> Configure budget allocation & scheduling</li>
+        </ul>
+        <div style="margin-top: 10px; padding: 8px; background: rgba(255, 152, 0, 0.1); border-radius: 6px; font-size: 11px;">
+          <strong>Lead Guru:</strong> All 9 campaigns built and in draft
+        </div>
+      </div>
+      
+      <div class="day-card day-3">
+        <div class="day-header">
+          <div class="day-number">D3</div>
+          <div>
+            <h4 style="margin: 0; font-size: 1em;">Thursday: QA & Launch Prep</h4>
+            <span style="font-size: 11px; opacity: 0.8;">December 19th</span>
+          </div>
+        </div>
+        <ul class="bullet-points">
+          <li><strong>Morning:</strong> Full QA of all campaigns & settings</li>
+          <li><strong>Morning:</strong> Verify audience exclusions (no overlap)</li>
+          <li><strong>Midday:</strong> Test conversion tracking end-to-end</li>
+          <li><strong>Midday:</strong> Review all ads for policy compliance</li>
+          <li><strong>Afternoon:</strong> Client review call with Eddy</li>
+          <li><strong>Afternoon:</strong> Final approval and sign-off</li>
+          <li><strong>EOD:</strong> Schedule campaigns for Friday AM launch</li>
+        </ul>
+        <div style="margin-top: 10px; padding: 8px; background: rgba(76, 175, 80, 0.1); border-radius: 6px; font-size: 11px;">
+          <strong>Sign-off:</strong> Eddy approves, campaigns scheduled
+        </div>
+      </div>
+    </div>
+    
+    <div class="highlight-box" style="margin-top: 20px;">
+      <h3>FRIDAY, DECEMBER 20TH: ALL CAMPAIGNS LIVE</h3>
+      <p>9 campaigns, $270/day, full-funnel activation. First data review Monday December 23rd.</p>
+    </div>
+  </div>
+
+  <!-- Slide 11: 90-Day Roadmap Overview -->
+  <div class="slide">
+    <div class="slide-header">
+      <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+      <div class="slide-number">11</div>
+    </div>
+    
+    <div class="section-title">90-Day Growth Roadmap</div>
+    <p style="opacity: 0.8; margin-bottom: 20px;">Month-by-Month Optimization & Scaling Plan</p>
+    
+    <div class="three-column">
+      <div class="content-section" style="border-left: 4px solid #F44336;">
+        <h4 style="color: #F44336;">Month 1: Launch & Learn (Dec 20 - Jan 20)</h4>
+        <p style="font-size: 12px; opacity: 0.8; margin-bottom: 15px;">Focus: Data Collection & Initial Optimization</p>
+        
+        <ul class="bullet-points">
+          <li><strong>Week 1:</strong> Launch all 9 campaigns, monitor spend pacing</li>
+          <li><strong>Week 2:</strong> First optimization pass - pause underperformers</li>
+          <li><strong>Week 3:</strong> Creative refresh based on initial CTR/CPL data</li>
+          <li><strong>Week 4:</strong> Audience refinement, budget reallocation</li>
+        </ul>
+        
+        <div class="data-table" style="margin-top: 15px;">
+          <table>
+            <tr><th>KPI</th><th>Target</th></tr>
+            <tr><td>Leads</td><td>50-60</td></tr>
+            <tr><td>CPL</td><td>$135-160</td></tr>
+            <tr><td>Clients</td><td>1-2</td></tr>
+          </table>
+        </div>
+      </div>
+      
+      <div class="content-section" style="border-left: 4px solid #FF9800;">
+        <h4 style="color: #FF9800;">Month 2: Optimize & Improve (Jan 20 - Feb 20)</h4>
+        <p style="font-size: 12px; opacity: 0.8; margin-bottom: 15px;">Focus: CPL Reduction & Quality Improvement</p>
+        
+        <ul class="bullet-points">
+          <li><strong>Week 5:</strong> Implement Cost Cap bidding on stable campaigns</li>
+          <li><strong>Week 6:</strong> Launch second wave of creative variations</li>
+          <li><strong>Week 7:</strong> Create LALs from Month 1 converters</li>
+          <li><strong>Week 8:</strong> A/B test landing page with sufficient traffic</li>
+        </ul>
+        
+        <div class="data-table" style="margin-top: 15px;">
+          <table>
+            <tr><th>KPI</th><th>Target</th></tr>
+            <tr><td>Leads</td><td>65-75</td></tr>
+            <tr><td>CPL</td><td>$108-125</td></tr>
+            <tr><td>Clients</td><td>2-3</td></tr>
+          </table>
+        </div>
+      </div>
+      
+      <div class="content-section" style="border-left: 4px solid #4CAF50;">
+        <h4 style="color: #4CAF50;">Month 3: Scale & Systematize (Feb 20 - Mar 20)</h4>
+        <p style="font-size: 12px; opacity: 0.8; margin-bottom: 15px;">Focus: Sustainable Growth & Automation</p>
+        
+        <ul class="bullet-points">
+          <li><strong>Week 9:</strong> Horizontal scaling - duplicate winning ad sets</li>
+          <li><strong>Week 10:</strong> Vertical scaling - increase budgets 20% on winners</li>
+          <li><strong>Week 11:</strong> Test Advantage+ audiences with mature pixel</li>
+          <li><strong>Week 12:</strong> Document SOPs, plan Q2 budget increase</li>
+        </ul>
+        
+        <div class="data-table" style="margin-top: 15px;">
+          <table>
+            <tr><th>KPI</th><th>Target</th></tr>
+            <tr><td>Leads</td><td>75+</td></tr>
+            <tr><td>CPL</td><td>$100-110</td></tr>
+            <tr><td>Clients</td><td>3</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+    <div class="two-column" style="margin-top: 25px;">
+      <div class="opportunity-box">
+        <h4>90-Day Cumulative Targets</h4>
+        <ul class="bullet-points">
+          <li><strong>Total Ad Spend:</strong> $24,300</li>
+          <li><strong>Total Leads:</strong> 190-210</li>
+          <li><strong>Total MQLs:</strong> 57-63 (30% rate)</li>
+          <li><strong>Total New Clients:</strong> 6-9 (15% close)</li>
+          <li><strong>First Year Revenue:</strong> $133,200-$199,800</li>
+          <li><strong>Lifetime Value:</strong> $421,800-$632,700</li>
+        </ul>
+      </div>
+      
+      <div class="insight-box">
+        <h4>Key Milestones</h4>
+        <ul class="bullet-points">
+          <li><strong>Day 1 (Fri Dec 20):</strong> All campaigns live</li>
+          <li><strong>Week 2:</strong> Exit learning phase on 2-3 campaigns</li>
+          <li><strong>Week 4:</strong> Achieve sub-$130 CPL</li>
+          <li><strong>Week 8:</strong> Achieve target $106 CPL</li>
+          <li><strong>Week 12:</strong> Consistent 75+ leads/month</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 12: Projections & ROI -->
+  <div class="slide">
+    <div class="slide-header">
+      <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+      <div class="slide-number">12</div>
+    </div>
+    
+    <div class="section-title">90-Day Projections & ROI Analysis</div>
+    <p style="opacity: 0.8; margin-bottom: 20px;">Conservative, Target, and Optimistic Scenarios</p>
+    
+    <div class="data-table">
+      <table>
+        <tr>
+          <th>Metric</th>
+          <th>Conservative</th>
+          <th>Target</th>
+          <th>Optimistic</th>
+        </tr>
+        <tr>
+          <td><strong>90-Day Ad Spend</strong> </td>
+          <td>$24,300</td>
+          <td>$24,300</td>
+          <td>$24,300</td>
+        </tr>
+        <tr>
+          <td><strong>Average CPL</strong> </td>
+          <td>$150</td>
+          <td>$115</td>
+          <td>$95</td>
+        </tr>
+        <tr>
+          <td><strong>Total Leads</strong> </td>
+          <td>162</td>
+          <td>211</td>
+          <td>256</td>
+        </tr>
+        <tr>
+          <td><strong>MQLs (30%)</strong> </td>
+          <td>49</td>
+          <td>63</td>
+          <td>77</td>
+        </tr>
+        <tr>
+          <td><strong>New Clients (15%)</strong> </td>
+          <td>7</td>
+          <td>9</td>
+          <td>12</td>
+        </tr>
+        <tr>
+          <td><strong>Cost Per Client</strong> </td>
+          <td>$3,471</td>
+          <td>$2,700</td>
+          <td>$2,025</td>
+        </tr>
+        <tr>
+          <td><strong>First Year Revenue</strong> </td>
+          <td>$155,400</td>
+          <td>$199,800</td>
+          <td>$266,400</td>
+        </tr>
+        <tr>
+          <td><strong>Lifetime Value (Total)</strong> </td>
+          <td>$492,100</td>
+          <td>$632,700</td>
+          <td>$843,600</td>
+        </tr>
+        <tr style="background: rgba(76, 175, 80, 0.2);">
+          <td><strong>90-Day ROAS</strong> </td>
+          <td style="color: #4CAF50;"><strong>6.4x</strong> </td>
+          <td style="color: #4CAF50;"><strong>8.2x</strong> </td>
+          <td style="color: #4CAF50;"><strong>11.0x</strong> </td>
+        </tr>
+        <tr style="background: rgba(76, 175, 80, 0.2);">
+          <td><strong>LTV:CAC Ratio</strong> </td>
+          <td style="color: #4CAF50;"><strong>20:1</strong> </td>
+          <td style="color: #4CAF50;"><strong>26:1</strong> </td>
+          <td style="color: #4CAF50;"><strong>35:1</strong> </td>
+        </tr>
+      </table>
+    </div>
+    
+    <div class="projection-bar">
+      <div class="bar-item">
+        <div class="bar" style="height: 60px; background: rgba(244, 67, 54, 0.8);">
+          <span class="bar-value">$24.3K</span>
+        </div>
+        <div class="bar-label">Ad Spend</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar" style="height: 110px; background: linear-gradient(135deg, #FF9800, #FFC107);">
+          <span class="bar-value">$155K</span>
+        </div>
+        <div class="bar-label">Conservative</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar" style="height: 140px;">
+          <span class="bar-value">$200K</span>
+        </div>
+        <div class="bar-label">Target Revenue</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar" style="height: 180px; background: linear-gradient(135deg, #4CAF50, #8BC34A);">
+          <span class="bar-value">$266K</span>
+        </div>
+        <div class="bar-label">Optimistic</div>
+      </div>
+    </div>
+    
+    <div class="highlight-box">
+      <h3>Even the Conservative Scenario Delivers 20:1 LTV:CAC</h3>
+      <p>With $70,300 customer lifetime value, Ignite Spot has exceptional unit economics for paid acquisition at scale.</p>
+    </div>
+  </div>
+
+  <!-- Slide 13: Success Metrics -->
+  <div class="slide">
+    <div class="slide-header">
+      <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+      <div class="slide-number">13</div>
+    </div>
+    
+    <div class="section-title">Success Metrics & Reporting Framework</div>
+    <p style="opacity: 0.8; margin-bottom: 20px;">Key Performance Indicators for Ongoing Optimization</p>
+    
+    <div class="three-column">
+      <div class="content-section">
+        <h4>Primary KPIs (Weekly)</h4>
+        <ul class="bullet-points">
+          <li><strong>Cost Per Lead (CPL):</strong> Target <$106</li>
+          <li><strong>Total Leads:</strong> Target 19+/week</li>
+          <li><strong>Landing Page CR:</strong> Target >4%</li>
+          <li><strong>MQL Rate:</strong> Target >30%</li>
+          <li><strong>Cost Per MQL:</strong> Target <$350</li>
+          <li><strong>ROAS:</strong> Target >5x (first year)</li>
+        </ul>
+      </div>
+      
+      <div class="content-section">
+        <h4>Secondary KPIs (Bi-Weekly)</h4>
+        <ul class="bullet-points">
+          <li><strong>Click-Through Rate:</strong> Benchmark >1.5%</li>
+          <li><strong>Cost Per Click:</strong> Monitor trends</li>
+          <li><strong>CPM:</strong> Track audience saturation</li>
+          <li><strong>Frequency:</strong> Keep <3 per week</li>
+          <li><strong>Video View Rate:</strong> Target >25%</li>
+          <li><strong>Engagement Rate:</strong> Comments, shares</li>
+        </ul>
+      </div>
+      
+      <div class="content-section">
+        <h4>Business KPIs (Monthly)</h4>
+        <ul class="bullet-points">
+          <li><strong>New Clients:</strong> Target 3/month</li>
+          <li><strong>Cost Per Acquisition:</strong> Target <$2,700</li>
+          <li><strong>Pipeline Value:</strong> MQLs × $1,850 × 12</li>
+          <li><strong>Show Rate:</strong> Leads to consultation</li>
+          <li><strong>Close Rate:</strong> Consultations to clients</li>
+          <li><strong>MRR Impact:</strong> Track toward $70K</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="two-column" style="margin-top: 20px;">
+      <div class="content-section">
+        <h4>Reporting Cadence</h4>
+        <div class="data-table" style="margin: 10px 0;">
+          <table>
+            <tr>
+              <th>Report</th>
+              <th>Frequency</th>
+              <th>Contents</th>
+            </tr>
+            <tr>
+              <td>Daily Check</td>
+              <td>Daily</td>
+              <td>Spend pacing, CPL, anomalies</td>
+            </tr>
+            <tr>
+              <td>Performance Report</td>
+              <td>Weekly</td>
+              <td>Full KPI dashboard, optimizations</td>
+            </tr>
+            <tr>
+              <td>Strategy Review</td>
+              <td>Bi-Weekly</td>
+              <td>Deep dive, creative performance</td>
+            </tr>
+            <tr>
+              <td>Business Impact</td>
+              <td>Monthly</td>
+              <td>Client acquisition, ROI, next plan</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      
+      <div class="content-section">
+        <h4>Alert Thresholds</h4>
+        <ul class="bullet-points">
+          <li><strong style="color: #4CAF50;">Green:</strong> CPL <$110, Leads on pace, CR >4%</li>
+          <li><strong style="color: #FF9800;">Yellow:</strong> CPL $110-150, Leads 10-20% under pace</li>
+          <li><strong style="color: #F44336;">Red:</strong> CPL >$150, Leads >20% under, CR <3%</li>
+        </ul>
+        <div style="margin-top: 12px; padding: 12px; background: rgba(244, 67, 54, 0.1); border-radius: 8px; font-size: 12px;">
+          <strong>Red Alert Protocol:</strong> Immediate audit, pause underperformers, emergency creative refresh, budget reallocation within 24 hours.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 14: Immediate Next Steps -->
+  <div class="slide">
+    <div class="slide-header">
+      <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru Logo" class="logo">
+      <div class="slide-number">14</div>
+    </div>
+    
+    <div class="section-title">Immediate Action Items</div>
+    <p style="opacity: 0.8; margin-bottom: 20px;">What Eddy & Lead Guru Need to Complete by Friday</p>
+    
+    <div class="two-column">
+      <div>
+        <div class="issue-box">
+          <h4>EDDY: Required by Wednesday EOD</h4>
+          <ul class="bullet-points">
+            <li><strong>Customer List Export:</strong> CSV of 4,000+ past inquiries (email, name minimum)</li>
+            <li><strong>Pixel Verification:</strong> Confirm Meta Pixel firing on Unbounce /quote/ page</li>
+            <li><strong>GA4 Access:</strong> Add charles@heathmedia.co.uk as Editor</li>
+            <li><strong>Ad Account Access:</strong> Confirm Lead Guru has partner access to 1403768074867971</li>
+            <li><strong>Creative Assets:</strong> Any additional images/videos for Google Drive folder</li>
+            <li><strong>Exclusion List:</strong> Current customer emails (to exclude from targeting)</li>
+          </ul>
+        </div>
+        
+        <div class="warning-box" style="margin-top: 15px;">
+          <h4>EDDY: Video Content (If Available)</h4>
+          <ul class="bullet-points">
+            <li>Founder intro video (60-90 seconds) - can film on phone</li>
+            <li>Quick pain point clips (15-30 seconds each)</li>
+            <li>Any existing client testimonial videos</li>
+            <li><em>Note: We can launch with static images if video not ready</em></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div>
+        <div class="opportunity-box">
+          <h4>LEAD GURU: Deliverables</h4>
+          <ul class="bullet-points">
+            <li><strong>Tuesday:</strong> Complete technical setup (Pixel, CAPI, audiences)</li>
+            <li><strong>Tuesday:</strong> Finalize all ad copy variations (15+)</li>
+            <li><strong>Wednesday:</strong> Build all 9 campaign structures</li>
+            <li><strong>Wednesday:</strong> Upload all creative assets</li>
+            <li><strong>Thursday:</strong> Full QA and compliance review</li>
+            <li><strong>Thursday:</strong> Client review call for final approval</li>
+            <li><strong>Friday AM:</strong> Launch all campaigns</li>
+          </ul>
+        </div>
+        
+        <div class="insight-box" style="margin-top: 15px;">
+          <h4>Communication Schedule</h4>
+          <ul class="bullet-points">
+            <li><strong>Thursday PM:</strong> Final review call before launch</li>
+            <li><strong>Monday Dec 23:</strong> First data check-in</li>
+            <li><strong>Weekly:</strong> Performance review calls ongoing</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="highlight-box" style="margin-top: 25px;">
+      <h3>Partnership Commitment</h3>
+      <p>Lead Guru is committed to delivering 75+ qualified leads per month within 90 days, driving toward the goal of 37 new clients and $70,000 MRR over the next 12 months.</p>
+    </div>
+    
+    <div class="cta-section" style="margin-top: 25px;">
+      <div style="background: rgba(255, 255, 255, 0.1); border-radius: 15px; padding: 25px;">
+        <h3 style="font-size: 1.5em; color: #cc5b27; margin-bottom: 10px;">Ready to Ignite Growth?</h3>
+        <p style="opacity: 0.8; margin-bottom: 15px;">Let's build a lead generation engine that delivers predictable, profitable growth for Ignite Spot.</p>
+        <div style="font-size: 16px; color: #cc5b27; font-weight: 600;">
+          charles@heathmedia.co.uk | Lead Guru
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
