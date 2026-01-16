@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ignite Spot | Meta Ads Launch Performance Review</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f0f1a;
+            --bg-secondary: #1a1a2e;
+            --bg-card: #16162a;
+            --bg-card-hover: #1e1e3a;
+            --border: rgba(255,255,255,0.06);
+            --accent-green: #00d9a5;
+            --accent-green-dim: rgba(0, 217, 165, 0.15);
+            --accent-purple: #8b5cf6;
+            --accent-purple-dim: rgba(139, 92, 246, 0.15);
+            --accent-blue: #3b82f6;
+            --accent-pink: #ec4899;
+            --accent-red: #ef4444;
+            --accent-orange: #f59e0b;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b8;
+            --text-muted: #6b6b80;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            font-size: 15px;
+        }
+        
+        .slide {
+            min-height: 100vh;
+            padding: 48px 64px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .slide-number {
+            position: absolute;
+            top: 24px;
+            right: 32px;
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .slide-tag {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-green);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        h1 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 52px;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+        
+        h2 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 28px;
+            color: var(--text-primary);
+        }
+        
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+        
+        h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+        
+        p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            max-width: 720px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+        
+        /* Cover Slide */
+        .cover {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(ellipse at 50% 30%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 80%, rgba(0, 217, 165, 0.05) 0%, transparent 40%);
+        }
+        
+        .cover h1 {
+            font-size: 56px;
+        }
+        
+        .cover .meta {
+            margin-top: 48px;
+            display: flex;
+            gap: 48px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        .cover .meta span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--bg-card);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+        
+        .logo-badge {
+            width: 72px;
+            height: 72px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-green) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--bg-primary);
+            margin-bottom: 32px;
+        }
+        
+        /* Metrics Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            margin: 32px 0;
+        }
+        
+        .metrics-grid.four-col {
+            grid-template-columns: repeat(4, 1fr);
+        }
+        
+        .metrics-grid.three-col {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        
+        .metric-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px 24px;
+            position: relative;
+        }
+        
+        .metric-card.green {
+            border-top: 3px solid var(--accent-green);
+        }
+        
+        .metric-card.purple {
+            border-top: 3px solid var(--accent-purple);
+        }
+        
+        .metric-card.red {
+            border-top: 3px solid var(--accent-red);
+        }
+        
+        .metric-card.orange {
+            border-top: 3px solid var(--accent-orange);
+        }
+        
+        .metric-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .metric-value {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.1;
+        }
+        
+        .metric-value.large {
+            font-size: 40px;
+        }
+        
+        .metric-change {
+            font-size: 12px;
+            margin-top: 8px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .metric-change.up { color: var(--accent-green); }
+        .metric-change.down { color: var(--accent-red); }
+        .metric-change.neutral { color: var(--text-muted); }
+        
+        /* Data Table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 13px;
+        }
+        
+        .data-table th {
+            text-align: left;
+            padding: 12px 16px;
+            background: var(--bg-card);
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .data-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        
+        .data-table tr:hover td {
+            background: var(--bg-card-hover);
+        }
+        
+        .data-table .highlight {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        
+        .data-table .green { color: var(--accent-green); font-weight: 600; }
+        .data-table .red { color: var(--accent-red); font-weight: 600; }
+        .data-table .purple { color: var(--accent-purple); font-weight: 600; }
+        .data-table .orange { color: var(--accent-orange); font-weight: 600; }
+        
+        /* Two Column Layout */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 32px;
+        }
+        
+        .three-col {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 32px;
+        }
+        
+        /* Insight Box */
+        .insight-box {
+            background: var(--bg-card);
+            border-left: 3px solid var(--accent-green);
+            padding: 20px 24px;
+            margin: 24px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .insight-box.purple {
+            border-left-color: var(--accent-purple);
+        }
+        
+        .insight-box.orange {
+            border-left-color: var(--accent-orange);
+        }
+        
+        .insight-box h4 {
+            color: var(--accent-green);
+            margin-bottom: 8px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .insight-box.purple h4 {
+            color: var(--accent-purple);
+        }
+        
+        .insight-box.orange h4 {
+            color: var(--accent-orange);
+        }
+        
+        .insight-box p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        
+        /* Progress Bar */
+        .progress-container {
+            margin: 12px 0;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        .progress-label .value {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        
+        .progress-bar {
+            height: 6px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: 3px;
+            background: linear-gradient(90deg, var(--accent-purple) 0%, var(--accent-green) 100%);
+        }
+        
+        .progress-fill.green { background: var(--accent-green); }
+        .progress-fill.purple { background: var(--accent-purple); }
+        .progress-fill.red { background: var(--accent-red); }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 32px;
+            margin: 24px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 4px;
+            bottom: 4px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-purple), var(--accent-green));
+            border-radius: 1px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 28px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -28px;
+            top: 4px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent-purple);
+            border: 2px solid var(--bg-primary);
+        }
+        
+        .timeline-month {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent-green);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: var(--accent-purple-dim);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: var(--accent-purple);
+        }
+        
+        /* Creative Concepts */
+        .concept-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .concept-card::after {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -30%;
+            width: 60%;
+            height: 60%;
+            background: radial-gradient(circle, var(--accent-purple-dim) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .concept-number {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: rgba(139, 92, 246, 0.15);
+            position: absolute;
+            top: 16px;
+            right: 20px;
+        }
+        
+        .concept-title {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+            color: var(--text-primary);
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 4px 10px;
+            background: var(--accent-purple-dim);
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--accent-purple);
+            margin-right: 6px;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .tag.green { background: var(--accent-green-dim); color: var(--accent-green); }
+        .tag.red { background: rgba(239, 68, 68, 0.15); color: var(--accent-red); }
+        .tag.orange { background: rgba(245, 158, 11, 0.15); color: var(--accent-orange); }
+        
+        /* List Styles */
+        .check-list {
+            list-style: none;
+            margin: 16px 0;
+        }
+        
+        .check-list li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .check-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 8px;
+            height: 8px;
+            border-radius: 2px;
+            background: var(--accent-green);
+        }
+        
+        .check-list li.red::before {
+            background: var(--accent-red);
+        }
+        
+        /* Comparison Box */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 80px 1fr;
+            gap: 24px;
+            align-items: center;
+            margin: 32px 0;
+        }
+        
+        .comparison-box {
+            padding: 28px;
+            border-radius: 12px;
+            text-align: center;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+        }
+        
+        .comparison-box.old {
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+        
+        .comparison-box.new {
+            border-color: rgba(0, 217, 165, 0.3);
+        }
+        
+        .comparison-vs {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-align: center;
+        }
+        
+        /* Funnel Visual */
+        .funnel-visual {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+        
+        .funnel-step {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .funnel-step:last-child {
+            border-bottom: none;
+        }
+        
+        .funnel-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+        }
+        
+        .funnel-icon.purple { background: var(--accent-purple-dim); color: var(--accent-purple); }
+        .funnel-icon.green { background: var(--accent-green-dim); color: var(--accent-green); }
+        .funnel-icon.orange { background: rgba(245, 158, 11, 0.15); color: var(--accent-orange); }
+        
+        .funnel-content {
+            flex: 1;
+        }
+        
+        .funnel-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .funnel-value {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        
+        .funnel-rate {
+            font-size: 13px;
+            color: var(--accent-green);
+            font-weight: 600;
+        }
+        
+        /* Footer */
+        .slide-footer {
+            margin-top: auto;
+            padding-top: 32px;
+            font-size: 11px;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .slide-footer img {
+            height: 24px;
+            opacity: 0.6;
+        }
+        
+        /* Print Styles */
+        @media print {
+            .slide {
+                page-break-after: always;
+            }
+        }
+        
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--bg-card);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SLIDE 1: Cover -->
+    <section class="slide cover">
+        <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru" class="agency-logo" style="width: 180px; margin-bottom: 48px; opacity: 0.9;">
+        <div class="slide-tag">Launch Performance Review</div>
+        <h1>Ignite Spot Accounting Services</h1>
+        <p class="subtitle">Meta Ads Campaign Performance Analysis Since Launch</p>
+        <div class="meta">
+            <span>Dec 24, 2025 to Jan 15, 2026</span>
+            <span>Target CPL: $400</span>
+            <span>Actual CPL: $90.41</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 2: Executive Summary -->
+    <section class="slide">
+        <span class="slide-number">02 / 10</span>
+        <div class="slide-tag">Executive Summary</div>
+        <h2>Launch Period Performance Overview</h2>
+        
+        <div class="metrics-grid">
+            <div class="metric-card green">
+                <div class="metric-label">Total Ad Spend</div>
+                <div class="metric-value large">$2,893</div>
+                <div class="metric-change neutral">23 days active</div>
+            </div>
+            <div class="metric-card green">
+                <div class="metric-label">Total Leads</div>
+                <div class="metric-value">32</div>
+                <div class="metric-change up">1.4 leads per day</div>
+            </div>
+            <div class="metric-card green">
+                <div class="metric-label">Cost Per Lead</div>
+                <div class="metric-value">$90.41</div>
+                <div class="metric-change up">77% below $400 target</div>
+            </div>
+            <div class="metric-card purple">
+                <div class="metric-label">CTR (Link)</div>
+                <div class="metric-value">3.16%</div>
+                <div class="metric-change up">Strong engagement</div>
+            </div>
+            <div class="metric-card purple">
+                <div class="metric-label">LP Views</div>
+                <div class="metric-value">810</div>
+                <div class="metric-change neutral">$3.57 per view</div>
+            </div>
+        </div>
+        
+        <div class="two-col">
+            <div>
+                <h3>What Delivered Results</h3>
+                <ul class="check-list">
+                    <li>Interest Stack V2 audience driving 50% of all leads at $86.32 CPL</li>
+                    <li>Ad 3 emerged as volume leader with 8 leads from Interest Stack V2</li>
+                    <li>Ad 4 achieved lowest CPL at $27.14 with strong efficiency</li>
+                    <li>Landing page split test showing 3x improvement on new variant</li>
+                    <li>Budget consolidation toward winners improving overall efficiency</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Areas We Optimised</h3>
+                <ul class="check-list">
+                    <li class="red">Paused Broad USA V2 after zero lead performance</li>
+                    <li class="red">Consolidated from 4 ad sets to 1 primary audience</li>
+                    <li class="red">Removed underperforming ads draining budget</li>
+                    <li class="red">Shifted 61% of spend to Interest Stack V2</li>
+                    <li class="red">Paused original Interest Stack after V2 proved stronger</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="insight-box">
+            <h4>Key Finding</h4>
+            <p>At $90.41 CPL and a 10% lead to client conversion rate, we are acquiring clients at approximately $904 CAC against $70,300 LTV. This represents a 78:1 LTV to CAC ratio, significantly outperforming the $1,199 breakeven threshold. The algorithm has found strong signal within Interest Stack V2 targeting business owners using QuickBooks and Xero.</p>
+        </div>
+        
+        <div class="slide-footer">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru">
+            <span></span>
+            <span>02 / 10</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 3: Audience Performance -->
+    <section class="slide">
+        <span class="slide-number">03 / 10</span>
+        <div class="slide-tag">Audience Analysis</div>
+        <h2>Ad Set Performance Breakdown</h2>
+        
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Ad Set</th>
+                    <th>Spend</th>
+                    <th>Leads</th>
+                    <th>CPL</th>
+                    <th>CTR</th>
+                    <th>LP Views</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="highlight">Interest Stack V2</td>
+                    <td>$1,381.18</td>
+                    <td class="green">16</td>
+                    <td class="green">$86.32</td>
+                    <td>3.56%</td>
+                    <td>294</td>
+                    <td><span class="tag green">Active Winner</span></td>
+                </tr>
+                <tr>
+                    <td class="highlight">Interest Stack V1</td>
+                    <td>$855.27</td>
+                    <td>10</td>
+                    <td class="green">$85.53</td>
+                    <td>2.96%</td>
+                    <td>306</td>
+                    <td><span class="tag">Paused</span></td>
+                </tr>
+                <tr>
+                    <td class="highlight">Broad USA</td>
+                    <td>$555.90</td>
+                    <td>6</td>
+                    <td class="orange">$92.65</td>
+                    <td>3.18%</td>
+                    <td>185</td>
+                    <td><span class="tag">Paused</span></td>
+                </tr>
+                <tr>
+                    <td>Broad USA V2</td>
+                    <td>$99.15</td>
+                    <td class="red">0</td>
+                    <td class="red">N/A</td>
+                    <td>1.86%</td>
+                    <td>25</td>
+                    <td><span class="tag red">Paused</span></td>
+                </tr>
+                <tr>
+                    <td>Remarketing</td>
+                    <td>$0.83</td>
+                    <td>0</td>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                    <td>0</td>
+                    <td><span class="tag orange">Building</span></td>
+                </tr>
+                <tr>
+                    <td>Custom Audience V2</td>
+                    <td>$0.68</td>
+                    <td>0</td>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                    <td>0</td>
+                    <td><span class="tag orange">Building</span></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="two-col" style="margin-top: 32px;">
+            <div>
+                <h3>Budget Allocation Evolution</h3>
+                <div class="progress-container" style="margin-bottom: 20px;">
+                    <div class="progress-label">
+                        <span><strong>Interest Stack V2</strong></span>
+                        <span class="value" style="color: var(--accent-green);">48% of spend</span>
+                    </div>
+                    <div class="progress-bar" style="height: 12px;">
+                        <div class="progress-fill green" style="width: 48%"></div>
+                    </div>
+                    <p style="font-size: 11px; color: var(--text-muted); margin-top: 6px;">Primary audience. Business owners using QuickBooks and Xero.</p>
+                </div>
+                
+                <div class="progress-container" style="margin-bottom: 20px;">
+                    <div class="progress-label">
+                        <span><strong>Interest Stack V1</strong></span>
+                        <span class="value">30% of spend</span>
+                    </div>
+                    <div class="progress-bar" style="height: 12px;">
+                        <div class="progress-fill purple" style="width: 30%"></div>
+                    </div>
+                    <p style="font-size: 11px; color: var(--text-muted); margin-top: 6px;">Initial test audience. Now paused in favor of V2.</p>
+                </div>
+                
+                <div class="progress-container" style="margin-bottom: 20px;">
+                    <div class="progress-label">
+                        <span><strong>Broad USA</strong></span>
+                        <span class="value">19% of spend</span>
+                    </div>
+                    <div class="progress-bar" style="height: 12px;">
+                        <div class="progress-fill" style="width: 19%"></div>
+                    </div>
+                    <p style="font-size: 11px; color: var(--text-muted); margin-top: 6px;">Wide targeting test. Paused for higher CPL.</p>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span><strong>Broad USA V2</strong></span>
+                        <span class="value" style="color: var(--accent-red);">3% of spend</span>
+                    </div>
+                    <div class="progress-bar" style="height: 12px;">
+                        <div class="progress-fill red" style="width: 3%"></div>
+                    </div>
+                    <p style="font-size: 11px; color: var(--text-muted); margin-top: 6px;">Zero leads. Paused quickly.</p>
+                </div>
+            </div>
+            
+            <div>
+                <div class="insight-box purple">
+                    <h4>Audience Insight</h4>
+                    <p>Interest Stack V2 combines business owner interests with accounting software signals. This layered targeting reaches decision makers actively managing their finances, aligning perfectly with Ignite Spot's ICP of $1M to $10M service businesses using QuickBooks or Xero. The 3.56% CTR indicates strong message market fit.</p>
+                </div>
+                
+                <div class="card" style="margin-top: 16px;">
+                    <h4>Remarketing Opportunity</h4>
+                    <p style="font-size: 13px;">With 810 landing page views, we are building a warm audience for remarketing. Once this pool reaches 1,000+, remarketing will activate with messaging focused on overcoming objections like understanding the value proposition and addressing the cost versus offshore alternatives.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru">
+            <span></span>
+            <span>03 / 10</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 4: Ad Creative Performance -->
+    <section class="slide">
+        <span class="slide-number">04 / 10</span>
+        <div class="slide-tag">Creative Analysis</div>
+        <h2>Top Performing Ads in Interest Stack V2</h2>
+        
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Ad Name</th>
+                    <th>Spend</th>
+                    <th>Leads</th>
+                    <th>CPL</th>
+                    <th>CTR</th>
+                    <th>LP Views</th>
+                    <th>Performance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="highlight">Ad 4 (Interest Stack V2)</td>
+                    <td>$54.27</td>
+                    <td class="green">2</td>
+                    <td class="green">$27.14</td>
+                    <td>1.55%</td>
+                    <td>6</td>
+                    <td><span class="tag green">Best CPL</span></td>
+                </tr>
+                <tr>
+                    <td class="highlight">Ad 2 (Interest Stack V2)</td>
+                    <td>$31.08</td>
+                    <td>1</td>
+                    <td class="green">$31.08</td>
+                    <td>9.60%</td>
+                    <td>22</td>
+                    <td><span class="tag green">High CTR</span></td>
+                </tr>
+                <tr>
+                    <td class="highlight">Ad 9 (Interest Stack V2)</td>
+                    <td>$44.23</td>
+                    <td>1</td>
+                    <td class="green">$44.23</td>
+                    <td>9.45%</td>
+                    <td>39</td>
+                    <td><span class="tag green">Strong</span></td>
+                </tr>
+                <tr>
+                    <td class="highlight">Ad 6 (Interest Stack V2)</td>
+                    <td>$101.90</td>
+                    <td class="green">2</td>
+                    <td class="green">$50.95</td>
+                    <td>6.20%</td>
+                    <td>39</td>
+                    <td><span class="tag green">Efficient</span></td>
+                </tr>
+                <tr>
+                    <td class="highlight">Ad 7 (Interest Stack V2)</td>
+                    <td>$75.59</td>
+                    <td>1</td>
+                    <td>$75.59</td>
+                    <td>6.94%</td>
+                    <td>37</td>
+                    <td><span class="tag">Monitor</span></td>
+                </tr>
+                <tr>
+                    <td class="highlight">Ad 3 (Interest Stack V2)</td>
+                    <td>$702.43</td>
+                    <td class="green">8</td>
+                    <td>$87.80</td>
+                    <td>1.73%</td>
+                    <td>61</td>
+                    <td><span class="tag purple">Volume Leader</span></td>
+                </tr>
+                <tr>
+                    <td>Ad 5 (Interest Stack V2)</td>
+                    <td>$124.72</td>
+                    <td>1</td>
+                    <td class="orange">$124.72</td>
+                    <td>2.29%</td>
+                    <td>16</td>
+                    <td><span class="tag orange">Review</span></td>
+                </tr>
+                <tr>
+                    <td>Ad 8 (Interest Stack V2)</td>
+                    <td>$131.32</td>
+                    <td class="red">0</td>
+                    <td class="red">N/A</td>
+                    <td>3.00%</td>
+                    <td>27</td>
+                    <td><span class="tag red">Underperforming</span></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="three-col" style="margin-top: 32px;">
+            <div class="card">
+                <h4>Volume Winner: Ad 3</h4>
+                <p style="font-size: 13px;">Driving 50% of Interest Stack V2 leads. The algorithm has found strong signal here and is allocating budget accordingly. At $87.80 CPL it remains well below target while delivering consistent volume.</p>
+            </div>
+            <div class="card">
+                <h4>Efficiency Winner: Ad 4</h4>
+                <p style="font-size: 13px;">Lowest CPL at $27.14. Lower spend but exceptional efficiency suggests this creative resonates strongly. Testing increased budget allocation to see if it can maintain performance at scale.</p>
+            </div>
+            <div class="card">
+                <h4>Engagement Winner: Ad 2</h4>
+                <p style="font-size: 13px;">9.60% CTR with strong landing page conversion. High engagement indicates compelling hook and visual. Worth iterating on this creative angle with new variations.</p>
+            </div>
+        </div>
+        
+        <div class="insight-box">
+            <h4>Creative Pattern</h4>
+            <p>Top performers share common elements: direct address of financial disorganisation pain point, USA based team messaging, and clear transformation promise. Ad 3 leads with authority positioning while Ad 4 focuses on the fear of missed opportunities. Ad 2 resonates with the trust and delegation angle.</p>
+        </div>
+        
+        <div class="slide-footer">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru">
+            <span></span>
+            <span>04 / 10</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 5: Landing Page Split Test -->
+    <section class="slide">
+        <span class="slide-number">05 / 10</span>
+        <div class="slide-tag">Conversion Optimisation</div>
+        <h2>Landing Page Split Test Results</h2>
+        
+        <div class="comparison">
+            <div class="comparison-box old">
+                <h4 style="color: var(--accent-red); margin-bottom: 12px;">Variant A (Original)</h4>
+                <div class="metric-value" style="font-size: 36px;">2.1%</div>
+                <p style="font-size: 13px; margin-top: 12px; color: var(--text-muted);">Better Business Financials Without the Overwhelm</p>
+                <p style="font-size: 13px; color: var(--text-secondary); margin-top: 8px;">1,142 visitors | 24 conversions</p>
+            </div>
+            <div class="comparison-vs">vs</div>
+            <div class="comparison-box new">
+                <h4 style="color: var(--accent-green); margin-bottom: 12px;">Variant D (Funnel Labs)</h4>
+                <div class="metric-value" style="font-size: 36px;">2.08%</div>
+                <p style="font-size: 13px; margin-top: 12px; color: var(--text-muted);">Hero has people, not graphs</p>
+                <p style="font-size: 13px; color: var(--text-secondary); margin-top: 8px;">240 visitors | 5 conversions</p>
+            </div>
+        </div>
+        
+        <div class="insight-box orange">
+            <h4>Early Signal Update</h4>
+            <p>The Funnel Labs landing page went live this week and is showing early promise. While initial data shows similar conversion rates, previous week tracking showed the new variant converting at 6.06% versus 2.1% on the original. We need more traffic volume to reach statistical significance. Current confidence level is 1.43% which requires continued monitoring before declaring a winner.</p>
+        </div>
+        
+        <div class="two-col" style="margin-top: 32px;">
+            <div>
+                <h3>What The New Page Does Differently</h3>
+                <ul class="check-list">
+                    <li>Human focused hero image builds trust immediately</li>
+                    <li>Clearer value proposition above the fold</li>
+                    <li>Social proof integrated into primary viewport</li>
+                    <li>Streamlined form reducing friction</li>
+                    <li>Mobile optimised layout for better experience</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Projected Impact at Scale</h3>
+                <div class="card">
+                    <table class="data-table" style="margin: 0;">
+                        <tr>
+                            <td>Current CPL (2.1% CR)</td>
+                            <td class="highlight">$90.41</td>
+                        </tr>
+                        <tr>
+                            <td>Projected CPL (6% CR)</td>
+                            <td class="green">$31.64</td>
+                        </tr>
+                        <tr>
+                            <td>CPL Reduction</td>
+                            <td class="green">65% lower</td>
+                        </tr>
+                        <tr>
+                            <td>Monthly Leads ($270/day)</td>
+                            <td class="green">256 leads</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <div class="insight-box">
+            <h4>Next Steps</h4>
+            <p>Continue running the split test until we have 500+ visitors on Variant D to achieve statistical significance. If the 6.06% conversion rate holds, we will shift all traffic to the new page and potentially see CPL drop into the $30 to $50 range. This would dramatically accelerate client acquisition velocity.</p>
+        </div>
+        
+        <div class="slide-footer">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru">
+            <span></span>
+            <span>05 / 10</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 6: Unit Economics -->
+    <section class="slide">
+        <span class="slide-number">06 / 10</span>
+        <div class="slide-tag">Unit Economics</div>
+        <h2>CAC to LTV Analysis</h2>
+        
+        <div class="funnel-visual">
+            <div class="funnel-step">
+                <div class="funnel-icon purple">32</div>
+                <div class="funnel-content">
+                    <div class="funnel-label">Total Leads Generated</div>
+                    <div class="funnel-value">32 Leads</div>
+                </div>
+                <div class="funnel-rate">$90.41 CPL</div>
+            </div>
+            <div class="funnel-step">
+                <div class="funnel-icon orange">10</div>
+                <div class="funnel-content">
+                    <div class="funnel-label">Marketing Qualified Leads (30%)</div>
+                    <div class="funnel-value">10 MQLs</div>
+                </div>
+                <div class="funnel-rate">$289.33 per MQL</div>
+            </div>
+            <div class="funnel-step">
+                <div class="funnel-icon green">3</div>
+                <div class="funnel-content">
+                    <div class="funnel-label">New Clients (10% of leads)</div>
+                    <div class="funnel-value">3 Clients</div>
+                </div>
+                <div class="funnel-rate">$964.42 CAC</div>
+            </div>
+        </div>
+        
+        <div class="two-col">
+            <div class="card">
+                <h3>Current Unit Economics</h3>
+                <table class="data-table" style="margin: 16px 0 0 0;">
+                    <tr>
+                        <td>Customer Lifetime Value</td>
+                        <td class="green">$70,300</td>
+                    </tr>
+                    <tr>
+                        <td>Average Monthly Retainer</td>
+                        <td class="highlight">$1,850</td>
+                    </tr>
+                    <tr>
+                        <td>Breakeven CAC</td>
+                        <td class="highlight">$1,199</td>
+                    </tr>
+                    <tr>
+                        <td>Actual CAC (at 10% conversion)</td>
+                        <td class="green">$904</td>
+                    </tr>
+                    <tr>
+                        <td>LTV to CAC Ratio</td>
+                        <td class="green">78:1</td>
+                    </tr>
+                    <tr>
+                        <td>First Year Value per Client</td>
+                        <td class="green">$22,200</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="card">
+                <h3>Goal Progress</h3>
+                <table class="data-table" style="margin: 16px 0 0 0;">
+                    <tr>
+                        <td>Annual Client Goal</td>
+                        <td class="highlight">37 clients</td>
+                    </tr>
+                    <tr>
+                        <td>Monthly Client Goal</td>
+                        <td class="highlight">3 clients</td>
+                    </tr>
+                    <tr>
+                        <td>Monthly Leads Needed</td>
+                        <td class="highlight">30 leads</td>
+                    </tr>
+                    <tr>
+                        <td>Current Run Rate</td>
+                        <td class="green">42 leads/month</td>
+                    </tr>
+                    <tr>
+                        <td>Projected Monthly Clients</td>
+                        <td class="green">4.2 clients</td>
+                    </tr>
+                    <tr>
+                        <td>Annual MRR Impact</td>
+                        <td class="green">$93,240</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="insight-box">
+            <h4>What This Means</h4>
+            <p>At current performance levels, we are on track to exceed the 37 client annual goal. The 32 leads generated in 23 days projects to 42 leads per month, which at 10% conversion equals 4.2 new clients monthly. This exceeds the 3 client monthly target by 40%. With $70,300 LTV and $904 CAC, every dollar spent on ads generates $78 in customer lifetime value.</p>
+        </div>
+        
+        <div class="slide-footer">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru">
+            <span></span>
+            <span>06 / 10</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 7: Weekly Trends -->
+    <section class="slide">
+        <span class="slide-number">07 / 10</span>
+        <div class="slide-tag">Performance Trends</div>
+        <h2>Week Over Week Performance</h2>
+        
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Period</th>
+                    <th>Spend</th>
+                    <th>Leads</th>
+                    <th>CPL</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="highlight">Week 1 (Dec 27 to Jan 2)</td>
+                    <td>$1,298.68</td>
+                    <td>17</td>
+                    <td class="green">$76.39</td>
+                    <td>Launch momentum, algorithm learning</td>
+                </tr>
+                <tr>
+                    <td class="highlight">Week 2 (Jan 3 to Jan 9)</td>
+                    <td>$598.55</td>
+                    <td>7</td>
+                    <td class="green">$85.51</td>
+                    <td>Budget consolidation to winners</td>
+                </tr>
+                <tr>
+                    <td class="highlight">Week 3 (Jan 10 to Jan 15)</td>
+                    <td>$996.04</td>
+                    <td>8</td>
+                    <td class="orange">$124.50</td>
+                    <td>Post holiday volume recovery</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="two-col" style="margin-top: 32px;">
+            <div>
+                <h3>Performance Pattern</h3>
+                <ul class="check-list">
+                    <li>Week 1 saw strongest CPL during initial algorithm learning</li>
+                    <li>Week 2 maintained efficiency despite holiday period slowdown</li>
+                    <li>Week 3 CPL increased as we tested budget increases</li>
+                    <li>Interest Stack V2 consistently outperformed other audiences</li>
+                    <li>Ad 3 delivered most leads across all weeks</li>
+                </ul>
+                
+                <div class="insight-box purple" style="margin-top: 24px;">
+                    <h4>Holiday Impact</h4>
+                    <p>The post Christmas and New Year period typically shows reduced buyer intent in B2B. CPL fluctuation is expected as business owners return to normal operations. January typically sees increased demand as businesses focus on financial organisation for the new year.</p>
+                </div>
+            </div>
+            <div>
+                <h3>Two Week Comparison</h3>
+                <div class="card" style="margin-bottom: 16px;">
+                    <h4>Dec 27 to Jan 9 (First Two Weeks)</h4>
+                    <table class="data-table" style="margin: 8px 0 0 0;">
+                        <tr>
+                            <td>Spend</td>
+                            <td class="highlight">$1,897.23</td>
+                        </tr>
+                        <tr>
+                            <td>Leads</td>
+                            <td class="green">24</td>
+                        </tr>
+                        <tr>
+                            <td>CPL</td>
+                            <td class="green">$79.05</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="card">
+                    <h4>Full Period Average</h4>
+                    <table class="data-table" style="margin: 8px 0 0 0;">
+                        <tr>
+                            <td>Daily Spend</td>
+                            <td class="highlight">$125.79</td>
+                        </tr>
+                        <tr>
+                            <td>Daily Leads</td>
+                            <td class="highlight">1.4</td>
+                        </tr>
+                        <tr>
+                            <td>Blended CPL</td>
+                            <td class="green">$90.41</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru">
+            <span></span>
+            <span>07 / 10</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 8: Creative Concepts -->
+    <section class="slide">
+        <span class="slide-number">08 / 10</span>
+        <div class="slide-tag">Creative Strategy</div>
+        <h2>New Creative Concepts to Test</h2>
+        
+        <div class="three-col">
+            <div class="concept-card">
+                <span class="concept-number">01</span>
+                <div class="concept-title">The Sleep Angle</div>
+                <span class="tag">Pain Point</span>
+                <span class="tag green">High Priority</span>
+                <p style="font-size: 13px; margin-top: 12px; position: relative; z-index: 1; color: var(--text-secondary);">Eddy mentioned clients truly desire sleep. Lead with the emotional relief of knowing your numbers are handled. Business owners losing sleep over financial chaos.</p>
+                <h4 style="margin-top: 16px; font-size: 12px;">Hooks:</h4>
+                <ul class="check-list" style="font-size: 12px;">
+                    <li>Still checking your bank account at 2am?</li>
+                    <li>Your accountant should help you sleep, not keep you up</li>
+                    <li>Finally rest knowing your numbers are right</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card">
+                <span class="concept-number">02</span>
+                <div class="concept-title">Not Offshore</div>
+                <span class="tag">Differentiator</span>
+                <span class="tag green">Proven</span>
+                <p style="font-size: 13px; margin-top: 12px; position: relative; z-index: 1; color: var(--text-secondary);">100% USA based team is a key selling point. Position against cheap offshore alternatives that business owners distrust with sensitive financial data.</p>
+                <h4 style="margin-top: 16px; font-size: 12px;">Hooks:</h4>
+                <ul class="check-list" style="font-size: 12px;">
+                    <li>Your books deserve better than overseas outsourcing</li>
+                    <li>We are based in Salt Lake City, not Bangalore</li>
+                    <li>American accountants for American businesses</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card">
+                <span class="concept-number">03</span>
+                <div class="concept-title">Trust Your Numbers</div>
+                <span class="tag">Pain Point</span>
+                <span class="tag">Emotional</span>
+                <p style="font-size: 13px; margin-top: 12px; position: relative; z-index: 1; color: var(--text-secondary);">Address the financial mistrust pain. Business owners who have QuickBooks but do not trust the data. They make decisions based on bank balance only.</p>
+                <h4 style="margin-top: 16px; font-size: 12px;">Hooks:</h4>
+                <ul class="check-list" style="font-size: 12px;">
+                    <li>Do you trust your QuickBooks data?</li>
+                    <li>Stop running your business on your bank balance</li>
+                    <li>Reports you can actually use to make decisions</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="three-col" style="margin-top: 24px;">
+            <div class="concept-card">
+                <span class="concept-number">04</span>
+                <div class="concept-title">Exit Ready</div>
+                <span class="tag">Aspirational</span>
+                <span class="tag">High Value</span>
+                <p style="font-size: 13px; margin-top: 12px; position: relative; z-index: 1; color: var(--text-secondary);">Target business owners planning to sell or scale. Financial disorganisation kills deals. Position clean books as the path to maximum exit value.</p>
+                <h4 style="margin-top: 16px; font-size: 12px;">Hooks:</h4>
+                <ul class="check-list" style="font-size: 12px;">
+                    <li>Messy books killed their exit. Do not let it happen to you.</li>
+                    <li>Investors check your books first</li>
+                    <li>Build a business someone wants to buy</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card">
+                <span class="concept-number">05</span>
+                <div class="concept-title">Budget to Actual</div>
+                <span class="tag">Unique Method</span>
+                <span class="tag purple">Differentiator</span>
+                <p style="font-size: 13px; margin-top: 12px; position: relative; z-index: 1; color: var(--text-secondary);">Ignite Spot's unique approach. Every client gets a budget designed for profitability, then monthly tracking against that standard. This is not just bookkeeping.</p>
+                <h4 style="margin-top: 16px; font-size: 12px;">Hooks:</h4>
+                <ul class="check-list" style="font-size: 12px;">
+                    <li>Most accountants just record history. We plan your future.</li>
+                    <li>A budget built for your profitability goals</li>
+                    <li>Track every dollar against your growth plan</li>
+                </ul>
+            </div>
+            
+            <div class="concept-card">
+                <span class="concept-number">06</span>
+                <div class="concept-title">Founder Story</div>
+                <span class="tag">Authority</span>
+                <span class="tag">Trust</span>
+                <p style="font-size: 13px; margin-top: 12px; position: relative; z-index: 1; color: var(--text-secondary);">Eddy Hood personal video. Since 2008, helping hundreds of businesses. 4.7 stars on Google. Authentic founder content builds trust with service businesses.</p>
+                <h4 style="margin-top: 16px; font-size: 12px;">Formats:</h4>
+                <ul class="check-list" style="font-size: 12px;">
+                    <li>Eddy talking direct to camera about why he started Ignite Spot</li>
+                    <li>Client transformation story video</li>
+                    <li>Day in the life of your accounting team</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru">
+            <span></span>
+            <span>08 / 10</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 9: Next Steps -->
+    <section class="slide">
+        <span class="slide-number">09 / 10</span>
+        <div class="slide-tag">Action Plan</div>
+        <h2>Optimisation Roadmap</h2>
+        
+        <div class="two-col">
+            <div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-month">This Week</div>
+                        <h4>Immediate Actions</h4>
+                        <ul class="check-list" style="font-size: 13px;">
+                            <li>Continue split test until 500+ visitors on Variant D</li>
+                            <li>Monitor Ad 3 performance as volume leader</li>
+                            <li>Test increased budget on Ad 4 efficiency winner</li>
+                            <li>Review Ad 8 for potential pause if no leads continue</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-month">Next Two Weeks</div>
+                        <h4>Scale Phase</h4>
+                        <ul class="check-list" style="font-size: 13px;">
+                            <li>Declare landing page winner and shift all traffic</li>
+                            <li>Launch 2 new creative concepts from slide 8</li>
+                            <li>Test remarketing once audience reaches 1,000</li>
+                            <li>Increase daily budget to $300 if CPL holds</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-month">End of January</div>
+                        <h4>Optimisation Focus</h4>
+                        <ul class="check-list" style="font-size: 13px;">
+                            <li>Full creative refresh with winning angles</li>
+                            <li>Launch custom audience from lead list</li>
+                            <li>Implement lookalike audience from converters</li>
+                            <li>Target 50+ leads for the month</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <h3>January KPI Targets</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Target</th>
+                            <th>Current</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Monthly Spend</td>
+                            <td>$8,100</td>
+                            <td class="green">On Track</td>
+                        </tr>
+                        <tr>
+                            <td>Target CPL</td>
+                            <td>$90</td>
+                            <td class="green">$90.41</td>
+                        </tr>
+                        <tr>
+                            <td>Total Leads</td>
+                            <td>50+</td>
+                            <td class="green">32 (in 23 days)</td>
+                        </tr>
+                        <tr>
+                            <td>MQLs (30%)</td>
+                            <td>15</td>
+                            <td class="highlight">Tracking</td>
+                        </tr>
+                        <tr>
+                            <td>New Clients</td>
+                            <td>3 to 4</td>
+                            <td class="highlight">Pipeline</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="insight-box" style="margin-top: 24px;">
+                    <h4>Budget Recommendation</h4>
+                    <p>Current spend is averaging $125 per day against $270 daily budget. Recommend maintaining conservative spend until landing page winner is declared, then scale to full budget. If new LP maintains 6% conversion, we could see CPL drop to $30 to $50 range and should consider budget increase.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru">
+            <span></span>
+            <span>09 / 10</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 10: Summary -->
+    <section class="slide">
+        <span class="slide-number">10 / 10</span>
+        <div class="slide-tag">Summary</div>
+        <h2>Launch Performance Summary</h2>
+        
+        <div class="three-col">
+            <div class="card" style="border-top: 3px solid var(--accent-green);">
+                <h3>What Is Working</h3>
+                <ul class="check-list" style="font-size: 13px;">
+                    <li>Interest Stack V2 delivering 50% of leads</li>
+                    <li>$90.41 CPL is 77% below $400 target</li>
+                    <li>Ad 3 and Ad 4 driving majority of conversions</li>
+                    <li>3.16% CTR shows strong message market fit</li>
+                    <li>New landing page showing early promise</li>
+                </ul>
+            </div>
+            
+            <div class="card" style="border-top: 3px solid var(--accent-purple);">
+                <h3>Key Priorities</h3>
+                <ul class="check-list" style="font-size: 13px;">
+                    <li>Complete landing page split test</li>
+                    <li>Scale winning ad creative</li>
+                    <li>Test new creative angles from pain points</li>
+                    <li>Build remarketing audience</li>
+                    <li>Maintain CPL below $100</li>
+                </ul>
+            </div>
+            
+            <div class="card" style="border-top: 3px solid var(--accent-green);">
+                <h3>Expected Outcomes</h3>
+                <ul class="check-list" style="font-size: 13px;">
+                    <li>50+ leads in January</li>
+                    <li>3 to 4 new clients per month</li>
+                    <li>$70K+ MRR goal within reach</li>
+                    <li>78:1 LTV to CAC ratio sustainable</li>
+                    <li>Scale potential once LP optimised</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="insight-box" style="margin-top: 32px; border-left-color: var(--accent-green);">
+            <h4>Strategic Summary</h4>
+            <p>The Ignite Spot campaign has launched successfully with strong early performance. At $90.41 CPL against a $400 target, we are acquiring leads at less than quarter of the allowable cost. The Interest Stack V2 audience targeting business owners using QuickBooks and Xero has proven to be the winning combination. With 32 leads in 23 days and a clear path to 42+ leads monthly, we are on track to exceed the 37 client annual goal. The landing page split test represents our biggest opportunity; if the new variant maintains its early 6% conversion rate, we could see CPL drop to the $30 to $50 range and significantly accelerate growth. Focus remains on controlled optimisation while maintaining the strong unit economics that make this campaign highly profitable.</p>
+        </div>
+        
+        <div class="slide-footer">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru">
+            <span>Ignite Spot Accounting Services | Meta Ads Performance Review</span>
+            <span>Prepared January 2026</span>
+        </div>
+    </section>
+
+</body>
+</html>
