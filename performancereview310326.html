@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ignite Spot | March 2026 Performance Review</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f0f1a;
+            --bg-secondary: #1a1a2e;
+            --bg-card: #16162a;
+            --bg-card-hover: #1e1e3a;
+            --border: rgba(255,255,255,0.06);
+            --accent-green: #00d9a5;
+            --accent-green-dim: rgba(0, 217, 165, 0.15);
+            --accent-purple: #8b5cf6;
+            --accent-purple-dim: rgba(139, 92, 246, 0.15);
+            --accent-blue: #3b82f6;
+            --accent-pink: #ec4899;
+            --accent-red: #ef4444;
+            --accent-orange: #f59e0b;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b8;
+            --text-muted: #6b6b80;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            font-size: 15px;
+        }
+        .slide {
+            min-height: 100vh;
+            padding: 48px 64px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            border-bottom: 1px solid var(--border);
+        }
+        .slide-number {
+            position: absolute;
+            top: 24px;
+            right: 32px;
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .slide-tag {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-green);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        h1 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 52px;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+        h2 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 28px;
+        }
+        h3 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
+        h4 { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+        p { font-size: 15px; color: var(--text-secondary); max-width: 720px; }
+        .subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+        .cover {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(ellipse at 50% 30%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 80%, rgba(0, 217, 165, 0.05) 0%, transparent 40%);
+        }
+        .cover .meta {
+            margin-top: 48px;
+            display: flex;
+            gap: 48px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .cover .meta span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--bg-card);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            margin: 32px 0;
+        }
+        .metrics-grid.four-col { grid-template-columns: repeat(4, 1fr); }
+        .metrics-grid.three-col { grid-template-columns: repeat(3, 1fr); }
+        .metric-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px 24px;
+        }
+        .metric-card.green { border-top: 3px solid var(--accent-green); }
+        .metric-card.purple { border-top: 3px solid var(--accent-purple); }
+        .metric-card.red { border-top: 3px solid var(--accent-red); }
+        .metric-card.orange { border-top: 3px solid var(--accent-orange); }
+        .metric-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .metric-value {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+        .metric-value.large { font-size: 40px; }
+        .metric-change { font-size: 12px; margin-top: 8px; font-weight: 600; display: flex; align-items: center; gap: 4px; }
+        .metric-change.up { color: var(--accent-green); }
+        .metric-change.down { color: var(--accent-red); }
+        .metric-change.neutral { color: var(--text-muted); }
+        .metric-change.warning { color: var(--accent-orange); }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 13px;
+        }
+        .data-table th {
+            text-align: left;
+            padding: 12px 16px;
+            background: var(--bg-card);
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border);
+        }
+        .data-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        .data-table tr:hover td { background: var(--bg-card-hover); }
+        .data-table .highlight { color: var(--text-primary); font-weight: 500; }
+        .data-table .green { color: var(--accent-green); font-weight: 600; }
+        .data-table .red { color: var(--accent-red); font-weight: 600; }
+        .data-table .purple { color: var(--accent-purple); font-weight: 600; }
+        .data-table .orange { color: var(--accent-orange); font-weight: 600; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 32px; }
+        .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 32px; }
+        .insight-box {
+            background: var(--bg-card);
+            border-left: 3px solid var(--accent-green);
+            padding: 20px 24px;
+            margin: 24px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        .insight-box.purple { border-left-color: var(--accent-purple); }
+        .insight-box.orange { border-left-color: var(--accent-orange); }
+        .insight-box.red { border-left-color: var(--accent-red); }
+        .insight-box h4 {
+            color: var(--accent-green);
+            margin-bottom: 8px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .insight-box.purple h4 { color: var(--accent-purple); }
+        .insight-box.orange h4 { color: var(--accent-orange); }
+        .insight-box.red h4 { color: var(--accent-red); }
+        .insight-box p { color: var(--text-secondary); font-size: 14px; line-height: 1.7; }
+        .progress-container { margin: 12px 0; }
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .progress-label .value { color: var(--text-primary); font-weight: 600; }
+        .progress-bar {
+            height: 6px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .progress-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(--accent-purple) 0%, var(--accent-green) 100%); }
+        .progress-fill.green { background: var(--accent-green); }
+        .progress-fill.purple { background: var(--accent-purple); }
+        .progress-fill.red { background: var(--accent-red); }
+        .progress-fill.orange { background: var(--accent-orange); }
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+        }
+        .tag {
+            display: inline-block;
+            padding: 4px 10px;
+            background: var(--accent-purple-dim);
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--accent-purple);
+            margin-right: 6px;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .tag.green { background: var(--accent-green-dim); color: var(--accent-green); }
+        .tag.red { background: rgba(239, 68, 68, 0.15); color: var(--accent-red); }
+        .tag.orange { background: rgba(245, 158, 11, 0.15); color: var(--accent-orange); }
+        .check-list { list-style: none; margin: 16px 0; }
+        .check-list li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .check-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 8px;
+            height: 8px;
+            border-radius: 2px;
+            background: var(--accent-green);
+        }
+        .check-list li.red::before { background: var(--accent-red); }
+        .check-list li.orange::before { background: var(--accent-orange); }
+        .check-list li.purple::before { background: var(--accent-purple); }
+        .funnel-visual {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+        .funnel-step {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .funnel-step:last-child { border-bottom: none; }
+        .funnel-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .funnel-icon.purple { background: var(--accent-purple-dim); color: var(--accent-purple); }
+        .funnel-icon.green { background: var(--accent-green-dim); color: var(--accent-green); }
+        .funnel-icon.orange { background: rgba(245, 158, 11, 0.15); color: var(--accent-orange); }
+        .funnel-icon.red { background: rgba(239, 68, 68, 0.15); color: var(--accent-red); }
+        .funnel-content { flex: 1; }
+        .funnel-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+        .funnel-value { font-family: 'DM Sans', sans-serif; font-size: 24px; font-weight: 700; }
+        .funnel-rate { font-size: 13px; color: var(--accent-green); font-weight: 600; }
+        .funnel-rate.red { color: var(--accent-red); }
+        .funnel-rate.orange { color: var(--accent-orange); }
+        .timeline { position: relative; padding-left: 32px; margin: 24px 0; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 4px;
+            bottom: 4px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-purple), var(--accent-green));
+            border-radius: 1px;
+        }
+        .timeline-item { position: relative; margin-bottom: 28px; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -28px;
+            top: 4px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent-purple);
+            border: 2px solid var(--bg-primary);
+        }
+        .timeline-month {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent-green);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        .slide-footer {
+            margin-top: auto;
+            padding-top: 32px;
+            font-size: 11px;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cpm-bar {
+            display: flex;
+            align-items: flex-end;
+            gap: 24px;
+            height: 180px;
+            margin: 24px 0;
+            padding: 0 16px;
+        }
+        .cpm-bar-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            height: 100%;
+        }
+        .cpm-bar-fill {
+            width: 100%;
+            max-width: 80px;
+            border-radius: 8px 8px 0 0;
+            transition: height 0.3s;
+            position: relative;
+        }
+        .cpm-bar-fill .bar-value {
+            position: absolute;
+            top: -24px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        .cpm-bar-label {
+            margin-top: 8px;
+            font-size: 11px;
+            color: var(--text-muted);
+            text-align: center;
+        }
+        @media print { .slide { page-break-after: always; } }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--bg-card); border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <!-- SLIDE 1: Cover -->
+    <section class="slide cover">
+        <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru" style="width: 180px; margin-bottom: 48px; opacity: 0.9;">
+        <div class="slide-tag">March 2026 Performance Review</div>
+        <h1>Ignite Spot Accounting Services</h1>
+        <p class="subtitle">Meta Ads Campaign Performance Analysis &amp; Strategic Recommendations</p>
+        <div class="meta">
+            <span>March 1 &ndash; 31, 2026</span>
+            <span>Target CPL: $400</span>
+            <span>March CPL: $182.72</span>
+            <span>Pipeline: 10 Active</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 2: Executive Summary -->
+    <section class="slide">
+        <span class="slide-number">02 / 12</span>
+        <div class="slide-tag">Executive Summary</div>
+        <h2>March Performance at a Glance</h2>
+
+        <div class="metrics-grid">
+            <div class="metric-card green">
+                <div class="metric-label">Total Spend</div>
+                <div class="metric-value large">$3,472</div>
+                <div class="metric-change up">+14.5% vs Feb</div>
+            </div>
+            <div class="metric-card green">
+                <div class="metric-label">Meta Leads</div>
+                <div class="metric-value">19</div>
+                <div class="metric-change up">+18.8% vs Feb (16)</div>
+            </div>
+            <div class="metric-card green">
+                <div class="metric-label">Cost Per Lead</div>
+                <div class="metric-value">$182.72</div>
+                <div class="metric-change up">54% below $400 target</div>
+            </div>
+            <div class="metric-card red">
+                <div class="metric-label">CPM</div>
+                <div class="metric-value">$44.64</div>
+                <div class="metric-change down">+41.7% vs Feb ($31.50)</div>
+            </div>
+            <div class="metric-card purple">
+                <div class="metric-label">HubSpot Pipeline</div>
+                <div class="metric-value">10</div>
+                <div class="metric-change up">Active contacts in pipeline</div>
+            </div>
+        </div>
+
+        <div class="two-col">
+            <div>
+                <h3>What Delivered Results</h3>
+                <ul class="check-list">
+                    <li>Lead volume up 18.8% month on month with 19 Meta-attributed leads in March vs 16 in February</li>
+                    <li>CPL improved 3.6% from $189.47 to $182.72 despite rising auction costs</li>
+                    <li>Click volume surged 35.4% (2,855 vs 2,108) driven by Phase 2 creative efficiency</li>
+                    <li>Landing page views up 22.4% (1,365 vs 1,115) showing stronger funnel entry</li>
+                    <li>HubSpot pipeline showing 7 Discovery Calls, 1 Actively Working, 1 at 3rd Pricing Call, and 1 new Customer signed</li>
+                </ul>
+            </div>
+            <div>
+                <h3>What Needs Attention</h3>
+                <ul class="check-list">
+                    <li class="red">CPM escalated 41.7% month on month and 110% from Feb to latest week, indicating severe auction pressure and creative fatigue</li>
+                    <li class="red">Impressions dropped 19.2% despite higher spend, meaning we are paying significantly more for less reach</li>
+                    <li class="red">CBO continues to misallocate budget. Ad 8 absorbed 61.5% of March spend, then Ad 3 P2 took 55.9% in the latest week</li>
+                    <li class="red">Frequency rising from 1.32 in Feb to 1.59 in latest week, audience saturation building</li>
+                    <li class="orange">Only 5 ads active in the latest week down from the full creative set earlier in the month</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="insight-box">
+            <h4>Key Finding</h4>
+            <p>March was a structurally sound month on the surface: more leads, lower CPL, stronger click efficiency. But the underlying signals tell a different story. CPM has risen 110% since February, impressions are declining despite higher spend, and CBO is cycling through ads at an unsustainable rate. Ad 8 dominated early March then fatigued. Ad 3 P2 absorbed budget in the latest week at $97.70 CPM. The account needs structural intervention this week to avoid a CPL blowout in April.</p>
+        </div>
+
+        <div class="slide-footer">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru" style="height: 24px; opacity: 0.6;">
+            <span></span>
+            <span>02 / 12</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 3: Month on Month Comparison -->
+    <section class="slide">
+        <span class="slide-number">03 / 12</span>
+        <div class="slide-tag">Month on Month</div>
+        <h2>March vs February Performance</h2>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>February</th>
+                    <th>March</th>
+                    <th>Change</th>
+                    <th>Signal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="highlight">Total Spend</td>
+                    <td>$3,031.49</td>
+                    <td>$3,471.77</td>
+                    <td class="green">+14.5%</td>
+                    <td><span class="tag green">On Track</span></td>
+                </tr>
+                <tr>
+                    <td class="highlight">Impressions</td>
+                    <td>96,235</td>
+                    <td>77,767</td>
+                    <td class="red">-19.2%</td>
+                    <td><span class="tag red">Declining</span></td>
+                </tr>
+                <tr>
+                    <td class="highlight">CPM</td>
+                    <td>$31.50</td>
+                    <td>$44.64</td>
+                    <td class="red">+41.7%</td>
+                    <td><span class="tag red">Fatigue</span></td>
+                </tr>
+                <tr>
+                    <td class="highlight">Reach</td>
+                    <td>73,077</td>
+                    <td>51,735</td>
+                    <td class="red">-29.2%</td>
+                    <td><span class="tag red">Contracting</span></td>
+                </tr>
+                <tr>
+                    <td class="highlight">Frequency</td>
+                    <td>1.32</td>
+                    <td>1.50</td>
+                    <td class="orange">+14.2%</td>
+                    <td><span class="tag orange">Rising</span></td>
+                </tr>
+                <tr>
+                    <td class="highlight">Link Clicks</td>
+                    <td>2,108</td>
+                    <td>2,855</td>
+                    <td class="green">+35.4%</td>
+                    <td><span class="tag green">Strong</span></td>
+                </tr>
+                <tr>
+                    <td class="highlight">CTR</td>
+                    <td>2.19%</td>
+                    <td>3.67%</td>
+                    <td class="green">+67.6%</td>
+                    <td><span class="tag green">Excellent</span></td>
+                </tr>
+                <tr>
+                    <td class="highlight">Landing Page Views</td>
+                    <td>1,115</td>
+                    <td>1,365</td>
+                    <td class="green">+22.4%</td>
+                    <td><span class="tag green">Growing</span></td>
+                </tr>
+                <tr>
+                    <td class="highlight">Meta Leads</td>
+                    <td>16</td>
+                    <td>19</td>
+                    <td class="green">+18.8%</td>
+                    <td><span class="tag green">Up</span></td>
+                </tr>
+                <tr>
+                    <td class="highlight">Cost Per Lead</td>
+                    <td>$189.47</td>
+                    <td>$182.72</td>
+                    <td class="green">-3.6%</td>
+                    <td><span class="tag green">Improved</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="two-col" style="margin-top: 24px;">
+            <div class="insight-box orange">
+                <h4>The Divergence Problem</h4>
+                <p>Clicks and CTR improved significantly while impressions and reach declined. This means the creative is working harder per impression, but we are buying fewer impressions at a much higher price. The algorithm is finding engaged users but the auction cost to reach them has nearly doubled. This is the classic fatigue compression pattern: fewer impressions, higher CPM, stronger click rates from a narrowing responsive segment.</p>
+            </div>
+            <div class="insight-box purple">
+                <h4>Why CPL Still Improved</h4>
+                <p>CPL dropped from $189.47 to $182.72 because Phase 2 creative brought fresh engagement that more than offset the rising auction costs. The 67.6% CTR improvement drove more landing page views per dollar despite the CPM increase. This efficiency gain is temporary. As Phase 2 creative matures and CPM continues climbing, CPL will start rising unless we address the structural issues.</p>
+            </div>
+        </div>
+
+        <div class="slide-footer">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru" style="height: 24px; opacity: 0.6;">
+            <span></span>
+            <span>03 / 12</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 4: CPM Escalation -->
+    <section class="slide">
+        <span class="slide-number">04 / 12</span>
+        <div class="slide-tag">Critical Trend</div>
+        <h2>CPM Escalation Trajectory</h2>
+
+        <p class="subtitle" style="margin-bottom: 24px;">CPM has risen 110% from February to the latest week. This is the single biggest threat to campaign efficiency.</p>
+
+        <div class="cpm-bar">
+            <div class="cpm-bar-item">
+                <div class="cpm-bar-fill" style="height: 47%; background: var(--accent-green);">
+                    <span class="bar-value" style="color: var(--accent-green);">$31.50</span>
+                </div>
+                <div class="cpm-bar-label">February<br>Avg</div>
+            </div>
+            <div class="cpm-bar-item">
+                <div class="cpm-bar-fill" style="height: 67%; background: var(--accent-orange);">
+                    <span class="bar-value" style="color: var(--accent-orange);">$44.64</span>
+                </div>
+                <div class="cpm-bar-label">March<br>Avg</div>
+            </div>
+            <div class="cpm-bar-item">
+                <div class="cpm-bar-fill" style="height: 86%; background: var(--accent-red);">
+                    <span class="bar-value" style="color: var(--accent-red);">$56.80</span>
+                </div>
+                <div class="cpm-bar-label">Mar 17&ndash;23<br>Week 3</div>
+            </div>
+            <div class="cpm-bar-item">
+                <div class="cpm-bar-fill" style="height: 100%; background: var(--accent-red);">
+                    <span class="bar-value" style="color: var(--accent-red);">$66.27</span>
+                </div>
+                <div class="cpm-bar-label">Mar 24&ndash;30<br>Week 4</div>
+            </div>
+        </div>
+
+        <div class="two-col" style="margin-top: 24px;">
+            <div>
+                <h3>What Is Driving This</h3>
+                <ul class="check-list">
+                    <li class="red">Creative fatigue is the primary driver. The same audience is seeing ads more frequently (1.59 frequency in latest week) and engagement per impression is declining for fatigued assets</li>
+                    <li class="red">CBO concentrates spend on whichever ad has the best short-term signal, running it into the ground. Ad 8 hit $25.15 CPM early, then CBO piled budget into it until CPM exceeded $36. Same pattern now emerging with Ad 3 P2 at $97.70 CPM</li>
+                    <li class="orange">Reach contracted 29.2% month on month. The algorithm is recirculating to the same user pool rather than finding new pockets</li>
+                    <li class="orange">Audience saturation within Interest Stack V2 is building. At 51,735 reach in March, we are approaching the ceiling of this targeting segment</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Impact If Unchecked</h3>
+                <div class="card" style="margin-bottom: 16px;">
+                    <table class="data-table" style="margin: 0;">
+                        <tr>
+                            <td>Current CPL (March avg)</td>
+                            <td class="highlight">$182.72</td>
+                        </tr>
+                        <tr>
+                            <td>Latest Week CPL</td>
+                            <td class="orange">$208.58</td>
+                        </tr>
+                        <tr>
+                            <td>Projected April CPL at current CPM trend</td>
+                            <td class="red">$280&ndash;$340</td>
+                        </tr>
+                        <tr>
+                            <td>Breakeven CPL</td>
+                            <td class="highlight">$1,199</td>
+                        </tr>
+                        <tr>
+                            <td>Target CPL</td>
+                            <td class="highlight">$400</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="insight-box red">
+                    <h4>Risk Assessment</h4>
+                    <p>We remain well below the $400 CPL target even at $208.58 in the latest week. However, if CPM continues at +16% week on week, we could see $300+ CPL by mid-April. The fix is structural: fresh creative rotation plus budget control changes to prevent CBO concentration.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide-footer">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru" style="height: 24px; opacity: 0.6;">
+            <span></span>
+            <span>04 / 12</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 5: Ad Creative Performance -->
+    <section class="slide">
+        <span class="slide-number">05 / 12</span>
+        <div class="slide-tag">Creative Analysis</div>
+        <h2>Ad Performance: Full March</h2>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Ad</th>
+                    <th>Spend</th>
+                    <th>Budget %</th>
+                    <th>CPM</th>
+                    <th>Clicks</th>
+                    <th>CTR</th>
+                    <th>CPC</th>
+                    <th>LPVs</th>
+                    <th>Leads</th>
+                    <th>CPL</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="highlight">Ad 8 &ndash; Int</td>
+                    <td>$2,301</td>
+                    <td class="red">61.5%</td>
+                    <td>$32.05</td>
+                    <td>1,241</td>
+                    <td>1.73%</td>
+                    <td>$1.85</td>
+                    <td>629</td>
+                    <td class="green">15</td>
+                    <td class="highlight">$153.43</td>
+                    <td><span class="tag orange">Fatiguing</span></td>
+                </tr>
+                <tr>
+                    <td class="highlight">Ad 2 &ndash; Int</td>
+                    <td>$331</td>
+                    <td>8.8%</td>
+                    <td>$37.24</td>
+                    <td>295</td>
+                    <td>3.32%</td>
+                    <td>$1.12</td>
+                    <td>135</td>
+                    <td>3</td>
+                    <td class="green">$110.28</td>
+                    <td><span class="tag green">Efficient</span></td>
+                </tr>
+                <tr>
+                    <td class="highlight">Ad 1 &ndash; Int</td>
+                    <td>$295</td>
+                    <td>7.9%</td>
+                    <td>$35.74</td>
+                    <td>303</td>
+                    <td>3.67%</td>
+                    <td>$0.97</td>
+                    <td>159</td>
+                    <td>1</td>
+                    <td class="orange">$295.36</td>
+                    <td><span class="tag">Inactive</span></td>
+                </tr>
+                <tr>
+                    <td class="highlight">Ad 3 &ndash; Int</td>
+                    <td>$235</td>
+                    <td>6.3%</td>
+                    <td>$64.72</td>
+                    <td>64</td>
+                    <td>1.77%</td>
+                    <td>$3.67</td>
+                    <td>39</td>
+                    <td>1</td>
+                    <td class="orange">$234.62</td>
+                    <td><span class="tag green">Active</span></td>
+                </tr>
+                <tr>
+                    <td class="highlight">Ad 2 &ndash; P2</td>
+                    <td>$171</td>
+                    <td>4.6%</td>
+                    <td>$48.68</td>
+                    <td>364</td>
+                    <td class="green">10.36%</td>
+                    <td class="green">$0.47</td>
+                    <td>199</td>
+                    <td>1</td>
+                    <td>$170.96</td>
+                    <td><span class="tag purple">Phase 2</span></td>
+                </tr>
+                <tr>
+                    <td class="highlight">Ad 4 &ndash; P2</td>
+                    <td>$161</td>
+                    <td>4.3%</td>
+                    <td>$52.29</td>
+                    <td>159</td>
+                    <td>5.15%</td>
+                    <td>$1.01</td>
+                    <td>80</td>
+                    <td>1</td>
+                    <td>$161.38</td>
+                    <td><span class="tag purple">Phase 2</span></td>
+                </tr>
+                <tr>
+                    <td class="highlight">Ad 4 &ndash; Int</td>
+                    <td>$160</td>
+                    <td>4.3%</td>
+                    <td>$46.86</td>
+                    <td>48</td>
+                    <td>1.41%</td>
+                    <td>$3.32</td>
+                    <td>26</td>
+                    <td>1</td>
+                    <td>$159.56</td>
+                    <td><span class="tag green">Active</span></td>
+                </tr>
+                <tr>
+                    <td>Ad 9 &ndash; Int</td>
+                    <td>$86</td>
+                    <td>2.3%</td>
+                    <td>$36.32</td>
+                    <td>52</td>
+                    <td>2.19%</td>
+                    <td>$1.66</td>
+                    <td>34</td>
+                    <td class="red">0</td>
+                    <td class="red">N/A</td>
+                    <td><span class="tag">Inactive</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="two-col" style="margin-top: 16px;">
+            <div class="insight-box red">
+                <h4>CBO Budget Concentration</h4>
+                <p>Ad 8 absorbed 61.5% of total March spend ($2,301 of $3,472). While it delivered 15 of 19 leads, the CPM has been rising steadily and CBO starved every other ad of the budget needed to build conversion data. This is the same structural problem flagged in previous reviews. When Ad 8 finally fatigues completely, there is no warmed-up backup creative ready to take over at comparable efficiency.</p>
+            </div>
+            <div class="insight-box">
+                <h4>Phase 2 Creative Signal</h4>
+                <p>Ad 2 P2 delivered a 10.36% CTR and $0.47 CPC, the strongest click efficiency in the account. Ad 4 P2 hit 5.15% CTR at $1.01 CPC. Both show strong funnel entry signals with 199 and 80 landing page views respectively. The engagement is there. What they lacked in March was sufficient budget from CBO to build conversion data and exit learning phase.</p>
+            </div>
+        </div>
+
+        <div class="slide-footer">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru" style="height: 24px; opacity: 0.6;">
+            <span></span>
+            <span>05 / 12</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 6: Latest Week Deep Dive -->
+    <section class="slide">
+        <span class="slide-number">06 / 12</span>
+        <div class="slide-tag">Weekly Deep Dive</div>
+        <h2>Latest Week: March 24 &ndash; 30</h2>
+
+        <div class="metrics-grid four-col">
+            <div class="metric-card orange">
+                <div class="metric-label">Weekly Spend</div>
+                <div class="metric-value">$834</div>
+                <div class="metric-change neutral">$119/day avg</div>
+            </div>
+            <div class="metric-card green">
+                <div class="metric-label">Leads</div>
+                <div class="metric-value">4</div>
+                <div class="metric-change neutral">Same as prior week</div>
+            </div>
+            <div class="metric-card red">
+                <div class="metric-label">CPL</div>
+                <div class="metric-value">$208.58</div>
+                <div class="metric-change down">+14.2% vs March avg</div>
+            </div>
+            <div class="metric-card red">
+                <div class="metric-label">CPM</div>
+                <div class="metric-value">$66.27</div>
+                <div class="metric-change down">+16.7% WoW</div>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 32px;">Ad-Level Breakdown (Week of Mar 24&ndash;30)</h3>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Ad</th>
+                    <th>Spend</th>
+                    <th>Budget %</th>
+                    <th>CPM</th>
+                    <th>CTR</th>
+                    <th>CPC</th>
+                    <th>LPVs</th>
+                    <th>Leads</th>
+                    <th>CPL</th>
+                    <th>Signal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="highlight">Ad 3 &ndash; P2</td>
+                    <td>$430.48</td>
+                    <td class="red">55.9%</td>
+                    <td class="red">$97.70</td>
+                    <td>4.49%</td>
+                    <td>$2.17</td>
+                    <td>104</td>
+                    <td class="green">3</td>
+                    <td class="highlight">$143.49</td>
+                    <td><span class="tag orange">CBO Hoarding</span></td>
+                </tr>
+                <tr>
+                    <td class="highlight">Ad 2 &ndash; Int</td>
+                    <td>$138.15</td>
+                    <td>17.9%</td>
+                    <td>$38.13</td>
+                    <td>4.47%</td>
+                    <td class="green">$0.85</td>
+                    <td>73</td>
+                    <td class="red">0</td>
+                    <td class="red">N/A</td>
+                    <td><span class="tag orange">Monitor</span></td>
+                </tr>
+                <tr>
+                    <td class="highlight">Ad 1 &ndash; P2</td>
+                    <td>$122.36</td>
+                    <td>15.9%</td>
+                    <td>$39.97</td>
+                    <td class="green">6.11%</td>
+                    <td class="green">$0.65</td>
+                    <td>64</td>
+                    <td>1</td>
+                    <td class="highlight">$122.36</td>
+                    <td><span class="tag green">Best CPL</span></td>
+                </tr>
+                <tr>
+                    <td class="highlight">Ad 4 &ndash; Int</td>
+                    <td>$66.74</td>
+                    <td>8.7%</td>
+                    <td>$31.71</td>
+                    <td>1.57%</td>
+                    <td>$2.02</td>
+                    <td>18</td>
+                    <td class="red">0</td>
+                    <td class="red">N/A</td>
+                    <td><span class="tag">Low CTR</span></td>
+                </tr>
+                <tr>
+                    <td>Ad 5 &ndash; P2</td>
+                    <td>$12.50</td>
+                    <td>1.6%</td>
+                    <td>$44.80</td>
+                    <td class="green">6.45%</td>
+                    <td class="green">$0.69</td>
+                    <td>9</td>
+                    <td class="red">0</td>
+                    <td class="red">N/A</td>
+                    <td><span class="tag red">Starved</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="two-col" style="margin-top: 16px;">
+            <div class="insight-box red">
+                <h4>CBO Repeat Pattern</h4>
+                <p>The same CBO hoarding pattern that plagued Ad 8 in early March has now shifted to Ad 3 P2. It absorbed 55.9% of weekly spend at a $97.70 CPM, the highest CPM of any ad in the account. Meanwhile Ad 5 P2 received just $12.50 despite having a 6.45% CTR and $0.69 CPC. CBO is optimising for short-term conversion signal and running the winner into the ground.</p>
+            </div>
+            <div class="insight-box">
+                <h4>Bright Spot: Ad 1 P2</h4>
+                <p>Ad 1 P2 delivered the best CPL of the week at $122.36 with a 6.11% CTR, $0.65 CPC, and a healthy $39.97 CPM. This ad is achieving strong click efficiency without the inflated auction costs, suggesting it is reaching a responsive but less saturated segment. This creative should receive increased budget allocation immediately.</p>
+            </div>
+        </div>
+
+        <div class="slide-footer">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru" style="height: 24px; opacity: 0.6;">
+            <span></span>
+            <span>06 / 12</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 7: Phase 2 Creative Assessment -->
+    <section class="slide">
+        <span class="slide-number">07 / 12</span>
+        <div class="slide-tag">Creative Assessment</div>
+        <h2>Phase 2 Video Performance</h2>
+
+        <p class="subtitle">Five Phase 2 video ads launched in March. Here is how each is performing across the funnel.</p>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Ad</th>
+                    <th>Spend (Mar)</th>
+                    <th>CTR</th>
+                    <th>CPC</th>
+                    <th>LPV Rate</th>
+                    <th>Leads</th>
+                    <th>CPL</th>
+                    <th>V50% Retention</th>
+                    <th>V95% Retention</th>
+                    <th>Assessment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="highlight">Ad 2 &ndash; P2</td>
+                    <td>$170.96</td>
+                    <td class="green">10.36%</td>
+                    <td class="green">$0.47</td>
+                    <td>54.7%</td>
+                    <td>1</td>
+                    <td>$170.96</td>
+                    <td>48%</td>
+                    <td>11%</td>
+                    <td><span class="tag green">Strongest CTR</span></td>
+                </tr>
+                <tr>
+                    <td class="highlight">Ad 4 &ndash; P2</td>
+                    <td>$161.38</td>
+                    <td>5.15%</td>
+                    <td>$1.01</td>
+                    <td>50.3%</td>
+                    <td>1</td>
+                    <td>$161.38</td>
+                    <td>30%</td>
+                    <td>12%</td>
+                    <td><span class="tag green">Solid Funnel</span></td>
+                </tr>
+                <tr>
+                    <td class="highlight">Ad 1 &ndash; P2</td>
+                    <td>$122.36*</td>
+                    <td class="green">6.11%</td>
+                    <td class="green">$0.65</td>
+                    <td>34.2%</td>
+                    <td>1*</td>
+                    <td class="green">$122.36*</td>
+                    <td>33%</td>
+                    <td>11%</td>
+                    <td><span class="tag green">Best CPL</span></td>
+                </tr>
+                <tr>
+                    <td class="highlight">Ad 3 &ndash; P2</td>
+                    <td>$430.48*</td>
+                    <td>4.49%</td>
+                    <td>$2.17</td>
+                    <td>52.5%</td>
+                    <td class="green">3*</td>
+                    <td>$143.49*</td>
+                    <td>35%</td>
+                    <td>11%</td>
+                    <td><span class="tag orange">CBO Hoarding</span></td>
+                </tr>
+                <tr>
+                    <td class="highlight">Ad 5 &ndash; P2</td>
+                    <td>$12.50*</td>
+                    <td class="green">6.45%</td>
+                    <td class="green">$0.69</td>
+                    <td>50.0%</td>
+                    <td>0</td>
+                    <td>N/A</td>
+                    <td>21%</td>
+                    <td>3%</td>
+                    <td><span class="tag red">Starved</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">* Week of Mar 24&ndash;30 only (these ads were not in the monthly export, suggesting they launched later in March)</p>
+
+        <div class="three-col" style="margin-top: 24px;">
+            <div class="card">
+                <h4>Click Efficiency Leaders</h4>
+                <p style="font-size: 13px;">Ad 2 P2 (10.36% CTR, $0.47 CPC) and Ad 5 P2 (6.45% CTR, $0.69 CPC) are generating the cheapest clicks in the account. These hook audiences immediately. Both need more budget to determine if click quality converts to leads at scale.</p>
+            </div>
+            <div class="card">
+                <h4>Conversion Leader</h4>
+                <p style="font-size: 13px;">Ad 3 P2 has the most leads (3 in the latest week) but at the highest CPM ($97.70). CBO funnelled 55.9% of budget here because it was converting, but the inflated cost means diminishing returns. Needs budget capped, not killed.</p>
+            </div>
+            <div class="card">
+                <h4>Video Retention</h4>
+                <p style="font-size: 13px;">All Phase 2 ads show 30-48% retention to the 50% mark and 3-12% to 95%. Ad 2 P2 has the strongest retention curve (48% at midpoint), suggesting the content holds attention longest. Ad 5 P2 drops off quickly, so the hook works but body copy may need strengthening.</p>
+            </div>
+        </div>
+
+        <div class="slide-footer">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru" style="height: 24px; opacity: 0.6;">
+            <span></span>
+            <span>07 / 12</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 8: HubSpot Pipeline -->
+    <section class="slide">
+        <span class="slide-number">08 / 12</span>
+        <div class="slide-tag">Pipeline Analysis</div>
+        <h2>HubSpot CRM: March Pipeline</h2>
+
+        <div class="two-col">
+            <div>
+                <div class="funnel-visual">
+                    <div class="funnel-step">
+                        <div class="funnel-icon purple">56</div>
+                        <div class="funnel-content">
+                            <div class="funnel-label">Total March Contacts</div>
+                            <div class="funnel-value">56 Contacts</div>
+                        </div>
+                        <div class="funnel-rate" style="color: var(--text-muted);">All sources</div>
+                    </div>
+                    <div class="funnel-step">
+                        <div class="funnel-icon orange">19</div>
+                        <div class="funnel-content">
+                            <div class="funnel-label">Meta Attributed Leads</div>
+                            <div class="funnel-value">19 Leads</div>
+                        </div>
+                        <div class="funnel-rate orange">$182.72 CPL</div>
+                    </div>
+                    <div class="funnel-step">
+                        <div class="funnel-icon purple">7</div>
+                        <div class="funnel-content">
+                            <div class="funnel-label">Discovery Calls Booked</div>
+                            <div class="funnel-value">7 Booked</div>
+                        </div>
+                        <div class="funnel-rate">12.5% of contacts</div>
+                    </div>
+                    <div class="funnel-step">
+                        <div class="funnel-icon green">2</div>
+                        <div class="funnel-content">
+                            <div class="funnel-label">Active Sales Process</div>
+                            <div class="funnel-value">2 Contacts</div>
+                        </div>
+                        <div class="funnel-rate">1 Actively Working + 1 at 3rd Pricing Call</div>
+                    </div>
+                    <div class="funnel-step">
+                        <div class="funnel-icon green">1</div>
+                        <div class="funnel-content">
+                            <div class="funnel-label">New Customer</div>
+                            <div class="funnel-value">1 Signed</div>
+                        </div>
+                        <div class="funnel-rate">Pacific Utility Construction</div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3>Active Pipeline Detail</h3>
+                <table class="data-table" style="margin-top: 0;">
+                    <thead>
+                        <tr>
+                            <th>Contact</th>
+                            <th>Company</th>
+                            <th>Stage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">Leslie Beeson</td>
+                            <td>Beeson Mechanical Service</td>
+                            <td><span class="tag green">3rd Pricing Call+</span></td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">Christopher Marshall</td>
+                            <td>Renewed Vision CDDC</td>
+                            <td><span class="tag purple">Actively Working</span></td>
+                        </tr>
+                        <tr>
+                            <td>Lex Sodipe</td>
+                            <td>Edgewood Legacy</td>
+                            <td><span class="tag">Discovery Booked</span></td>
+                        </tr>
+                        <tr>
+                            <td>Felicia Jones</td>
+                            <td>Jones &amp; Sons Construction</td>
+                            <td><span class="tag">Discovery Booked</span></td>
+                        </tr>
+                        <tr>
+                            <td>Taylor Cinalli</td>
+                            <td>Considered Agency</td>
+                            <td><span class="tag">Discovery Booked</span></td>
+                        </tr>
+                        <tr>
+                            <td>Fabia Barsic</td>
+                            <td>&ndash;</td>
+                            <td><span class="tag">Discovery Booked</span></td>
+                        </tr>
+                        <tr>
+                            <td>Will Ray</td>
+                            <td>&ndash;</td>
+                            <td><span class="tag">Discovery Booked</span></td>
+                        </tr>
+                        <tr>
+                            <td>Steve Daniele</td>
+                            <td>&ndash;</td>
+                            <td><span class="tag">Discovery Booked</span></td>
+                        </tr>
+                        <tr>
+                            <td>Colleen Clawson</td>
+                            <td>&ndash;</td>
+                            <td><span class="tag">Discovery Booked</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="insight-box" style="margin-top: 16px;">
+                    <h4>Pipeline Strength</h4>
+                    <p>Leslie Beeson at Beeson Mechanical is now at 3rd Pricing Call stage, the most advanced pipeline contact this month. 4 of the 7 Discovery Calls were booked in the final week of March (Mar 25&ndash;30), showing a recent surge in booking momentum that should carry into April.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide-footer">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru" style="height: 24px; opacity: 0.6;">
+            <span></span>
+            <span>08 / 12</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 9: HubSpot Quality & Attribution -->
+    <section class="slide">
+        <span class="slide-number">09 / 12</span>
+        <div class="slide-tag">Lead Quality</div>
+        <h2>Contact Quality &amp; Attribution Analysis</h2>
+
+        <div class="two-col">
+            <div>
+                <h3>March Contact Quality Breakdown</h3>
+                <div style="margin-top: 16px;">
+                    <div class="progress-container" style="margin-bottom: 16px;">
+                        <div class="progress-label">
+                            <span><strong>Blank / New / Unassigned</strong></span>
+                            <span class="value">20 contacts (35.7%)</span>
+                        </div>
+                        <div class="progress-bar" style="height: 10px;"><div class="progress-fill purple" style="width: 35.7%"></div></div>
+                        <p style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Awaiting triage and assignment. Includes multi-contact company entries.</p>
+                    </div>
+                    <div class="progress-container" style="margin-bottom: 16px;">
+                        <div class="progress-label">
+                            <span><strong>Active Pipeline</strong></span>
+                            <span class="value" style="color: var(--accent-green);">10 contacts (17.9%)</span>
+                        </div>
+                        <div class="progress-bar" style="height: 10px;"><div class="progress-fill green" style="width: 17.9%"></div></div>
+                        <p style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Discovery Booked (7), Actively Working (1), 3rd Pricing Call (1), Customer (1).</p>
+                    </div>
+                    <div class="progress-container" style="margin-bottom: 16px;">
+                        <div class="progress-label">
+                            <span><strong>Blacklist (Spam/Junk)</strong></span>
+                            <span class="value" style="color: var(--accent-red);">10 contacts (17.9%)</span>
+                        </div>
+                        <div class="progress-bar" style="height: 10px;"><div class="progress-fill red" style="width: 17.9%"></div></div>
+                        <p style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Non-genuine submissions. Typical for Meta lead gen at this volume.</p>
+                    </div>
+                    <div class="progress-container" style="margin-bottom: 16px;">
+                        <div class="progress-label">
+                            <span><strong>Disqualified</strong></span>
+                            <span class="value">9 contacts (16.1%)</span>
+                        </div>
+                        <div class="progress-bar" style="height: 10px;"><div class="progress-fill orange" style="width: 16.1%"></div></div>
+                        <p style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Real businesses that did not meet ICP criteria or timeline.</p>
+                    </div>
+                    <div class="progress-container" style="margin-bottom: 16px;">
+                        <div class="progress-label">
+                            <span><strong>Lost</strong></span>
+                            <span class="value">5 contacts (8.9%)</span>
+                        </div>
+                        <div class="progress-bar" style="height: 10px;"><div class="progress-fill" style="width: 8.9%; background: var(--text-muted);"></div></div>
+                        <p style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Engaged but did not convert. Includes Pescatore Seafood, PMV Corps, Publisher's Graphics.</p>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span><strong>Other</strong></span>
+                            <span class="value">2 contacts (3.6%)</span>
+                        </div>
+                        <div class="progress-bar" style="height: 10px;"><div class="progress-fill" style="width: 3.6%; background: var(--text-muted);"></div></div>
+                        <p style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Unresponsive (1), Former Client (1).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3>Attribution Gap</h3>
+                <div class="card" style="margin-bottom: 16px;">
+                    <table class="data-table" style="margin: 0;">
+                        <tr>
+                            <td>Meta Pixel Leads (March)</td>
+                            <td class="highlight">19</td>
+                        </tr>
+                        <tr>
+                            <td>HubSpot Contacts (March)</td>
+                            <td class="highlight">56</td>
+                        </tr>
+                        <tr>
+                            <td>Active Pipeline (March)</td>
+                            <td class="green">10</td>
+                        </tr>
+                        <tr>
+                            <td>Blacklist / Spam</td>
+                            <td class="red">10</td>
+                        </tr>
+                        <tr>
+                            <td>Multi-Contact Companies</td>
+                            <td class="highlight">4 companies</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="insight-box purple">
+                    <h4>Understanding the Numbers</h4>
+                    <p>HubSpot shows 56 contacts vs Meta's 19 leads because HubSpot captures all sources: organic website visits, referrals, and multi-contact entries from the same company (Publisher's Graphics alone has 3 contacts). The 19 Meta leads are specifically pixel-attributed conversions from the ad funnel. The real quality measure is the 10 active pipeline contacts representing genuine business opportunities.</p>
+                </div>
+
+                <h3 style="margin-top: 24px;">Customers From Ads (All Time)</h3>
+                <div class="card">
+                    <table class="data-table" style="margin: 0;">
+                        <tr>
+                            <td class="highlight">Melissa Bonilla</td>
+                            <td>Bravo Supermarket</td>
+                            <td><span class="tag green">Customer</span></td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">Ryan Lampel</td>
+                            <td>Just Video Walls</td>
+                            <td><span class="tag green">Customer</span></td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">Pacific Utility Construction</td>
+                            <td>Cole Souza / Eradyn Higgins</td>
+                            <td><span class="tag green">Customer</span></td>
+                        </tr>
+                    </table>
+                    <p style="font-size: 12px; margin-top: 12px; color: var(--text-muted);">3 confirmed customers from the Unbounce funnel since campaign launch. At $1,850 avg monthly retainer, these represent $5,550 MRR added and $66,600 first-year revenue.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide-footer">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru" style="height: 24px; opacity: 0.6;">
+            <span></span>
+            <span>09 / 12</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 10: Unit Economics -->
+    <section class="slide">
+        <span class="slide-number">10 / 12</span>
+        <div class="slide-tag">Unit Economics</div>
+        <h2>Campaign ROI &amp; Payback</h2>
+
+        <div class="two-col">
+            <div>
+                <h3>Cumulative Performance (Since Launch)</h3>
+                <div class="card">
+                    <table class="data-table" style="margin: 0;">
+                        <tr>
+                            <td>Total Ad Spend (Dec&ndash;Mar)</td>
+                            <td class="highlight">~$12,400</td>
+                        </tr>
+                        <tr>
+                            <td>Total Meta Leads</td>
+                            <td class="highlight">~67</td>
+                        </tr>
+                        <tr>
+                            <td>Blended CPL</td>
+                            <td class="green">~$185</td>
+                        </tr>
+                        <tr>
+                            <td>Confirmed New Customers</td>
+                            <td class="green">3</td>
+                        </tr>
+                        <tr>
+                            <td>Customer Acquisition Cost</td>
+                            <td class="green">~$4,133</td>
+                        </tr>
+                        <tr>
+                            <td>First Year Revenue per Client</td>
+                            <td class="green">$22,200</td>
+                        </tr>
+                        <tr>
+                            <td>First Year Revenue (3 clients)</td>
+                            <td class="green">$66,600</td>
+                        </tr>
+                        <tr>
+                            <td>Breakeven CAC</td>
+                            <td class="highlight">$1,199</td>
+                        </tr>
+                        <tr>
+                            <td>LTV</td>
+                            <td class="highlight">$70,300</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="insight-box" style="margin-top: 16px;">
+                    <h4>ROI Position</h4>
+                    <p>At approximately $12,400 total ad spend and 3 confirmed customers generating $66,600 in first-year revenue, the campaign is returning approximately 5.4x on ad spend in year one alone. With LTV at $70,300, each customer represents massive long-term value. Leslie Beeson at 3rd Pricing Call could become customer number 4 imminently.</p>
+                </div>
+            </div>
+
+            <div>
+                <h3>March Unit Economics</h3>
+                <div class="card" style="margin-bottom: 16px;">
+                    <table class="data-table" style="margin: 0;">
+                        <tr>
+                            <td>March Spend</td>
+                            <td class="highlight">$3,471.77</td>
+                        </tr>
+                        <tr>
+                            <td>March Meta Leads</td>
+                            <td class="highlight">19</td>
+                        </tr>
+                        <tr>
+                            <td>March CPL</td>
+                            <td class="highlight">$182.72</td>
+                        </tr>
+                        <tr>
+                            <td>vs Target CPL ($400)</td>
+                            <td class="green">54% below target</td>
+                        </tr>
+                        <tr>
+                            <td>March Discovery Calls Booked</td>
+                            <td class="green">7</td>
+                        </tr>
+                        <tr>
+                            <td>Cost per Discovery Call</td>
+                            <td class="highlight">$495.97</td>
+                        </tr>
+                        <tr>
+                            <td>Implied Close Rate (leads to customer)</td>
+                            <td class="highlight">~4.5%</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h3>Goal Progress</h3>
+                <div class="card">
+                    <table class="data-table" style="margin: 0;">
+                        <tr>
+                            <td>Annual Client Goal</td>
+                            <td class="highlight">37 clients</td>
+                        </tr>
+                        <tr>
+                            <td>Monthly Client Goal</td>
+                            <td class="highlight">3 clients/month</td>
+                        </tr>
+                        <tr>
+                            <td>Clients Signed (Q1 2026)</td>
+                            <td class="green">3</td>
+                        </tr>
+                        <tr>
+                            <td>Run Rate (annualised)</td>
+                            <td class="orange">12 clients/year</td>
+                        </tr>
+                        <tr>
+                            <td>Pipeline (could close Q2)</td>
+                            <td class="green">2 (Leslie + Christopher)</td>
+                        </tr>
+                    </table>
+                    <p style="font-size: 12px; margin-top: 12px; color: var(--text-muted);">Current run rate of 1 client/month is below the 3/month target. However, pipeline is building with 7 discovery calls and 2 in active sales process. Improving close rate from the current ~4.5% toward the 10% benchmark would double client output without needing more leads.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide-footer">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru" style="height: 24px; opacity: 0.6;">
+            <span></span>
+            <span>10 / 12</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 11: Strategic Actions -->
+    <section class="slide">
+        <span class="slide-number">11 / 12</span>
+        <div class="slide-tag">Action Plan</div>
+        <h2>Tactical Actions for April</h2>
+
+        <div class="two-col">
+            <div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-month">This Week (Immediate)</div>
+                        <h4>Budget Structure Overhaul</h4>
+                        <ul class="check-list" style="font-size: 13px;">
+                            <li class="red">Restructure away from CBO. Move to ad-set level budgets or implement cost caps to prevent the repeat hoarding pattern that burned through Ad 8 and is now inflating Ad 3 P2 costs</li>
+                            <li>Set manual spend minimums on Ad 1 P2 ($20/day), Ad 2 P2 ($20/day), and Ad 5 P2 ($15/day) to force data collection on high-CTR creative that CBO has been starving</li>
+                            <li>Cap Ad 3 P2 at $40/day maximum to prevent further CPM inflation while preserving its conversion signal</li>
+                            <li class="orange">Evaluate whether Ad 4 Int and Ad 2 Int should remain active given zero leads in latest week, or reallocate that spend entirely to Phase 2</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-month">Week 2 (April 7&ndash;13)</div>
+                        <h4>Creative Refresh Planning</h4>
+                        <ul class="check-list" style="font-size: 13px;">
+                            <li>Begin scripting Phase 3 creative concepts. The account needs 3 to 4 new video assets within the next 3 weeks to stay ahead of the fatigue curve</li>
+                            <li>Prioritise angles that performed well: the stress/relief angle (Ad 2 Int heritage), the authority/trust angle, and the financial clarity transformation angle</li>
+                            <li>Schedule filming session with Eddy for mid-April. Vertical 9:16 format as standard</li>
+                            <li>Test static image or carousel ad formats as a diversification play to reduce reliance on video alone</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-month">Weeks 3&ndash;4 (April 14&ndash;30)</div>
+                        <h4>Optimisation &amp; Scale</h4>
+                        <ul class="check-list" style="font-size: 13px;">
+                            <li>Review Phase 2 ad performance with 2 weeks of controlled budget data. Pause any P2 ad that has not converted by this point</li>
+                            <li>Launch Phase 3 creative as it becomes available</li>
+                            <li>If CPM stabilises below $50 after restructure, begin testing daily budget increase to $150/day to push toward 6+ leads per week</li>
+                            <li>Evaluate audience expansion: test a refreshed Interest Stack V3 or a new lookalike audience from the 3 confirmed customers</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3>April KPI Targets</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Target</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Monthly Spend</td>
+                            <td class="highlight">$3,600&ndash;$4,200</td>
+                        </tr>
+                        <tr>
+                            <td>Target CPL</td>
+                            <td class="highlight">&lt; $200</td>
+                        </tr>
+                        <tr>
+                            <td>Meta Leads</td>
+                            <td class="highlight">20+</td>
+                        </tr>
+                        <tr>
+                            <td>CPM Target</td>
+                            <td class="highlight">&lt; $50 post-restructure</td>
+                        </tr>
+                        <tr>
+                            <td>Discovery Calls</td>
+                            <td class="highlight">8+</td>
+                        </tr>
+                        <tr>
+                            <td>New Customers</td>
+                            <td class="highlight">1&ndash;2</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="insight-box" style="margin-top: 24px;">
+                    <h4>Budget Structure Recommendation</h4>
+                    <p>The single most impactful change we can make right now is moving from CBO to ad-level budget control. CBO has proven repeatedly that it cannot self-optimise at 4 leads per week. It finds one winner, pours all budget into it until CPM spikes, then the ad fatigues and we start over with no backup creative warmed up. Manual budget distribution across 4 to 5 ads at $20 to $25 each gives every creative a fair shot while preventing the concentration death spiral.</p>
+                </div>
+
+                <div class="insight-box orange" style="margin-top: 16px;">
+                    <h4>Creative Pipeline Priority</h4>
+                    <p>At current fatigue rates, we need fresh creative every 3 to 4 weeks. We are currently running on Phase 2 assets that launched mid-March. If we do not have Phase 3 ready by mid-April, we risk a repeat of the Phase 1 fatigue pattern where CPM doubled within 4 weeks. Filming session scheduling this week is critical.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide-footer">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru" style="height: 24px; opacity: 0.6;">
+            <span></span>
+            <span>11 / 12</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 12: Summary -->
+    <section class="slide">
+        <span class="slide-number">12 / 12</span>
+        <div class="slide-tag">Summary</div>
+        <h2>March Summary &amp; What is Next</h2>
+
+        <div class="three-col">
+            <div class="card" style="border-top: 3px solid var(--accent-green);">
+                <h3>What Worked</h3>
+                <ul class="check-list" style="font-size: 13px;">
+                    <li>19 leads at $182.72 CPL, 54% below $400 target</li>
+                    <li>Phase 2 creative brought fresh engagement with exceptional click efficiency</li>
+                    <li>CTR surged 67.6% month on month showing strong message market fit</li>
+                    <li>HubSpot pipeline strengthened with 7 Discovery Calls and 1 at 3rd Pricing Call</li>
+                    <li>1 new customer signed (Pacific Utility Construction) and 3 confirmed customers since launch</li>
+                </ul>
+            </div>
+
+            <div class="card" style="border-top: 3px solid var(--accent-red);">
+                <h3>What Needs Fixing</h3>
+                <ul class="check-list" style="font-size: 13px;">
+                    <li class="red">CPM escalation from $31.50 to $66.27 is unsustainable and will erode CPL gains if unchecked</li>
+                    <li class="red">CBO budget hoarding continues to be the structural problem. It burned Ad 8, now burning Ad 3 P2</li>
+                    <li class="red">Impression decline of 19.2% despite higher spend means we are paying more for less audience</li>
+                    <li class="orange">Phase 3 creative pipeline needs to be initiated now to prevent another fatigue cycle</li>
+                    <li class="orange">Client close rate of ~4.5% is below the 10% benchmark. Pipeline is strong but conversion to customer needs attention on the sales side</li>
+                </ul>
+            </div>
+
+            <div class="card" style="border-top: 3px solid var(--accent-purple);">
+                <h3>Priority Actions</h3>
+                <ul class="check-list" style="font-size: 13px;">
+                    <li class="purple">Restructure from CBO to manual budget allocation this week</li>
+                    <li class="purple">Force spend to Ad 1 P2, Ad 2 P2, and Ad 5 P2 which have the best untapped potential</li>
+                    <li class="purple">Cap Ad 3 P2 spend to halt CPM inflation</li>
+                    <li class="purple">Schedule Phase 3 filming with Eddy for mid-April</li>
+                    <li class="purple">Book client review call to align on pipeline close rate strategy and creative direction for Phase 3</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="insight-box" style="margin-top: 32px; border-left-color: var(--accent-green);">
+            <h4>Strategic Position</h4>
+            <p>The campaign is performing well within target economics. At $182.72 CPL against a $400 target, we have significant headroom even as CPM rises. The critical intervention needed is structural, not strategic: the ad account architecture needs to change from CBO to manual budget control, and the creative production pipeline needs to run ahead of the fatigue curve rather than reacting to it. If we make these two changes this week, the path to 20+ leads per month at sub-$200 CPL through Q2 is achievable. The HubSpot pipeline is the strongest it has been since launch with 10 active contacts and a 3rd Pricing Call opportunity that could close any day.</p>
+        </div>
+
+        <div class="slide-footer">
+            <img src="https://res.cloudinary.com/dcnabm5nc/image/upload/v1754585626/lead-guru-new-logo-W-450_oyvumx.webp" alt="Lead Guru" style="height: 24px; opacity: 0.6;">
+            <span>Ignite Spot Accounting Services | March 2026 Performance Review</span>
+            <span>Prepared March 31, 2026</span>
+        </div>
+    </section>
+
+</body>
+</html>
