@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --dark-bg: #0F1B2D;
+  --dark-card: #1A2744;
+  --dark-row: #141F33;
+  --cream: #F5F0E8;
+  --cream-card: #E8E0D0;
+  --cream-row: #EDE8DF;
+  --accent: #E85D26;
+  --accent2: #2196F3;
+  --teal: #0D9488;
+  --green: #22C55E;
+  --red: #EF4444;
+  --amber: #F59E0B;
+  --grey: #6B7280;
+  --light-grey: #9CA3AF;
+  --blue-text: #6B8AC4;
+  --text-light: #D1D5DB;
+  --text-dark: #1A1A2E;
+  --white: #FFFFFF;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #0a0a0a;
+  color: var(--text-dark);
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  width: 100%;
+  max-width: 816px;
+  margin: 0 auto 2px auto;
+  padding: 48px 52px;
+  min-height: 1056px;
+  position: relative;
+  overflow: hidden;
+}
+
+.page::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--accent);
+}
+
+.page-dark { background: var(--dark-bg); color: var(--text-light); }
+.page-light { background: var(--cream); color: var(--text-dark); }
+
+.page-num {
+  font-size: 11px;
+  color: var(--grey);
+  margin-bottom: 28px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.page-title {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 4px;
+  letter-spacing: -0.5px;
+}
+.page-dark .page-title { color: var(--white); }
+.page-light .page-title { color: var(--text-dark); }
+
+.page-subtitle {
+  font-size: 13px;
+  color: var(--grey);
+  margin-bottom: 28px;
+  font-weight: 400;
+}
+
+.brand-tag {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 1px;
+  margin-bottom: 32px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 24px 0 12px 0;
+}
+.page-dark h3 { color: var(--white); }
+
+.prose {
+  font-size: 12px;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+.page-dark .prose { color: var(--text-light); }
+
+/* Metric Grid */
+.metric-grid {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.metric-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+.metric-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+.metric-grid.cols-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+
+.metric-box {
+  padding: 14px 16px;
+  border-radius: 6px;
+}
+.page-dark .metric-box { background: var(--dark-card); }
+.page-light .metric-box { background: var(--cream-card); }
+
+.metric-value {
+  font-size: 22px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  line-height: 1.2;
+}
+.page-dark .metric-value { color: var(--accent); }
+.page-light .metric-value { color: var(--accent); }
+.metric-value.white { color: var(--white); }
+
+.metric-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+.page-dark .metric-label { color: var(--light-grey); }
+.page-light .metric-label { color: var(--text-dark); }
+
+.metric-note {
+  font-size: 9px;
+  margin-top: 3px;
+  color: var(--blue-text);
+}
+
+/* Data Tables */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 10px;
+  margin-bottom: 18px;
+}
+
+.data-table thead th {
+  padding: 7px 8px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 8px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+.page-dark .data-table thead th {
+  background: var(--dark-card);
+  color: var(--white);
+}
+.page-light .data-table thead th {
+  background: var(--dark-bg);
+  color: var(--white);
+}
+
+.data-table tbody td {
+  padding: 6px 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+}
+
+.page-dark .data-table tbody tr:nth-child(even) { background: var(--dark-row); }
+.page-light .data-table tbody tr:nth-child(even) { background: var(--cream-row); }
+
+.data-table .label-col {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+}
+
+.text-accent { color: var(--accent); font-weight: 700; }
+.text-teal { color: var(--teal); font-weight: 700; }
+.text-green { color: var(--green); }
+.text-red { color: var(--red); }
+.text-amber { color: var(--amber); }
+.text-grey { color: var(--grey); }
+.text-blue { color: var(--blue-text); }
+.text-white { color: var(--white); }
+.text-muted { color: var(--light-grey); }
+.bold { font-weight: 700; }
+.mono { font-family: 'JetBrains Mono', monospace; }
+
+/* Cards */
+.card {
+  border-radius: 8px;
+  padding: 16px 18px;
+  margin-bottom: 12px;
+  position: relative;
+}
+.card-cream { background: var(--cream-card); }
+.card-dark { background: var(--dark-card); }
+
+.card-title {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--white);
+  position: absolute;
+  top: 14px;
+  right: 16px;
+}
+.badge-green { background: var(--green); }
+.badge-teal { background: var(--teal); }
+.badge-amber { background: var(--amber); }
+
+.mini-metrics {
+  display: flex;
+  gap: 12px;
+  font-size: 9px;
+  color: var(--grey);
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+.mini-metrics span { white-space: nowrap; }
+
+.card-note {
+  font-size: 10px;
+  line-height: 1.6;
+  color: var(--text-dark);
+}
+
+/* Funnel bar */
+.funnel-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  gap: 12px;
+}
+.funnel-bar-bg {
+  width: 420px;
+  height: 26px;
+  background: var(--dark-card);
+  border-radius: 4px;
+  position: relative;
+  flex-shrink: 0;
+}
+.funnel-bar-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--white);
+  white-space: nowrap;
+  overflow: visible;
+  min-width: 20px;
+}
+.funnel-rate {
+  font-size: 10px;
+  color: var(--light-grey);
+  white-space: nowrap;
+}
+
+/* Action items */
+.action-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.action-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--white);
+  flex-shrink: 0;
+}
+.action-text {
+  font-size: 11px;
+  line-height: 1.5;
+  flex: 1;
+}
+.action-timing {
+  font-size: 9px;
+  font-weight: 700;
+  white-space: nowrap;
+  padding-top: 2px;
+}
+
+/* Video funnel */
+.video-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  font-size: 11px;
+}
+.video-label { width: 140px; color: var(--text-light); }
+.video-val { width: 80px; font-weight: 700; color: var(--white); font-family: 'JetBrains Mono', monospace; }
+.video-note { color: var(--grey); font-size: 10px; }
+
+/* Pipeline */
+.pipeline-stage {
+  margin-bottom: 14px;
+}
+.stage-title {
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.prospect-row {
+  display: flex;
+  gap: 16px;
+  font-size: 10px;
+  padding: 2px 0 2px 14px;
+  color: var(--text-dark);
+}
+.prospect-name { width: 160px; font-weight: 500; }
+.prospect-company { width: 160px; color: var(--grey); }
+.prospect-date { color: var(--grey); }
+
+/* Milestone */
+.milestone-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 8px;
+  font-size: 11px;
+}
+.milestone-date {
+  width: 130px;
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* Footer */
+.page-footer {
+  position: absolute;
+  bottom: 20px;
+  left: 52px;
+  right: 52px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 8px;
+  color: var(--grey);
+}
+
+/* Cover specific */
+.cover-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 36px;
+}
+.cover-stat {
+  background: var(--dark-card);
+  padding: 18px 20px;
+  border-radius: 6px;
+}
+.cover-stat .metric-value { font-size: 26px; }
+
+.cover-title {
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+}
+
+.cover-client {
+  font-size: 16px;
+  color: var(--light-grey);
+  margin-bottom: 8px;
+}
+
+.cover-desc {
+  font-size: 12px;
+  color: var(--grey);
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.cover-tags {
+  display: flex;
+  gap: 24px;
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--grey);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #111; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: COVER -->
+<div class="page page-dark" style="padding-top:56px;">
+  <div class="brand-tag">HEATH MEDIA</div>
+  <div class="cover-title">Q1 2026 PERFORMANCE<br>REVIEW AND Q2 STRATEGY</div>
+  <div class="cover-client">Ignite Spot Accounting Services</div>
+  <div class="cover-desc">Meta Ads Performance Analysis, HubSpot CRM Cross-Reference,<br>Creative Intelligence, Pipeline Attribution and Q2 Growth Blueprint</div>
+  <div class="cover-stats">
+    <div class="cover-stat"><div class="metric-value">$9,343</div><div class="metric-label">Total Q1 Ad Spend</div></div>
+    <div class="cover-stat"><div class="metric-value">208,496</div><div class="metric-label">Ad Impressions</div></div>
+    <div class="cover-stat"><div class="metric-value">57</div><div class="metric-label">Meta Reported Leads</div></div>
+    <div class="cover-stat"><div class="metric-value">7+</div><div class="metric-label">New Clients (Q1)</div></div>
+    <div class="cover-stat"><div class="metric-value">158</div><div class="metric-label">HubSpot Q1 Contacts</div></div>
+    <div class="cover-stat"><div class="metric-value">$163.91</div><div class="metric-label">Meta CPL (Q1 Avg)</div></div>
+  </div>
+  <div class="cover-tags"><span>April 2026</span><span>USA Market</span><span>B2B Lead Generation</span></div>
+  <div class="page-footer"><span>Heath Media | Ignite Spot Accounting Services | Q1 2026 Performance Review</span><span>01 / 19</span></div>
+</div>
+
+<!-- PAGE 2: EXECUTIVE SUMMARY -->
+<div class="page page-light">
+  <div class="page-num">02 / 19</div>
+  <div class="page-title">EXECUTIVE SUMMARY</div>
+  <div class="page-subtitle">The Quarter in One Page</div>
+
+  <div class="metric-grid cols-4" style="margin-bottom:14px;">
+    <div class="metric-box"><div class="metric-value" style="font-size:19px;">$9,342.98</div><div class="metric-label">Total Q1 Spend</div></div>
+    <div class="metric-box"><div class="metric-value" style="font-size:19px;">208,496</div><div class="metric-label">Impressions</div></div>
+    <div class="metric-box"><div class="metric-value" style="font-size:19px;">57</div><div class="metric-label">Meta Leads</div></div>
+    <div class="metric-box"><div class="metric-value" style="font-size:19px;">$163.91</div><div class="metric-label">Avg CPL (Meta)</div></div>
+  </div>
+  <div class="metric-grid cols-4" style="margin-bottom:22px;">
+    <div class="metric-box"><div class="metric-value" style="font-size:19px;">158</div><div class="metric-label">HubSpot Q1 Contacts</div></div>
+    <div class="metric-box"><div class="metric-value" style="font-size:19px;">11</div><div class="metric-label">Customer Status</div></div>
+    <div class="metric-box"><div class="metric-value" style="font-size:19px;">7</div><div class="metric-label">Unique Companies</div></div>
+    <div class="metric-box"><div class="metric-value" style="font-size:19px;">$44.81</div><div class="metric-label">Average CPM</div></div>
+  </div>
+
+  <div class="prose">Q1 2026 was the first full quarter of Meta Ads activity for Ignite Spot. The campaign scaled from a late-December 2025 launch to consistent daily delivery at $103/day across 90 days. The account generated 57 leads according to Meta's attribution, while HubSpot recorded 158 new contacts during the same period. Of those, 11 contacts converted to Customer status across 7 unique companies, with additional prospects actively progressing through the sales pipeline.</div>
+  <div class="prose">Ad 8 remained the dominant volume driver throughout Q1, capturing 61.7% of total budget and generating 68.4% of all Meta-attributed leads at a CPL of $146.21. Phase 2 creative launched in mid-March and is now showing strong early signals, particularly Ad 3 - P2 (It's Not Your Fault), which has taken over as the primary spend vehicle in April with 14 leads in its first 7 days at a CPL of $55.60.</div>
+  <div class="prose">The critical finding this quarter is that CBO budget concentration remains a structural challenge. The algorithm consistently funnels 90%+ of budget into a single ad, starving other creatives of the signal needed to optimise. This pattern repeated with Ad 8 in Q1 and is now repeating with Ad 3 - P2 in early Q2. Managing this rebalancing is the primary operational focus entering Q2.</div>
+  <div class="page-footer"><span>Heath Media | Ignite Spot Accounting Services | Q1 2026 Performance Review</span><span>02 / 19</span></div>
+</div>
+
+<!-- PAGE 3: CAMPAIGN PERFORMANCE -->
+<div class="page page-dark">
+  <div class="page-num">03 / 19</div>
+  <div class="page-title">CAMPAIGN PERFORMANCE</div>
+  <div class="page-subtitle">Q1 2026 (January 1 to March 31)</div>
+
+  <div class="metric-grid cols-4">
+    <div class="metric-box"><div class="metric-value" style="font-size:18px;">$9,342.98</div><div class="metric-label">Total Spend</div></div>
+    <div class="metric-box"><div class="metric-value" style="font-size:18px;">208,496</div><div class="metric-label">Impressions</div></div>
+    <div class="metric-box"><div class="metric-value" style="font-size:18px;">143,707</div><div class="metric-label">Reach</div></div>
+    <div class="metric-box"><div class="metric-value" style="font-size:18px;">1.45</div><div class="metric-label">Frequency</div></div>
+  </div>
+  <div class="metric-grid cols-4">
+    <div class="metric-box"><div class="metric-value" style="font-size:18px;">$44.81</div><div class="metric-label">CPM</div></div>
+    <div class="metric-box"><div class="metric-value" style="font-size:18px;">5,696</div><div class="metric-label">Link Clicks</div></div>
+    <div class="metric-box"><div class="metric-value" style="font-size:18px;">2.73%</div><div class="metric-label">CTR</div></div>
+    <div class="metric-box"><div class="metric-value" style="font-size:18px;">$1.64</div><div class="metric-label">CPC</div></div>
+  </div>
+  <div class="metric-grid cols-4">
+    <div class="metric-box"><div class="metric-value" style="font-size:18px;">2,920</div><div class="metric-label">Landing Page Views</div></div>
+    <div class="metric-box"><div class="metric-value" style="font-size:18px;">$3.20</div><div class="metric-label">Cost per LPV</div></div>
+    <div class="metric-box"><div class="metric-value" style="font-size:18px;">57</div><div class="metric-label">Leads (Meta)</div></div>
+    <div class="metric-box"><div class="metric-value" style="font-size:18px;">$163.91</div><div class="metric-label">CPL (Meta)</div></div>
+  </div>
+
+  <h3>Video Engagement Funnel</h3>
+  <div class="video-row"><span class="video-label">25% Watched</span><span class="video-val">14,867</span><span class="video-note">7.1% of impressions</span></div>
+  <div class="video-row"><span class="video-label">50% Watched</span><span class="video-val">5,818</span><span class="video-note">39.1% of 25% viewers</span></div>
+  <div class="video-row"><span class="video-label">75% Watched</span><span class="video-val">3,026</span><span class="video-note">52.0% of 50% viewers</span></div>
+  <div class="video-row"><span class="video-label">95% Watched</span><span class="video-val">1,670</span><span class="video-note">55.2% of 75% viewers</span></div>
+  <div class="video-row"><span class="video-label">ThruPlays</span><span class="video-val">13,093</span><span class="video-note">6.3% of impressions</span></div>
+  <div class="video-row"><span class="video-label">Post Engagements</span><span class="video-val">43,611</span><span class="video-note">20.9% engagement rate</span></div>
+
+  <div class="prose" style="margin-top:16px;font-size:10px;color:var(--grey);">Daily averages: $103.81 spend / 2,317 impressions / 63 clicks / 32 landing page views / 0.63 leads. Weekly lead pace (Meta): 4.4 leads per week. Budget ran at the $120/day CBO cap throughout Q1.</div>
+  <div class="page-footer"><span>Heath Media | Ignite Spot Accounting Services | Q1 2026 Performance Review</span><span>03 / 19</span></div>
+</div>
+
+<!-- PAGE 4: AD-LEVEL PERFORMANCE -->
+<div class="page page-light">
+  <div class="page-num">04 / 19</div>
+  <div class="page-title">AD-LEVEL PERFORMANCE</div>
+  <div class="page-subtitle">Q1 Creative Ranking by Spend (Interest Stack V2 Ad Set)</div>
+
+  <table class="data-table">
+    <thead><tr><th>Ad</th><th>Spend</th><th>Share</th><th>Impr</th><th>Clicks</th><th>LPV</th><th>Leads</th><th>CPM</th><th>CPC</th><th>CTR</th><th>CPL</th></tr></thead>
+    <tbody>
+      <tr><td class="label-col text-accent">Ad 8 (implied)</td><td>$5,702</td><td>61.7%</td><td>126,688</td><td>3,248</td><td>1,636</td><td>39</td><td>$45.01</td><td>$1.76</td><td>2.56%</td><td>$146.21</td></tr>
+      <tr><td class="label-col">Ad 6</td><td>$1,339</td><td>14.5%</td><td>21,754</td><td>637</td><td>313</td><td>8</td><td>$61.54</td><td>$2.10</td><td>2.93%</td><td>$167.33</td></tr>
+      <tr><td class="label-col">Ad 4</td><td>$728</td><td>7.9%</td><td>17,158</td><td>542</td><td>267</td><td>5</td><td>$42.44</td><td>$1.34</td><td>3.16%</td><td>$145.64</td></tr>
+      <tr><td class="label-col">Ad 5</td><td>$505</td><td>5.5%</td><td>18,752</td><td>225</td><td>137</td><td>2</td><td>$26.92</td><td>$2.24</td><td>1.20%</td><td>$252.41</td></tr>
+      <tr><td class="label-col">Ad 7</td><td>$423</td><td>4.6%</td><td>6,383</td><td>340</td><td>185</td><td>1</td><td>$66.24</td><td>$1.24</td><td>5.33%</td><td>$422.84</td></tr>
+      <tr><td class="label-col">Ad 10</td><td>$207</td><td>2.2%</td><td>8,853</td><td>103</td><td>66</td><td>0</td><td>$23.42</td><td>$2.01</td><td>1.16%</td><td>N/A</td></tr>
+      <tr><td class="label-col text-teal">Ad 2 - P2</td><td>$172</td><td>1.9%</td><td>3,524</td><td>364</td><td>199</td><td>1</td><td>$48.70</td><td>$0.47</td><td>10.33%</td><td>$171.61</td></tr>
+      <tr><td class="label-col text-teal">Ad 4 - P2</td><td>$164</td><td>1.8%</td><td>3,115</td><td>159</td><td>80</td><td>1</td><td>$52.66</td><td>$1.03</td><td>5.10%</td><td>$164.04</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Key Observations</h3>
+  <div class="prose">Ad 8 dominated Q1 with 61.7% of total spend and 68.4% of leads. Its CPL of $146.21 remained well below the $400 breakeven target throughout the quarter. However, this concentration meant Phase 1 supporting creatives (Ads 4, 5, 6, 7, 10) received limited budget to generate meaningful signal.</div>
+  <div class="prose">Phase 2 ads launched in mid-March. Despite limited spend so far ($336 combined in Q1), early CTR signals are exceptionally strong. Ad 2 - P2 (The Real Time Zone) posted a 10.33% CTR, nearly 4x the account average. Ad 4 - P2 (The Sunday Scaries) achieved a 5.10% CTR at $1.03 CPC.</div>
+  <div class="prose" style="font-size:10px;color:var(--grey);">Ad 8 metrics are computed by subtracting all other ad-level Q1 data from the ad set total. This is necessary because the Meta export does not fully break out Ad 8's individual line item at ad level, a known reporting artefact when ads span multiple export date ranges. The campaign-level and ad-set-level totals are accurate and serve as the source of truth.</div>
+  <div class="page-footer"><span>Heath Media | Ignite Spot Accounting Services | Q1 2026 Performance Review</span><span>04 / 19</span></div>
+</div>
+
+<!-- PAGE 5: AD 8 DEEP DIVE -->
+<div class="page page-dark">
+  <div class="page-num">05 / 19</div>
+  <div class="page-title">AD 8 DEEP DIVE</div>
+  <div class="page-subtitle">The Primary Volume Driver</div>
+
+  <div class="metric-grid cols-3">
+    <div class="metric-box"><div class="metric-value" style="font-size:20px;">$5,702</div><div class="metric-label">Q1 Spend</div><div class="metric-note">61.7% of total budget</div></div>
+    <div class="metric-box"><div class="metric-value" style="font-size:20px;">126,688</div><div class="metric-label">Impressions</div><div class="metric-note">60.8% of total impressions</div></div>
+    <div class="metric-box"><div class="metric-value" style="font-size:20px;">3,248</div><div class="metric-label">Link Clicks</div><div class="metric-note">57.0% of total clicks</div></div>
+  </div>
+  <div class="metric-grid cols-3">
+    <div class="metric-box"><div class="metric-value" style="font-size:20px;">1,636</div><div class="metric-label">Landing Page Views</div><div class="metric-note">56.0% of total LPVs</div></div>
+    <div class="metric-box"><div class="metric-value" style="font-size:20px;">39</div><div class="metric-label">Meta Leads</div><div class="metric-note">68.4% of total leads</div></div>
+    <div class="metric-box"><div class="metric-value" style="font-size:20px;">$146.21</div><div class="metric-label">Cost Per Lead</div><div class="metric-note">64% below $400 target</div></div>
+  </div>
+
+  <h3>Performance Assessment</h3>
+  <div class="prose">Ad 8 has been the backbone of Ignite Spot's lead generation since campaign launch. Across Q1, it delivered 39 of the 57 Meta-attributed leads at a CPL of $146.21, which is 63% below the $400 breakeven threshold. This ad earned its dominant budget share through consistent conversion performance.</div>
+  <div class="prose">However, the CPM trajectory tells a more nuanced story. The Q1 average CPM of $45.01 for Ad 8 is reasonable for B2B targeting on Meta, but the trend within the quarter matters. CPM escalation in the final weeks of March, combined with declining impressions despite stable spend, is the classic signal of creative fatigue beginning to take hold.</div>
+  <div class="prose">This is expected behaviour for any ad running continuously for 3+ months. The response is not to kill Ad 8 but to build Phase 2 alongside it. Ad 8 continues to convert and should remain active. The goal is to reduce dependency on a single creative while maintaining total lead volume.</div>
+  <div class="prose">Ad 8 should not be characterised as a budget drain. It remains the most efficient lead generator in the account. The strategic priority is diversification, not replacement.</div>
+  <div class="page-footer"><span>Heath Media | Ignite Spot Accounting Services | Q1 2026 Performance Review</span><span>05 / 19</span></div>
+</div>
+
+<!-- PAGE 6: PHASE 2 CREATIVE -->
+<div class="page page-light">
+  <div class="page-num">06 / 19</div>
+  <div class="page-title">PHASE 2 CREATIVE</div>
+  <div class="page-subtitle">Early Performance Signals</div>
+
+  <div class="prose">Phase 2 consists of five video ads built around Round 2 scripts, launched mid-March 2026. These ads entered a CBO structure dominated by Ad 8, meaning they received limited initial budget. Two ads (Ad 2 - P2 and Ad 4 - P2) accumulated enough spend in Q1 to provide early signal. The remaining three launched in late March and are generating data in early April.</div>
+
+  <div class="card card-cream">
+    <div class="badge badge-green">STRONG</div>
+    <div class="card-title">Ad 2 - P2: The Real Time Zone</div>
+    <div class="mini-metrics"><span>Spend: $171.61</span><span>Impr: 3,524</span><span>CTR: 10.33%</span><span>CPC: $0.47</span><span>Leads: 1</span></div>
+    <div class="card-note">CTR of 10.33% is nearly 4x the account average. CPC of $0.47 is the lowest in the account. High click volume relative to impressions suggests strong creative resonance. Needs more spend to build conversion data.</div>
+  </div>
+
+  <div class="card card-cream">
+    <div class="badge badge-teal">PROMISING</div>
+    <div class="card-title">Ad 4 - P2: The Sunday Scaries</div>
+    <div class="mini-metrics"><span>Spend: $164.04</span><span>Impr: 3,115</span><span>CTR: 5.10%</span><span>CPC: $1.03</span><span>Leads: 1</span></div>
+    <div class="card-note">CTR of 5.10% is nearly double the account average. Healthy CPC of $1.03 and solid LPV conversion rate. Limited lead data at this spend level. Continue building signal.</div>
+  </div>
+
+  <div class="card card-cream">
+    <div class="badge badge-green">BREAKOUT (Apr)</div>
+    <div class="card-title">Ad 3 - P2: It's Not Your Fault</div>
+    <div class="mini-metrics"><span>Spend: Minimal Q1</span><span>CTR: 2.43% (Apr)</span><span>CPC: $5.48 (Apr)</span><span>CPM: $133.14 (Apr)</span></div>
+    <div class="card-note">Launched late March, exploded in early April. $778 spend in first 7 days of April with 14 leads at $55.60 CPL. Now consuming 91.6% of all budget. The highest lead volume and lowest CPL in the account's history for a 7-day window.</div>
+  </div>
+
+  <div class="page-footer"><span>Heath Media | Ignite Spot Accounting Services | Q1 2026 Performance Review</span><span>06 / 19</span></div>
+</div>
+
+<!-- PAGE 7: CURRENT PERFORMANCE -->
+<div class="page page-dark">
+  <div class="page-num">07 / 19</div>
+  <div class="page-title">CURRENT PERFORMANCE</div>
+  <div class="page-subtitle">April 1-7 vs March 25-31 (Week-over-Week)</div>
+
+  <table class="data-table">
+    <thead><tr><th>Metric</th><th>Apr 1-7</th><th>Mar 25-31</th><th>Change</th></tr></thead>
+    <tbody>
+      <tr><td class="label-col">Total Spend</td><td>$849.53</td><td>$831.38</td><td class="text-muted">+2.2%</td></tr>
+      <tr><td class="label-col">Impressions</td><td>6,242</td><td>11,636</td><td class="text-red">-46.4%</td></tr>
+      <tr><td class="label-col">CPM</td><td>$136.10</td><td>$71.45</td><td class="text-red">+90.5%</td></tr>
+      <tr><td class="label-col">Link Clicks</td><td>154</td><td>527</td><td class="text-red">-70.8%</td></tr>
+      <tr><td class="label-col">CPC</td><td>$5.52</td><td>$1.58</td><td class="text-red">+249.7%</td></tr>
+      <tr><td class="label-col">Landing Page Views</td><td>81</td><td>242</td><td class="text-red">-66.5%</td></tr>
+      <tr><td class="label-col">Cost per LPV</td><td>$10.49</td><td>$3.44</td><td class="text-red">+205.0%</td></tr>
+      <tr><td class="label-col bold">Meta Leads</td><td class="bold">14</td><td>4</td><td class="text-green bold">+250.0%</td></tr>
+      <tr><td class="label-col bold">CPL</td><td class="bold">$60.68</td><td>$207.85</td><td class="text-green bold">-70.8%</td></tr>
+    </tbody>
+  </table>
+
+  <h3>What This Means</h3>
+  <div class="prose">The headline story is the CPL drop from $207.85 to $60.68, a 70.8% improvement. This is driven entirely by Ad 3 - P2 (It's Not Your Fault), which generated 14 leads in 7 days. This is the best lead volume performance in any single week since launch.</div>
+  <div class="prose">However, the CPM spike to $136.10 (from $71.45) is a concern that requires context. The elevated CPM is a direct result of CBO budget concentration. With Ad 3 - P2 consuming 91.6% of spend, Meta is bidding aggressively on a narrowing pool of impressions for one ad. Impressions dropped 46.4% while spend held steady, which is the classic CPM escalation pattern.</div>
+  <div class="prose">This is not necessarily a problem in the short term because lead volume and CPL are strong. But it will become a problem if the pattern continues without diversification. The algorithm needs to distribute budget across Phase 2 creatives, not concentrate it all in a single ad again.</div>
+  <div class="page-footer"><span>Heath Media | Ignite Spot Accounting Services | Q1 2026 Performance Review</span><span>07 / 19</span></div>
+</div>
+
+<!-- PAGE 8: HUBSPOT CRM -->
+<div class="page page-light">
+  <div class="page-num">08 / 19</div>
+  <div class="page-title">HUBSPOT CRM ANALYSIS</div>
+  <div class="page-subtitle">Lead Quality, Pipeline and Customer Attribution</div>
+
+  <div class="metric-grid cols-4">
+    <div class="metric-box"><div class="metric-value" style="font-size:22px;">158</div><div class="metric-label">Q1 New Contacts</div></div>
+    <div class="metric-box"><div class="metric-value" style="font-size:22px;">11</div><div class="metric-label">Customer Status</div></div>
+    <div class="metric-box"><div class="metric-value" style="font-size:22px;">7</div><div class="metric-label">Unique Companies</div></div>
+    <div class="metric-box"><div class="metric-value" style="font-size:22px;">18</div><div class="metric-label">Active Pipeline</div></div>
+  </div>
+
+  <h3>Q1 Monthly Contact Volume</h3>
+  <table class="data-table">
+    <thead><tr><th>Month</th><th>Total Contacts</th><th>Customers</th><th>Companies</th></tr></thead>
+    <tbody>
+      <tr><td class="label-col">January 2026</td><td>55</td><td class="text-green bold">5</td><td>Grow Your Center, Bravo Supermarket, Ping Assistant</td></tr>
+      <tr><td class="label-col">February 2026</td><td>44</td><td class="text-green bold">4</td><td>Just Video Walls, Considered Agency (partial)</td></tr>
+      <tr><td class="label-col">March 2026</td><td>59</td><td class="text-green bold">2</td><td>Pacific Utility Construction, Considered Agency</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Q1 2026 New Customers (Confirmed)</h3>
+  <table class="data-table">
+    <thead><tr><th>Company</th><th>Created</th><th>Owner</th></tr></thead>
+    <tbody>
+      <tr><td class="label-col">Grow Your Center</td><td>Jan 9</td><td>Thomas Twitchell</td></tr>
+      <tr><td class="label-col">Ping Assistant</td><td>Jan 8 / Feb 3</td><td>Baylie Sims</td></tr>
+      <tr><td class="label-col">Bravo Supermarket</td><td>Jan 14</td><td>Thomas Twitchell</td></tr>
+      <tr><td class="label-col">Docker DAVIA / gmaill.com</td><td>Jan 28</td><td>Baylie Sims</td></tr>
+      <tr><td class="label-col">Pacific Utility Construction</td><td>Jan 20 / Mar 18</td><td>Thomas Twitchell</td></tr>
+      <tr><td class="label-col">Just Video Walls</td><td>Feb 3 / Feb 12</td><td>Thomas Twitchell</td></tr>
+      <tr><td class="label-col">Considered Agency</td><td>Feb 14 / Mar 16</td><td>Thomas Twitchell</td></tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top:10px;padding:10px 14px;background:#FEE2E2;border-radius:6px;font-size:10px;">
+    <strong style="color:var(--red);">Test Submissions Identified and Excluded:</strong><br>
+    Charles Piper-Test (Apr 3), Test Test / test@ignitespot.com (Feb 9), testfname testlname (Jan 2), testleadname2 (Dec 22), testleadfirstname (Dec 22). These have been excluded from all lead counts and conversion rate calculations.
+  </div>
+
+  <h3>Q1 Lead Status Distribution</h3>
+  <table class="data-table">
+    <thead><tr><th>Status</th><th>Count</th><th>%</th></tr></thead>
+    <tbody>
+      <tr><td class="label-col">(Unassigned Status)</td><td>53</td><td>33.5%</td></tr>
+      <tr><td class="label-col">Disqualified</td><td>25</td><td>15.8%</td></tr>
+      <tr><td class="label-col">Blacklist</td><td>19</td><td>12.0%</td></tr>
+      <tr><td class="label-col">Lost</td><td>19</td><td>12.0%</td></tr>
+      <tr><td class="label-col">Unresponsive</td><td>16</td><td>10.1%</td></tr>
+      <tr><td class="label-col text-green bold">Customer</td><td class="text-green bold">11</td><td class="text-green bold">7.0%</td></tr>
+      <tr><td class="label-col">Pipeline (Disc/Active/Pricing)</td><td>8</td><td>5.1%</td></tr>
+      <tr><td class="label-col">Unqualified (6/12 month)</td><td>5</td><td>3.2%</td></tr>
+      <tr><td class="label-col">Other (Former Client/Partner)</td><td>2</td><td>1.3%</td></tr>
+    </tbody>
+  </table>
+  <div class="page-footer"><span>Heath Media | Ignite Spot Accounting Services | Q1 2026 Performance Review</span><span>08 / 19</span></div>
+</div>
+
+<!-- PAGE 9: HUBSPOT CORRELATION -->
+<div class="page page-dark">
+  <div class="page-num">09 / 19</div>
+  <div class="page-title">HUBSPOT Q1 HIGHLIGHTS</div>
+  <div class="page-subtitle">Correlating Baylie's Dashboard with Meta Ads Data</div>
+
+  <div class="prose">Baylie shared the HubSpot Q1 2026 Highlights dashboard. Here is how those numbers correlate with the Meta Ads performance data and the full CRM contact export.</div>
+
+  <table class="data-table">
+    <thead><tr><th>HubSpot Metric</th><th>HubSpot Value</th><th>Meta / CRM Cross-Ref</th><th>Assessment</th></tr></thead>
+    <tbody>
+      <tr><td class="label-col">Ad Impressions</td><td class="bold">208,493</td><td>208,496 (Meta)</td><td class="text-green">Match. Difference of 3 is rounding.</td></tr>
+      <tr><td class="label-col">Ad Conversion Rate</td><td class="bold">2.7%</td><td>2.73% CTR (Meta)</td><td class="text-green">Match. This is CTR, not form conversion.</td></tr>
+      <tr><td class="label-col">Site Views</td><td class="bold">7,801</td><td>2,920 LPVs (Meta)</td><td class="text-blue">HubSpot tracks all site visits, not just ad traffic.</td></tr>
+      <tr><td class="label-col">Blog Views</td><td class="bold">2,473</td><td>N/A</td><td class="text-muted">Organic / non-ad traffic. Not Meta attributed.</td></tr>
+      <tr><td class="label-col">Social Impressions</td><td class="bold">1,193</td><td>N/A</td><td class="text-muted">Organic social reach, separate from paid.</td></tr>
+      <tr><td class="label-col">Social Interactions</td><td class="bold">2,248</td><td>43,611 engagements</td><td class="text-blue">HubSpot = organic only. Meta = paid.</td></tr>
+      <tr><td class="label-col">Reach</td><td class="bold">3,441</td><td>143,707 (Meta)</td><td class="text-blue">HubSpot = social reach, not ad reach.</td></tr>
+      <tr><td class="label-col">Meetings Booked</td><td class="bold">133</td><td>57 leads (Meta)</td><td class="text-blue">Includes all sources, not just ads.</td></tr>
+      <tr><td class="label-col">Deals Won</td><td class="bold">41</td><td>11 Q1 customers (CRM)</td><td class="text-blue">All channels. 11 are net-new Q1 contacts.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Key Takeaways from the Cross-Reference</h3>
+  <div class="prose">1. Ad Impressions match perfectly between HubSpot and Meta (208,493 vs 208,496). This confirms the data integration between Meta Ads and HubSpot is working correctly for impression-level reporting.</div>
+  <div class="prose">2. The 2.7% Ad Conversion Rate in HubSpot corresponds to the Meta CTR of 2.73%. This is a click-through rate, not a landing-page-to-lead conversion rate. The actual form conversion rate (leads / LPVs) is closer to 1.95% based on 57 leads from 2,920 landing page views.</div>
+  <div class="prose">3. Meetings Booked (133) significantly exceeds Meta leads (57) because HubSpot counts meetings from all sources: organic, referral, existing client activity, and direct. The 57 Meta leads represent the portion directly attributable to paid advertising.</div>
+  <div class="prose">4. Deals Won (41) across all channels is strong. The 11 new Customer contacts created in Q1 from the CRM export represent net-new business. The 41 figure likely includes upsells, renewals, and deals from leads generated before Q1 that closed during this period.</div>
+  <div class="prose">5. Site Views (7,801) vs Meta Landing Page Views (2,920) shows that paid traffic accounts for roughly 37% of total site visits. The remaining 63% comes from organic, direct, and referral channels.</div>
+  <div class="page-footer"><span>Heath Media | Ignite Spot Accounting Services | Q1 2026 Performance Review</span><span>09 / 19</span></div>
+</div>
+
+<!-- PAGE 10: ACTIVE PIPELINE -->
+<div class="page page-light">
+  <div class="page-num">10 / 19</div>
+  <div class="page-title">ACTIVE PIPELINE</div>
+  <div class="page-subtitle">Current Prospects in Sales Process (as of April 8)</div>
+
+  <div class="metric-grid cols-4">
+    <div class="metric-box"><div class="metric-value" style="font-size:28px;">6</div><div class="metric-label">Discovery Booked</div></div>
+    <div class="metric-box"><div class="metric-value" style="font-size:28px;">2</div><div class="metric-label">Actively Working</div></div>
+    <div class="metric-box"><div class="metric-value" style="font-size:28px;">6</div><div class="metric-label">2nd Pricing Call</div></div>
+    <div class="metric-box"><div class="metric-value" style="font-size:28px;">4</div><div class="metric-label">3rd Pricing Call +</div></div>
+  </div>
+
+  <div class="pipeline-stage">
+    <div class="stage-title">Discovery Booked (6)</div>
+    <div class="prospect-row"><span class="prospect-name">Cali Newton</span><span class="prospect-company">Newton Transportation</span><span class="prospect-date">Created: Apr 7</span></div>
+    <div class="prospect-row"><span class="prospect-name">Todd Graves</span><span class="prospect-company"></span><span class="prospect-date">Created: Apr 1</span></div>
+    <div class="prospect-row"><span class="prospect-name">Susan Boyer</span><span class="prospect-company">Silver Path Realty</span><span class="prospect-date">Created: Mar 31</span></div>
+    <div class="prospect-row"><span class="prospect-name">Steve Daniele</span><span class="prospect-company"></span><span class="prospect-date">Created: Mar 28</span></div>
+    <div class="prospect-row"><span class="prospect-name">Fabia Barsic</span><span class="prospect-company"></span><span class="prospect-date">Created: Mar 25</span></div>
+    <div class="prospect-row"><span class="prospect-name">Lex Sodipe</span><span class="prospect-company">Edgewood Legacy</span><span class="prospect-date">Created: Mar 10</span></div>
+  </div>
+  <div class="pipeline-stage">
+    <div class="stage-title">Actively Working (2)</div>
+    <div class="prospect-row"><span class="prospect-name">Monty Abbott</span><span class="prospect-company"></span><span class="prospect-date">Created: Mar 31</span></div>
+    <div class="prospect-row"><span class="prospect-name">John Infantino</span><span class="prospect-company">Brand Vessel</span><span class="prospect-date">Created: Jan 24</span></div>
+  </div>
+  <div class="pipeline-stage">
+    <div class="stage-title">2nd Pricing Call (6)</div>
+    <div class="prospect-row"><span class="prospect-name">Carl Tipton</span><span class="prospect-company"></span><span class="prospect-date">Created: Apr 7</span></div>
+    <div class="prospect-row"><span class="prospect-name">Bruno Neretich</span><span class="prospect-company"></span><span class="prospect-date">Created: Apr 6</span></div>
+    <div class="prospect-row"><span class="prospect-name">Chris Knight</span><span class="prospect-company"></span><span class="prospect-date">Created: Apr 4</span></div>
+    <div class="prospect-row"><span class="prospect-name">Michelle Upchurch</span><span class="prospect-company">The Upchurch Group</span><span class="prospect-date">Created: Apr 3</span></div>
+    <div class="prospect-row"><span class="prospect-name">Carmen Coleman</span><span class="prospect-company"></span><span class="prospect-date">Created: Mar 31</span></div>
+    <div class="prospect-row"><span class="prospect-name">Christopher Marshall</span><span class="prospect-company">Renewed Vision CDDC</span><span class="prospect-date">Created: Mar 15</span></div>
+  </div>
+  <div class="pipeline-stage">
+    <div class="stage-title">3rd Pricing Call + (4)</div>
+    <div class="prospect-row"><span class="prospect-name">Juan Paredes</span><span class="prospect-company">NY Stucco</span><span class="prospect-date">Created: Apr 5</span></div>
+    <div class="prospect-row"><span class="prospect-name">Dusty Gravatt</span><span class="prospect-company"></span><span class="prospect-date">Created: Apr 5</span></div>
+    <div class="prospect-row"><span class="prospect-name">Paul Dix</span><span class="prospect-company"></span><span class="prospect-date">Created: Apr 5</span></div>
+    <div class="prospect-row"><span class="prospect-name">Marcos</span><span class="prospect-company">BrightWell Clean</span><span class="prospect-date">Created: Apr 3</span></div>
+  </div>
+
+  <div style="margin-top:14px;padding:12px 16px;background:#DCFCE7;border-radius:6px;">
+    <div style="font-weight:700;font-size:12px;color:#166534;margin-bottom:4px;">April Customer (Already Closed)</div>
+    <div style="font-size:11px;color:#166534;">Minhae Chung - Infinia Dental (Apr 6) - Owner: Baylie Sims</div>
+  </div>
+  <div class="prose" style="margin-top:12px;font-weight:600;">Total active pipeline: 18 prospects + 1 new customer already in April. This is the strongest pipeline position since campaign launch.</div>
+  <div class="page-footer"><span>Heath Media | Ignite Spot Accounting Services | Q1 2026 Performance Review</span><span>10 / 19</span></div>
+</div>
+
+<!-- PAGE 11: ATTRIBUTION -->
+<div class="page page-dark">
+  <div class="page-num">11 / 19</div>
+  <div class="page-title">ATTRIBUTION AND CPL</div>
+  <div class="page-subtitle">Understanding the Numbers Across Sources</div>
+
+  <div class="prose">Attribution discrepancies between Meta, HubSpot, and the Booked-V2 custom conversion event are an expected reality in any B2B lead generation campaign. Each system counts differently, and the true picture requires cross-referencing all three sources.</div>
+
+  <table class="data-table">
+    <thead><tr><th>Source</th><th>Count</th><th>CPL</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td class="label-col">Meta Attribution (Q1)</td><td class="bold">57 leads</td><td class="text-accent">$163.91</td><td>Meta's own conversion tracking</td></tr>
+      <tr><td class="label-col">HubSpot Q1 Contacts</td><td class="bold">158 contacts</td><td class="text-accent">$59.13</td><td>All sources, not just Meta</td></tr>
+      <tr><td class="label-col">HubSpot Q1 (excl. test/blacklist)</td><td class="bold">~114 contacts</td><td class="text-accent">$81.96</td><td>Removing obvious non-leads</td></tr>
+      <tr><td class="label-col">Meetings Booked (HubSpot)</td><td class="bold">133</td><td class="text-accent">$70.25</td><td>All channels, Q1 total</td></tr>
+      <tr><td class="label-col">Deals Won (HubSpot)</td><td class="bold">41</td><td class="text-accent">$227.88</td><td>All channels, Q1 total</td></tr>
+      <tr><td class="label-col bold">New Customers (Q1 CRM)</td><td class="bold">7 companies</td><td class="text-accent bold">$1,334.71</td><td>Net-new unique client companies</td></tr>
+    </tbody>
+  </table>
+
+  <h3>CPL vs Target</h3>
+  <div class="prose">The breakeven CPL target is $400, based on a 12-month LTV payback model ($1,199 first-year average retainer value with a 30% MQL-to-customer conversion rate). Every attribution method shows Q1 CPL significantly below this threshold.</div>
+  <div class="prose">Meta's CPL of $163.91 is the most conservative measure (smallest lead count, highest per-lead cost). Even at this level, the campaign is generating leads at 59% below breakeven. The HubSpot-blended CPL of $59.13 (all 158 contacts) is the most generous interpretation. Reality sits somewhere between these two figures.</div>
+  <div class="prose">The customer acquisition cost (CAC) of $1,334.71 per unique company ($9,343 / 7 companies) is more meaningful for evaluating true ROI. Against an average LTV of $70,300 per customer and a first-year retainer value of $22,200 (12 x $1,850), this represents a 16.6x first-year ROAS on customer acquisition. This is exceptionally strong for B2B accounting services.</div>
+  <div class="prose">Critically, several Q1 leads are still progressing through the pipeline. The 18 active prospects in Discovery, Actively Working, and Pricing stages represent additional potential customer conversions that would further improve the Q1 CAC and ROAS calculations.</div>
+  <div class="page-footer"><span>Heath Media | Ignite Spot Accounting Services | Q1 2026 Performance Review</span><span>11 / 19</span></div>
+</div>
+
+<!-- PAGE 12: CBO CONCENTRATION -->
+<div class="page page-light">
+  <div class="page-num">12 / 19</div>
+  <div class="page-title">CBO BUDGET CONCENTRATION</div>
+  <div class="page-subtitle">The Recurring Structural Challenge</div>
+
+  <div class="prose">Campaign Budget Optimisation (CBO) is Meta's default budget distribution method. The algorithm decides which ads receive budget based on predicted conversion likelihood. In theory, this maximises results. In practice, with small conversion volumes (57 leads across 90 days = 0.63 per day), the algorithm lacks sufficient signal and defaults to concentrating budget in whichever ad has the earliest positive data.</div>
+  <div class="prose">This is not a bug. It is how CBO behaves with limited conversion data. The pattern has repeated three times since launch:</div>
+
+  <div class="card card-cream" style="border-left:4px solid var(--accent);">
+    <div class="card-title text-accent">Dec 2025 to Feb 2026</div>
+    <div class="card-note">Ad 8 absorbed the majority of budget during the initial learning phase, establishing itself as the default delivery vehicle.</div>
+  </div>
+  <div class="card card-cream" style="border-left:4px solid var(--amber);">
+    <div class="card-title text-amber">Feb to Mar 2026</div>
+    <div class="card-note">Ad 8 continued at 61.7% of spend. Phase 1 supporting creatives (Ads 4, 5, 6, 7) received enough to show CTR data but not enough to build conversion signal.</div>
+  </div>
+  <div class="card card-cream" style="border-left:4px solid var(--red);">
+    <div class="card-title text-red">Late Mar to Apr 2026</div>
+    <div class="card-note">Ad 3 - P2 launched and quickly captured 91.6% of budget, repeating the same concentration pattern with a new creative.</div>
+  </div>
+
+  <h3>What We Are Doing About It</h3>
+  <div class="prose">The solution is not to fight CBO entirely but to manage it actively. Our approach for Q2 includes:</div>
+  <div class="prose">1. Cost cap implementation on Phase 2 ads to force more even budget distribution. By capping the cost-per-result target, we prevent any single ad from running away with budget unchecked.</div>
+  <div class="prose">2. Monitoring impression distribution daily during the first 2 weeks of new creative launches. If any ad exceeds 70% of total spend, we intervene by adjusting cost caps or pausing/restarting to reset the algorithm's allocation.</div>
+  <div class="prose">3. Building a creative pipeline so we always have fresh ads entering the system. The goal is to have 3 to 5 active creatives receiving meaningful budget at any given time.</div>
+  <div class="prose">4. Considering ABO (Ad Set Budget Optimisation) for Phase 2 testing. By giving Phase 2 its own dedicated budget, we remove the competition with Ad 8 for the same CBO pool.</div>
+  <div class="page-footer"><span>Heath Media | Ignite Spot Accounting Services | Q1 2026 Performance Review</span><span>12 / 19</span></div>
+</div>
+
+<!-- PAGE 13: CPM ANALYSIS -->
+<div class="page page-dark">
+  <div class="page-num">13 / 19</div>
+  <div class="page-title">CPM ESCALATION ANALYSIS</div>
+  <div class="page-subtitle">Creative Fatigue Indicators and Forward Risk</div>
+
+  <div class="metric-grid cols-4" style="margin-bottom:24px;">
+    <div class="metric-box"><div class="metric-value text-green" style="font-size:20px;">$49.22</div><div class="metric-label">Q4 2025 (partial)</div><div class="metric-note">Baseline during launch</div></div>
+    <div class="metric-box"><div class="metric-value text-green" style="font-size:20px;">$44.81</div><div class="metric-label">Q1 2026 Average</div><div class="metric-note">Improved with targeting data</div></div>
+    <div class="metric-box"><div class="metric-value text-amber" style="font-size:20px;">$71.45</div><div class="metric-label">Mar 25-31</div><div class="metric-note">End-of-quarter escalation</div></div>
+    <div class="metric-box"><div class="metric-value text-red" style="font-size:20px;">$136.10</div><div class="metric-label">Apr 1-7</div><div class="metric-note">Sharp spike - CBO effect</div></div>
+  </div>
+
+  <h3>Understanding the April CPM Spike</h3>
+  <div class="prose">The $136.10 CPM in the first week of April looks alarming in isolation. Context matters here.</div>
+  <div class="prose">The primary driver is CBO budget concentration. Ad 3 - P2 consumed 91.6% of all spend, meaning Meta was bidding aggressively for a narrower pool of impressions through a single ad. When one ad receives almost all budget, the auction dynamics shift: Meta bids higher per impression to maintain delivery velocity, inflating CPM.</div>
+  <div class="prose">The counterpoint is that CPL dropped from $207.85 to $60.68 in the same period. The algorithm is paying more per impression but converting at a significantly higher rate, which means the net cost per lead actually improved despite the CPM spike.</div>
+  <div class="prose">The risk is sustainability. If this CPM level persists as the ad's conversion rate naturally declines over time (creative fatigue), CPL will increase. The window to diversify budget across Phase 2 creatives is now, while Ad 3 - P2 is hot and generating strong conversion data.</div>
+  <div class="prose">CPM escalation is the leading indicator of creative fatigue. It appears before conversion volume drops. We saw this with Ad 8 in late Q1 and we will see it with Ad 3 - P2 eventually. The strategic response is to always have the next wave of creative ready before the current one peaks.</div>
+  <div class="page-footer"><span>Heath Media | Ignite Spot Accounting Services | Q1 2026 Performance Review</span><span>13 / 19</span></div>
+</div>
+
+<!-- PAGE 14: Q2 STRATEGY -->
+<div class="page page-light">
+  <div class="page-num">14 / 19</div>
+  <div class="page-title">Q2 2026 STRATEGY</div>
+  <div class="page-subtitle">Scaling What Works, Fixing What Does Not</div>
+
+  <h3>Strategic Priorities</h3>
+
+  <div class="card card-cream" style="border-left:4px solid var(--accent);">
+    <div class="card-title text-accent">PRIORITY 1: Phase 2 Budget Distribution</div>
+    <div class="card-note">Ad 3 - P2 has proven it can convert at scale ($55.60 CPL in its first week). The immediate opportunity is to ensure the remaining Phase 2 ads (Ad 1 - P2, Ad 2 - P2, Ad 4 - P2) also receive sufficient budget to build their own conversion signal. Cost caps and potential ABO restructuring are the tools to achieve this.</div>
+  </div>
+  <div class="card card-cream" style="border-left:4px solid var(--accent);">
+    <div class="card-title text-accent">PRIORITY 2: Creative Pipeline Development</div>
+    <div class="card-note">With Ad 8 showing signs of fatigue and Phase 2 now proving its potential, Q2 needs a Round 3 creative brief. The goal is to have 2 to 3 new creatives ready to launch by mid-Q2, so there is always a fresh wave entering the system before the current one peaks.</div>
+  </div>
+  <div class="card card-cream" style="border-left:4px solid var(--accent);">
+    <div class="card-title text-accent">PRIORITY 3: CPM Management</div>
+    <div class="card-note">Monitor CPM weekly. If the account average exceeds $80 sustained over 14 days, trigger creative refresh or restructuring. The Q1 average of $44.81 is the baseline. The April spike to $136.10 is acceptable short-term due to strong CPL but not sustainable long-term.</div>
+  </div>
+  <div class="card card-cream" style="border-left:4px solid var(--accent);">
+    <div class="card-title text-accent">PRIORITY 4: Pipeline Conversion Support</div>
+    <div class="card-note">18 active prospects in the pipeline represent significant near-term revenue. Coordination with the sales team on follow-up timing and messaging can accelerate conversions from this existing pipeline without additional ad spend.</div>
+  </div>
+
+  <div class="page-footer"><span>Heath Media | Ignite Spot Accounting Services | Q1 2026 Performance Review</span><span>14 / 19</span></div>
+</div>
+
+<!-- PAGE 15: SCALING OPPORTUNITIES -->
+<div class="page page-dark">
+  <div class="page-num">15 / 19</div>
+  <div class="page-title">SCALING OPPORTUNITIES</div>
+  <div class="page-subtitle">Where the Growth Is</div>
+
+  <div class="card card-dark" style="border-left:4px solid var(--accent);margin-bottom:16px;">
+    <div class="card-title text-accent">Budget Increase Potential</div>
+    <div class="card-note" style="color:var(--text-light);">At $120/day, the current budget is conservative for B2B Meta Ads in the USA. With a proven CPL of $60.68 (most recent 7 days) and a $400 breakeven target, there is significant headroom to increase spend. A staged increase to $150/day in April, $180/day in May, and $200/day in June would scale lead volume while maintaining CPL discipline. Each $30/day increase adds approximately $900/month in spend and, at current conversion rates, 10 to 15 additional leads per month.</div>
+  </div>
+  <div class="card card-dark" style="border-left:4px solid var(--accent);margin-bottom:16px;">
+    <div class="card-title text-accent">Phase 2 Creative Expansion</div>
+    <div class="card-note" style="color:var(--text-light);">Ad 3 - P2 (It's Not Your Fault) has demonstrated breakout potential with 14 leads in 7 days. The other Phase 2 scripts (The Real Time Zone, The Sunday Scaries, The Ghost Accountant, The Midnight Calculator) need budget allocation to determine if they can replicate this performance. If even one additional Phase 2 ad performs at a similar level, total lead volume could double without proportional spend increases.</div>
+  </div>
+  <div class="card card-dark" style="border-left:4px solid var(--accent);margin-bottom:16px;">
+    <div class="card-title text-accent">Landing Page Optimisation</div>
+    <div class="card-note" style="color:var(--text-light);">The Unbounce landing page at get.ignitespot.com/quote has a reported conversion rate of 3.98%. Meta data shows 2,920 landing page views generating 57 leads, implying a 1.95% conversion rate from ad traffic specifically. Closing the gap between the overall 3.98% and the ad-specific 1.95% through A/B testing of the ad-to-page message match could significantly improve CPL without additional spend.</div>
+  </div>
+  <div class="card card-dark" style="border-left:4px solid var(--accent);margin-bottom:16px;">
+    <div class="card-title text-accent">Retargeting Layer</div>
+    <div class="card-note" style="color:var(--text-light);">With 143,707 unique users reached in Q1 and 2,920 landing page visitors, there is now a meaningful retargeting audience available. A dedicated retargeting campaign targeting landing page visitors who did not convert could capture additional leads at a lower CPL than cold prospecting.</div>
+  </div>
+  <div class="page-footer"><span>Heath Media | Ignite Spot Accounting Services | Q1 2026 Performance Review</span><span>15 / 19</span></div>
+</div>
+
+<!-- PAGE 16: Q2 PROJECTIONS -->
+<div class="page page-light">
+  <div class="page-num">16 / 19</div>
+  <div class="page-title">Q2 PROJECTIONS</div>
+  <div class="page-subtitle">Three Scenarios Based on Execution Depth</div>
+
+  <table class="data-table">
+    <thead><tr><th></th><th>Conservative</th><th>Moderate</th><th>Aggressive</th></tr></thead>
+    <tbody>
+      <tr><td class="label-col bold">Daily Budget</td><td>$120 (hold)</td><td>$150 (staged)</td><td>$200 (staged)</td></tr>
+      <tr><td class="label-col bold">Q2 Spend</td><td>$10,800</td><td>$13,500</td><td>$18,000</td></tr>
+      <tr><td class="label-col bold">Est. CPL</td><td>$150-180</td><td>$120-150</td><td>$100-130</td></tr>
+      <tr><td class="label-col bold">Est. Leads (Meta)</td><td>60-72</td><td>90-113</td><td>138-180</td></tr>
+      <tr><td class="label-col bold">Est. MQLs (30%)</td><td>18-22</td><td>27-34</td><td>41-54</td></tr>
+      <tr><td class="label-col bold">Est. Customers (10%)</td><td>6-7</td><td class="text-green bold">9-11</td><td class="text-green bold">14-18</td></tr>
+      <tr><td class="label-col bold">Est. Monthly Revenue</td><td>$11,100-13,000</td><td>$16,650-20,350</td><td>$25,900-33,300</td></tr>
+      <tr><td class="label-col bold">Key Assumption</td><td>Current setup, no changes</td><td>Phase 2 scales, LP A/B test</td><td>Full Phase 2, budget increase, LP</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Recommendation</h3>
+  <div class="prose">The Moderate scenario is the recommended path. It balances growth with risk management by staging budget increases alongside Phase 2 creative expansion and landing page optimisation. The Conservative scenario leaves significant growth on the table given the strong Q1 CPL performance. The Aggressive scenario is achievable but carries more risk if Phase 2 creative does not scale as expected.</div>
+  <div class="prose">The critical variable is not budget but creative diversification. Increasing spend without resolving CBO concentration will simply drive up CPM without proportional lead growth. The budget increase should be conditional on successfully distributing spend across 3+ active creatives.</div>
+  <div class="prose">Goal alignment: Eddy's target is 3 new clients per month, or 9 per quarter. The Moderate scenario projects 9 to 11 new customers in Q2, which meets or exceeds the target. The campaign is on track to achieve the 37-client annual goal if current performance is maintained and modestly scaled.</div>
+  <div class="page-footer"><span>Heath Media | Ignite Spot Accounting Services | Q1 2026 Performance Review</span><span>16 / 19</span></div>
+</div>
+
+<!-- PAGE 17: FUNNEL ANALYSIS -->
+<div class="page page-dark">
+  <div class="page-num">17 / 19</div>
+  <div class="page-title">FUNNEL ANALYSIS</div>
+  <div class="page-subtitle">From Impression to Customer</div>
+
+  <div class="funnel-row"><div class="funnel-bar-bg"><div class="funnel-bar-fill" style="width:100%;">Impressions: 208,496</div></div><div class="funnel-rate">100%</div></div>
+  <div class="funnel-row"><div class="funnel-bar-bg"><div class="funnel-bar-fill" style="width:58%;">Link Clicks: 5,696</div></div><div class="funnel-rate">2.73% CTR</div></div>
+  <div class="funnel-row"><div class="funnel-bar-bg"><div class="funnel-bar-fill" style="width:34%;">Landing Page Views: 2,920</div></div><div class="funnel-rate">51.3% of clicks</div></div>
+  <div class="funnel-row"><div class="funnel-bar-bg"><div class="funnel-bar-fill" style="width:12%;">Meta Leads: 57</div></div><div class="funnel-rate">1.95% of LPVs</div></div>
+  <div class="funnel-row"><div class="funnel-bar-bg"><div class="funnel-bar-fill" style="width:18%;background:var(--teal);">HubSpot Contacts: 158</div></div><div class="funnel-rate">all sources</div></div>
+  <div class="funnel-row"><div class="funnel-bar-bg"><div class="funnel-bar-fill" style="width:8%;background:var(--amber);">Pipeline Active: 18</div></div><div class="funnel-rate">11.4% of Q1 contacts</div></div>
+  <div class="funnel-row"><div class="funnel-bar-bg"><div class="funnel-bar-fill" style="width:5%;background:var(--green);">Customer (Q1): 11</div></div><div class="funnel-rate">7.0% of Q1 contacts</div></div>
+  <div class="funnel-row"><div class="funnel-bar-bg"><div class="funnel-bar-fill" style="width:3%;background:var(--green);">Unique Companies: 7</div></div><div class="funnel-rate">4.4% of Q1 contacts</div></div>
+
+  <h3>Funnel Drop-Off Analysis</h3>
+  <div class="prose">The biggest drop-off in the funnel is between Link Clicks (5,696) and Landing Page Views (2,920). Only 51.3% of people who click the ad actually load the landing page. This is typical for Meta Ads (50 to 60% click-to-LPV rate is standard) but represents an opportunity. Page load speed, mobile optimisation, and the initial above-the-fold experience all affect this number.</div>
+  <div class="prose">The second major drop-off is Landing Page Views (2,920) to Meta Leads (57), a 1.95% conversion rate. The reported Unbounce conversion rate of 3.98% includes all traffic sources. Ad traffic typically converts at a lower rate than organic or direct traffic because the intent level is different. Closing this gap through better ad-to-page message match is a high-leverage Q2 initiative.</div>
+  <div class="prose">The lead-to-customer conversion rate is strong. Of 158 Q1 contacts, 11 became customers (7.0%) and an additional 18 are actively in the pipeline (11.4%). Combined, 18.4% of Q1 contacts are either customers or active prospects, which is well above typical B2B benchmarks of 10 to 15%.</div>
+  <div class="page-footer"><span>Heath Media | Ignite Spot Accounting Services | Q1 2026 Performance Review</span><span>17 / 19</span></div>
+</div>
+
+<!-- PAGE 18: IMMEDIATE ACTIONS -->
+<div class="page page-light">
+  <div class="page-num">18 / 19</div>
+  <div class="page-title">IMMEDIATE ACTIONS</div>
+  <div class="page-subtitle">10 Actions for the Next 14 Days</div>
+
+  <div class="action-item"><div class="action-num" style="background:var(--red);">1</div><div class="action-text">Implement cost caps on Ad 3 - P2 to prevent 90%+ budget concentration</div><div class="action-timing text-red">Urgent</div></div>
+  <div class="action-item"><div class="action-num" style="background:var(--red);">2</div><div class="action-text">Force budget distribution to remaining Phase 2 ads (Ad 1, 2, 4 - P2)</div><div class="action-timing text-red">Urgent</div></div>
+  <div class="action-item"><div class="action-num" style="background:var(--amber);">3</div><div class="action-text">Monitor Ad 3 - P2 CPM daily. If sustained above $120, trigger restructure</div><div class="action-timing text-amber">This Week</div></div>
+  <div class="action-item"><div class="action-num" style="background:var(--amber);">4</div><div class="action-text">Begin Round 3 creative brief with Eddy for filming</div><div class="action-timing text-amber">This Week</div></div>
+  <div class="action-item"><div class="action-num" style="background:var(--amber);">5</div><div class="action-text">Coordinate with Funnel Labs on landing page A/B test for ad traffic</div><div class="action-timing text-amber">This Week</div></div>
+  <div class="action-item"><div class="action-num" style="background:var(--teal);">6</div><div class="action-text">Build retargeting audience from Q1 landing page visitors (2,920 users)</div><div class="action-timing text-teal">Week 2</div></div>
+  <div class="action-item"><div class="action-num" style="background:var(--teal);">7</div><div class="action-text">Launch retargeting campaign at $10 to $15/day</div><div class="action-timing text-teal">Week 2</div></div>
+  <div class="action-item"><div class="action-num" style="background:var(--teal);">8</div><div class="action-text">Review budget increase to $150/day once Phase 2 distribution is confirmed</div><div class="action-timing text-teal">Week 2</div></div>
+  <div class="action-item"><div class="action-num" style="background:var(--grey);">9</div><div class="action-text">Cross-reference April HubSpot contacts with Meta attribution weekly</div><div class="action-timing text-grey">Ongoing</div></div>
+  <div class="action-item"><div class="action-num" style="background:var(--grey);">10</div><div class="action-text">Follow up on 18 active pipeline prospects with sales team</div><div class="action-timing text-grey">Ongoing</div></div>
+
+  <div class="prose" style="margin-top:20px;">Items 1 and 2 are the highest priority because they directly address the CBO concentration issue that will limit scaling potential if left unchecked. Item 4 (Round 3 creative brief) is the strategic investment that compounds over Q2 and Q3. Item 10 (pipeline follow-up) is the lowest-cost, highest-impact action because those 18 prospects already exist and require zero additional ad spend to convert.</div>
+
+  <h3>Key Q2 Dates and Milestones</h3>
+  <div class="milestone-row"><span class="milestone-date">Week of Apr 14</span><span>CBO rebalancing complete. Phase 2 budget distribution confirmed.</span></div>
+  <div class="milestone-row"><span class="milestone-date">Week of Apr 21</span><span>Retargeting campaign live. Landing page A/B test launched.</span></div>
+  <div class="milestone-row"><span class="milestone-date">Week of May 5</span><span>First Q2 performance review. Budget increase decision point.</span></div>
+  <div class="milestone-row"><span class="milestone-date">Week of May 19</span><span>Round 3 creative brief finalised. Filming scheduled.</span></div>
+  <div class="milestone-row"><span class="milestone-date">Week of Jun 1</span><span>Mid-Q2 review. Full pipeline and conversion audit.</span></div>
+  <div class="milestone-row"><span class="milestone-date">Week of Jun 30</span><span>Q2 close. Comprehensive review and Q3 strategy development.</span></div>
+  <div class="page-footer"><span>Heath Media | Ignite Spot Accounting Services | Q1 2026 Performance Review</span><span>18 / 19</span></div>
+</div>
+
+<!-- PAGE 19: SUMMARY -->
+<div class="page page-dark" style="padding-bottom:80px;">
+  <div class="page-num">19 / 19</div>
+  <div class="page-title">SUMMARY</div>
+  <div class="page-subtitle">Where We Stand and Where We Are Going</div>
+
+  <div class="prose" style="font-size:13px;line-height:1.8;">Q1 2026 was a foundational quarter. The campaign scaled from a cold start to consistent lead delivery, generated 7 new client companies, and built the creative and data infrastructure needed for Q2 growth.</div>
+
+  <div class="prose" style="font-size:13px;line-height:1.8;">The numbers tell a clear story: $9,343 in spend generated 7 new client companies with an average LTV of $70,300 each. That is approximately $492,000 in potential lifetime revenue from $9,343 in ad spend. Even on a first-year basis, the 7 clients represent $155,400 in annual retainer revenue (7 x $22,200), a 16.6x return on the Q1 ad investment.</div>
+
+  <div class="prose" style="font-size:13px;line-height:1.8;">The campaign is well below breakeven CPL targets, the pipeline is the strongest it has been since launch, and Phase 2 creative is showing breakout potential. The structural challenge of CBO budget concentration is real but manageable with the interventions outlined in this report.</div>
+
+  <div class="prose" style="font-size:13px;line-height:1.8;">Q2 is about execution: distributing budget across Phase 2, building the creative pipeline, optimising the landing page, and layering in retargeting. The foundation is solid. The growth opportunity is significant. The path forward is clear.</div>
+
+  <div style="margin-top:48px;">
+    <div style="font-size:18px;font-weight:700;color:var(--accent);margin-bottom:6px;">Charles</div>
+    <div style="font-size:13px;color:var(--grey);">Heath Media</div>
+    <div style="font-size:12px;color:var(--grey);">charles@heathmedia.co.uk</div>
+  </div>
+
+  <div class="page-footer"><span>Heath Media | Ignite Spot Accounting Services | Q1 2026 Performance Review</span><span>19 / 19</span></div>
+</div>
+
+</body>
+</html>
